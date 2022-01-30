@@ -40,11 +40,11 @@
     "connectedToIpfs": "Connected to IPFS",
     "connectedToIpfs1": "<0>IPFS network is ready <1>You can check your IPFS node status in this page. Go to <1>Files</1> tab to store/retrieve files.</1></0>",
     "connectingToIpfs": "Connecting to IPFS…",
-    "couldNotConnect": "Please install and launch the IPFS desktop of Crust Network",
+    "couldNotConnect": "Please install and launch the IPFS desktop of Rubik Network",
     "couldNotConnect1": "* Current version is not supported on Safari browser",
     "couldNotConnect2": "* Please turn off your MAC firewall before starting IPFS",
     "desktop": "Download IPFS desktop",
-    "info": "This specific version of IPFS desktop adds the cross-domain configuration of apps.crust.network to localhost, in order to allow Rubik Apps to interact with IPFS. You can also follow the steps below to install standard IPFS and configure accordingly."
+    "info": "This specific version of IPFS desktop adds the cross-domain configuration of apps.rubik.network to localhost, in order to allow Rubik Apps to interact with IPFS. You can also follow the steps below to install standard IPFS and configure accordingly."
   },
   "terms": {
     "address": "Address",
