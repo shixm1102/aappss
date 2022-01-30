@@ -17,11 +17,18 @@ import { expandEndpoints } from './util';
 export function createTesting (t: TFunction): LinkOption[] {
   return expandEndpoints(t, [
     // alphabetical based on chain name, e.g. Amber, Arcadia, Beresheet, ...
+    // {
+    //   info: 'crust-rocky',
+    //   text: t('rpc.crust.network', 'Crust Rocky', { ns: 'apps-config' }),
+    //   providers: {
+    //     'Crust Network': 'wss://rpc-rocky.crust.network'
+    //   }
+    // }
     {
-      info: 'crust-rocky',
-      text: t('rpc.crust.network', 'Crust Rocky', { ns: 'apps-config' }),
+      info: 'rubik',
+      text: t('rpc.rubik.network', 'Rubik', { ns: 'apps-config' }),
       providers: {
-        'Crust Network': 'wss://rpc-rocky.crust.network'
+        'Rubik Network': 'ws://101.200.164.225:9944'
       }
     }
   ]);

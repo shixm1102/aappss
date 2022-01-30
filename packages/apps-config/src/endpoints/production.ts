@@ -9,8 +9,7 @@ import { expandEndpoints } from './util';
 export const mainnetEndPoints = [
   'wss://rpc.crust.network',
   'wss://rpc-crust-mainnet.decoo.io',
-  'wss://api.decloudf.com',
-  'ws://101.200.164.225:9944'
+  'wss://api.decloudf.com'
 ];
 
 export const maxwellEndPoints = [
@@ -31,27 +30,28 @@ export function createProduction (t: TFunction): LinkOption[] {
   return expandEndpoints(t, [
     {
       info: 'rubik',
-      text: t('rpc.crust.network', 'Rubik', { ns: 'apps-config' }),
+      text: t('rpc.rubik.network', 'Rubik', { ns: 'apps-config' }),
       providers: {
-        'Rubik Network': mainnetEndPoints[3]
-      }
-    }, {
-      info: 'crust',
-      text: t('rpc.crust.network', 'Crust', { ns: 'apps-config' }),
-      providers: {
-        'Crust Network': mainnetEndPoints[0],
-        'Decoo Technologies': mainnetEndPoints[1],
-        'DCloud Foundation': mainnetEndPoints[2]
-      }
-    },
-    {
-      info: 'crust-maxwell',
-      text: t('rpc.crust.network', 'Crust Maxwell', { ns: 'apps-config' }),
-      providers: {
-        'Crust Network': maxwellEndPoints[0],
-        'Decoo Technologies': maxwellEndPoints[1],
-        Pinknode: maxwellEndPoints[2]
+        'Rubik Network': 'ws://101.200.164.225:9944'
       }
     }
+    // {
+    //   info: 'crust',
+    //   text: t('rpc.crust.network', 'Crust', { ns: 'apps-config' }),
+    //   providers: {
+    //     'Crust Network': mainnetEndPoints[0],
+    //     'Decoo Technologies': mainnetEndPoints[1],
+    //     'DCloud Foundation': mainnetEndPoints[2]
+    //   }
+    // },
+    // {
+    //   info: 'crust-maxwell',
+    //   text: t('rpc.crust.network', 'Crust Maxwell', { ns: 'apps-config' }),
+    //   providers: {
+    //     'Crust Network': maxwellEndPoints[0],
+    //     'Decoo Technologies': maxwellEndPoints[1],
+    //     Pinknode: maxwellEndPoints[2]
+    //   }
+    // }
   ]);
 }

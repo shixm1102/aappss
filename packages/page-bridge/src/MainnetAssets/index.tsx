@@ -82,7 +82,7 @@ function EthereumAssets ({ className = '', senderId: propSenderId }: Props): Rea
           <Banner type='warning'>
             <p>{t<string>('This function is an internal test stage, the assets will not be lost, but there may be a delay (max to 48 hours) in the arrival of the account.')}</p>
           </Banner>
-          <h3><span style={{ fontWeight: 'bold' }}>{t<string>('From Crust')}</span></h3>
+          <h3><span style={{ fontWeight: 'bold' }}>{t<string>('From Rubik')}</span></h3>
           <div style={{ display: 'flex' }}>
             <img src={logoCrust as string}
               style={{ width: '64px', height: '64px', padding: '1px', verticalAlign: 'middle' }} />

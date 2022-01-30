@@ -86,7 +86,7 @@ function Login ({ className, user }: Props) {
     }
 
     // eslint-disable-next-line
-    user.near.wallet.requestSignIn(nearConfig.contractName, 'Crust Files');
+    user.near.wallet.requestSignIn(nearConfig.contractName, 'Rubik Files');
   }, [user, queueAction, t]);
 
   const _onClickFlow = useCallback(async () => {
@@ -182,7 +182,7 @@ function Login ({ className, user }: Props) {
           user.key === 'files:login' &&
           <div className='loginSpec'>
             <div className='leftPanel'>
-              <div className='specTitle'>{t('Crust Files')}</div>
+              <div className='specTitle'>{t('Rubik Files')}</div>
               <div
                 className='specSubTitle'
                 dangerouslySetInnerHTML={{ __html: t('Enjoy storing your files in a <span>Web3</span> style. Now free.') }}>
@@ -192,7 +192,7 @@ function Login ({ className, user }: Props) {
               <div className='specItem'>{`- ${t('Long-term storage with abundant IPFS replicas')}`}</div>
               <div className='specItem'>{`- ${t('Retrieve your files anywhere, anytime')}`}</div>
               <div
-                className='specSubTitle2'>{`${t('Crust Files is open source and welcome to contribute! Following features are coming soon:')}`}</div>
+                className='specSubTitle2'>{`${t('Rubik Files is open source and welcome to contribute! Following features are coming soon:')}`}</div>
               <div className='specItem'>{`- ${t('End-to-end file encryption')}`}</div>
               <div className='specItem'>{`- ${t('Paid service with smart contract on Polygon, Ethereum, Near, Flow, Elrond and Solana')}`}</div>
             </div>
@@ -206,8 +206,8 @@ function Login ({ className, user }: Props) {
           user.key === 'pins:login' &&
           <div className='loginSpec'>
             <div className='leftPanel'>
-              <div className='specTitle'>{t('Crust Pins')}</div>
-              <div className='specSubTitle'>{t('Decentralized IPFS Pin by Crust\nFor any given CID\nWith just one click.')}</div>
+              <div className='specTitle'>{t('Rubik Pins')}</div>
+              <div className='specSubTitle'>{t('Decentralized IPFS Pin by Rubik\nFor any given CID\nWith just one click.')}</div>
             </div>
             <img
               className='specIcon'

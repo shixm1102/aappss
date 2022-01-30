@@ -24,7 +24,7 @@ export const StatusConnected = ({ peersCount, repoSize, t }) => {
                    history.push('/storage/files')
                  }}
                 >Files</a>
-            tab to store/retrieve files. The storage order function of Crust Network is coming soon.
+            tab to store/retrieve files. The storage order function of Rubik Network is coming soon.
             </div>
           </div>
         </Trans>

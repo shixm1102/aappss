@@ -144,7 +144,7 @@ function EthereumAssets ({ className = '' }: Props): React.ReactElement<Props> {
                     />
                 </div>
             </div>
-            <h3><span style={{ 'fontWeight': 'bold' }}>{t<string>('To Crust')}</span></h3>
+            <h3><span style={{ 'fontWeight': 'bold' }}>{t<string>('To Rubik')}</span></h3>
             <div style={{display: "flex"}}>
                 <img style={{ "width": "64px", "height": "64px", padding: '1px', 'verticalAlign': 'middle' }} src={logoCrust as string} />
                 <div style={{ flex: 1, 'verticalAlign': 'middle' }}>

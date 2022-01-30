@@ -322,7 +322,7 @@ function CrustFiles ({ className, user }: Props): React.ReactElement<Props> {
               href={`${window.location.origin}/#/storage_files/status/${f.Hash}`}
               rel='noreferrer'
               target='_blank'
-            >{t('View status in Crust')}</a>
+            >{t('View status in Rubik')}</a>
           </td>
           <td
             className='end'

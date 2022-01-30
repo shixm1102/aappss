@@ -1,4 +1,4 @@
-// Copyright 2019-2021 Crust Network authors & contributors
+// Copyright 2019-2021 Rubik Network authors & contributors
 // License: Apache-2.0
 
 import type { TFunction } from 'i18next';
@@ -15,9 +15,13 @@ export function createAuthIpfsPinner (t: TFunction): AuthIpfsPinner[] {
     //   value: 'https://pinning-service.decoo-cloud.cn'
     // },
     // for prod
+    // {
+    //   text: t<string>('Crust Pinner'),
+    //   value: 'https://pin.crustcode.com'
+    // }
     {
-      text: t<string>('Crust Pinner'),
-      value: 'https://pin.crustcode.com'
+      text: t<string>('Rubik Pinner'),
+      value: 'https://pin.rubikcode.com'
     }
   ];
 }

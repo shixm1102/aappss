@@ -1259,7 +1259,7 @@
   "rpc.canvas": "캔버스",
   "rpc.centrifuge": "센츄러퓨지",
   "rpc.crab": "다위니아 크랩",
-  "rpc.crust.network": "크러스트 맥스엘 CC2",
+  "rpc.rubik.network": "크러스트 맥스엘 CC2",
   "rpc.custom": "특수 설정",
   "rpc.custom.entry": "커스텀 {{WS_URL}}",
   "rpc.custom.own": "커스텀",
