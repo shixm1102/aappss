@@ -75,6 +75,7 @@ import nodePolkadotJs from './nodes/polkadot-js.svg';
 import nodeRealis from './nodes/realis.png';
 import nodeRobonomics from './nodes/robonomics.svg';
 import logoRocky from './nodes/rocky.svg';
+import nodeRubik from './nodes/rubik.png';
 import nodeSgc from './nodes/sgc.svg';
 import nodeSora from './nodes/sora-substrate.svg';
 import nodeStafi from './nodes/stafi.png';
@@ -97,7 +98,7 @@ export const chainLogos: Record<string, unknown> = [
   ['Ares PC1', nodeAres],
   ['Crust PC1', nodeCrustMaxwell],
   ['Crust', nodeCrust],
-  ['Rubik', nodeCrust],
+  ['Rubik', nodeRubik],
   ['ChainX', nodeChainx],
   ['darwinia crab', nodeCrab],
   ['Darwinia PC2', nodeDarwinia],
@@ -161,7 +162,7 @@ export const nodeLogos: Record<string, unknown> = [
   ['Clover Node', nodeClover],
   ['darwinia crab', nodeCrab],
   ['crust', nodeCrust],
-  ['rubik', nodeCrust],
+  ['rubik', nodeRubik],
   ['Crust Maxwell', nodeCrustMaxwell],
   ['Crust Collator', nodeCrust],
   ['darwinia', nodeDarwinia],
@@ -234,7 +235,7 @@ export const namedLogos: Record<string, unknown> = {
   clover: nodeClover,
   crab: nodeCrab,
   crust: nodeCrust,
-  rubik: nodeCrust,
+  rubik: nodeRubik,
   'crust-maxwell': nodeCrustMaxwell,
   'crust-rocky': logoRocky,
   darwinia: nodeDarwinia,
