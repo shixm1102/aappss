@@ -61,7 +61,7 @@
   "downLinkCopied": "Download Link Copied",
   "ipfsError": "IPFS not connected",
   "tips": {
-    "wikiAddress": "https://wiki.crust.network/docs/en/storageUserGuide",
+    "wikiAddress": "https://wiki.rubik.network/docs/en/storageUserGuide",
     "tip1": "The file is in the queue for the pinning action. If this status lasts too long (>2hours), please upload again.",
     "tip2": "Please enable IPFS to use this function."
   },
@@ -86,9 +86,9 @@
   "Amount": "Amount",
   "Order Fee": "Order Fee(CRU)",
   "Renew Pool Balance": "Renew Pool Balance(CRU)",
-  "fetchTips": "1.The Fetch function is provided by Crust Storage Explorer, which is a public service and may cause certain delay or time gap. Results shown on this page doe not necessarily reflect the latest network status.",
+  "fetchTips": "1.The Fetch function is provided by Rubik Storage Explorer, which is a public service and may cause certain delay or time gap. Results shown on this page doe not necessarily reflect the latest network status.",
   "fetchTips2": "2.There will be soon a new Subscan service going live to enhance Fetch performance.",
   "discount": "discount, the actual price is ",
-  "Gateway_Desc": "For users who do NOT have a local IPFS client. After placing an on-chain order in Crust DSM, your file will be uploaded to a public IPFS gateway.",
-  "IPFS_Desc": "For users who have a local IPFS client. After placing an on-chain order in Crust DSM, Storage Merchant will directly fetch files from your IPFS client."
+  "Gateway_Desc": "For users who do NOT have a local IPFS client. After placing an on-chain order in Rubik DSM, your file will be uploaded to a public IPFS gateway.",
+  "IPFS_Desc": "For users who have a local IPFS client. After placing an on-chain order in Rubik DSM, Storage Merchant will directly fetch files from your IPFS client."
 }

@@ -1,9 +1,9 @@
 {
   "short_name": "Rubik Apps",
-  "name": "Apps for interacting with a Crust node",
+  "name": "Apps for interacting with a Rubik node",
   "icons": [
     {
-      "src": "crust.ico",
+      "src": "rubik.ico",
       "sizes": "64x64 32x32 24x24 16x16",
       "type": "image/x-icon"
     }
