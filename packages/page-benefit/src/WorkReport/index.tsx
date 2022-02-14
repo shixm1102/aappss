@@ -38,7 +38,7 @@ interface Props {
 
 const STORE_FAVS = 'accounts:favorites';
 
-function WorkReport ({ className = '' }: Props): React.ReactElement<Props> {
+function WorkReport({ className = '' }: Props): React.ReactElement<Props> {
   const { t } = useTranslation();
   const { api } = useApi();
   const { allAccounts, hasAccounts } = useAccounts();
@@ -68,7 +68,7 @@ function WorkReport ({ className = '' }: Props): React.ReactElement<Props> {
   const getGroups = () => {
     let unsub: (() => void) | undefined;
     const fns: any[] = [
-      [api.query.swork.groups.entries]
+      [api.query.storage.groups.entries]
     ];
     const allOwners: string[] = [];
 
@@ -174,22 +174,22 @@ function WorkReport ({ className = '' }: Props): React.ReactElement<Props> {
           key='modal-transfer'
           onClose={toggleCreate}
           onSuccess={getGroups}
-        /> 
-      )}  
+        />
+      )}
       {isJoinGroupOpen && (
         <JoinGroup
           key='modal-joinGroup'
           onClose={toggleJoinGroup}
           onSuccess={getGroups}
-        /> 
-      )}  
+        />
+      )}
       {isQuitGroupOpen && (
         <QuitGroup
           key='modal-quitGroup'
           onClose={toggleQuitGroup}
           onSuccess={getGroups}
-        /> 
-      )}  
+        />
+      )}
       <h2>
         {t<string>('Lock CRU to reduce the transaction fees of work reporting')}
       </h2>
@@ -217,7 +217,7 @@ function WorkReport ({ className = '' }: Props): React.ReactElement<Props> {
         unlocking,
         totalLockup
       }} />
-      
+
       <Table
         empty={(!hasAccounts || (!isLoading)) && t<string>("You don't have group accounts. Some features are currently hidden and will only become available once you have group accounts.")}
         header={headerRef.current}

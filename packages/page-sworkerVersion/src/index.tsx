@@ -68,12 +68,12 @@ function BridgeApp ({ basePath, onStatusChange }: Props): React.ReactElement<Pro
       setIsLoading(false);   
     } else {
       const fns: any[] = [
-        [api.query.swork.pubKeys.entries]
+        [api.query.storage.pubKeys.entries]
       ];
       const sv: SworkerVersion[] = [];
       const pkInfos: PKInfo[] = [];
       Object.keys(versionsRecord).forEach( key => {
-        api.query.swork.codes(key).then((res) => {
+        api.query.storage.codes(key).then((res) => {
           const codeInfo = JSON.parse(JSON.stringify(res));
           sv.push({
             version: key,
@@ -96,7 +96,7 @@ function BridgeApp ({ basePath, onStatusChange }: Props): React.ReactElement<Pro
           const total = availabeCode.length;
   
           Object.entries(codeGroup).forEach(([code, entries]) => {
-            // api.query.swork.codes(code).then((res) => {
+            // api.query.storage.codes(code).then((res) => {
             //   const codeInfo = JSON.parse(JSON.stringify(res));
   
             //   sv.push({

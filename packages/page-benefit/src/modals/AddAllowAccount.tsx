@@ -34,7 +34,7 @@ interface NewAllowProps extends ValueProps {
 const optTxBatch = { isBatchAll: true };
 
 function createAddTx (api: ApiPromise, account: AccountId, type: ProxyType, delay = 0): SubmittableExtrinsic<'promise'> {
-  return api.tx.swork.addMemberIntoAllowlist(account);
+  return api.tx.storage.addMemberIntoAllowlist(account);
 }
 
 function NewAllowAccount ({ index, onChangeAccount, onRemove }: NewAllowProps): React.ReactElement<NewAllowProps> {

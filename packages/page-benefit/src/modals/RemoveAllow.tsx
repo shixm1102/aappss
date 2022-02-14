@@ -43,7 +43,7 @@ const optTxBatch = { isBatchAll: true };
 const EMPTY_EXISTING: [ProxyDefinition[], BN] = [[], BN_ZERO];
 
 function createAddTx (api: ApiPromise, account: AccountId, type: ProxyType, delay = 0): SubmittableExtrinsic<'promise'> {
-  return api.tx.swork.removeMemberFromAllowlist(account);
+  return api.tx.storage.removeMemberFromAllowlist(account);
 }
 
 function PrevProxy ({ index, onRemove, value: [accountId, type] }: PrevProxyProps): React.ReactElement<PrevProxyProps> {

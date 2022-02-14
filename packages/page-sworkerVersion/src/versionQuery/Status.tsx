@@ -19,7 +19,7 @@ function Status ({ code, current }: Props): React.ReactElement<Props> {
   const [expried, setExpried] = useState<boolean>(false);
 
   useEffect(() => {
-    api.query.swork.codes(code).then((res) => {
+    api.query.storage.codes(code).then((res) => {
       const codeInfo = JSON.parse(JSON.stringify(res));
 
       if (codeInfo < current) {

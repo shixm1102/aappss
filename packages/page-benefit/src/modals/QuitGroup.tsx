@@ -47,7 +47,7 @@ function QuitGroup ({ className = '', onClose, senderId: propSenderId }: Props):
           icon='paper-plane'
           label={t<string>('Quit group')}
           onStart={onClose}
-          tx={api.tx.swork.quitGroup}
+          tx={api.tx.storage.quitGroup}
         />
       </Modal.Actions>
     </Modal>

@@ -101,7 +101,7 @@ function CreateGroup ({ className = '', onClose, onSuccess, senderId: propSender
           label={t<string>('Create')}
           onStart={onClose}
           onSuccess={onSuccess}
-          tx={api.tx.swork.createGroup}
+          tx={api.tx.storage.createGroup}
         />
       </Modal.Actions>
     </Modal>

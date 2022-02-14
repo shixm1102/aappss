@@ -84,7 +84,7 @@ function JoinGroup ({ className = '', onClose, recipientId: propRecipientId, sen
           isDisabled={isDisable}
           onStart={onClose}
           params={[recipientId]}
-          tx={api.tx.swork.joinGroup}
+          tx={api.tx.storage.joinGroup}
         />
       </Modal.Actions>
     </Modal>

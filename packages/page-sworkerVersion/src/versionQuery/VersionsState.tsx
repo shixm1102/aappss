@@ -68,14 +68,14 @@ function VersionState ({ address, className = '', current, isLoading: summaryLoa
   const [addressVersionStateInfo, setAddressVersionStateInfo] = useState<AddressVersionState>();
 
   useEffect(() => {
-    api.query.swork.groups(address).then((res) => {
+    api.query.storage.groups(address).then((res) => {
       const groupInfo = JSON.parse(JSON.stringify(res));
       const members = groupInfo.members;
 
       if (members && members.length) {
         setIsOwner(true);
 
-        api.query.swork?.identities?.multi(members).then((res) => {
+        api.query.storage?.identities?.multi(members).then((res) => {
           const identities = JSON.parse(JSON.stringify(res));
           const memberVersions = identities.map((identity: { anchor: string; }, index: number) => {
             const pkIndex = _.findIndex(pkInfos, (e) => e.anchor == identity.anchor);
@@ -111,7 +111,7 @@ function VersionState ({ address, className = '', current, isLoading: summaryLoa
         });
       } else {
         setIsOwner(false);
-        api.query.swork?.identities(address).then((res) => {
+        api.query.storage?.identities(address).then((res) => {
           const identities = JSON.parse(JSON.stringify(res));
 
           if (identities) {
