@@ -76,12 +76,11 @@ const Order = ({ routeInfo: { url, params }, watchList: list, doAddOrders }) => 
   const watchList = isWatchOne ? [{ fileCid: params.cid }] : list
   const [uploadMode, setUploadMode] = useState({
     isLoad: true,
-    mode: '',
+    mode: 'ipfs',
   });
   const isShowSelectedMode = !uploadMode.mode;
   // const isIpfsMode = uploadMode.mode === 'ipfs';
-  // const isGatewayMode = uploadMode.mode === 'gateway';
-  const isGatewayMode = uploadMode.mode === 'ipfs';
+  const isGatewayMode = uploadMode.mode === 'gateway';
   const doSetUploadMode = (mode) => {
     setUploadMode({ mode, isLoad: false });
     window.localStorage.setItem('uploadMode', mode);
