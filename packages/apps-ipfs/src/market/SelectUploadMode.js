@@ -67,7 +67,7 @@ const Card = styled.div`
   }
 `;
 
-function devGuide ({ className }) {
+function devGuide({ className }) {
   const { t, i18n } = useTranslation('order');
   const devLink = i18n.language === 'zh-CN' ?
     "https://wiki.crust.network/docs/zh-CN/buildGettingStarted" :
@@ -75,7 +75,7 @@ function devGuide ({ className }) {
   return <div
     className={className}
     onClick={() => window.open(devLink, '_blank')}>
-    <Icon icon={['far', 'user']}/>
+    <Icon icon={['far', 'user']} />
     {t('Developer Guide')}
   </div>;
 }
@@ -95,12 +95,12 @@ export const DevGuide = styled(devGuide)`
   }
 `;
 
-export default function SelectUploadMode (props) {
+export default function SelectUploadMode(props) {
   const { t } = useTranslation('order');
   return <MRoot>
     <Card>
-      <img className='card-icon' src={ipfsLogos.gateway}/>
-      <div className='space'/>
+      <img className='card-icon' src={ipfsLogos.gateway} />
+      <div className='space' />
       <div className='card-title' style={{ marginTop: 14 }}>{t('Upload files by Gateway')}</div>
       <div className='card-sub'>{t('Gateway_Desc')}</div>
       <button className='btn' style={{ height: '3rem', padding: '5px 40px', flexShrink: 0 }} onClick={() => {
@@ -108,14 +108,14 @@ export default function SelectUploadMode (props) {
       }}>{t('actions.toUse')}</button>
     </Card>
     <Card>
-      <img className='card-icon' src={ipfsLogos.ipfs}/>
-      <div className='space'/>
+      <img className='card-icon' src={ipfsLogos.ipfs} />
+      <div className='space' />
       <div className='card-title'>{t('Upload files by IPFS')}</div>
       <div className='card-sub'>{t('IPFS_Desc')}</div>
       <button className='btn btn2' style={{ height: '3rem', padding: '5px 40px', flexShrink: 0 }} onClick={() => {
         props.onClick('ipfs');
       }}>{t('actions.toUse')}</button>
     </Card>
-    <DevGuide/>
+    {/* <DevGuide /> */}
   </MRoot>;
 }

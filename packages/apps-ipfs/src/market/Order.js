@@ -57,7 +57,7 @@ const MDevGuide = styled(DevGuide)`
 `;
 const UP_MODES = [
   { text: 'Upload files by IPFS', value: 'ipfs' },
-  { text: 'Upload files by Gateway', value: 'gateway' }
+  // { text: 'Upload files by Gateway', value: 'gateway' }
 ];
 
 const Noop = () => undefined;
@@ -80,7 +80,8 @@ const Order = ({ routeInfo: { url, params }, watchList: list, doAddOrders }) => 
   });
   const isShowSelectedMode = !uploadMode.mode;
   // const isIpfsMode = uploadMode.mode === 'ipfs';
-  const isGatewayMode = uploadMode.mode === 'gateway';
+  // const isGatewayMode = uploadMode.mode === 'gateway';
+  const isGatewayMode = uploadMode.mode === 'ipfs';
   const doSetUploadMode = (mode) => {
     setUploadMode({ mode, isLoad: false });
     window.localStorage.setItem('uploadMode', mode);
@@ -366,7 +367,7 @@ const Order = ({ routeInfo: { url, params }, watchList: list, doAddOrders }) => 
                   </div>
                 </div>
 
-                <MDropdown
+                {/* <MDropdown
                   className={'flex-grow-1'}
                   help={t('File streaming and wallet authentication will be processed by the chosen gateway') + t('Period')}
                   label={t('Select a gateway')}
@@ -380,7 +381,7 @@ const Order = ({ routeInfo: { url, params }, watchList: list, doAddOrders }) => 
                          onClick={() => window.open('https://github.com/crustio/crust-apps/tree/master/packages/apps-config/src/ipfs-gateway-endpoints', '_blank')}
                     >{t('Contribute to Web3 IPFS Gateway')}</div>
                   }
-                />
+                /> */}
               </>
             }
           </div>
@@ -411,7 +412,7 @@ const Order = ({ routeInfo: { url, params }, watchList: list, doAddOrders }) => 
           onAddPool={handleAddPool} onToggleBtn={handleToggleBtn}
           watchList={tableData}/>
       }
-      <MDevGuide />
+      {/* <MDevGuide /> */}
     </div>
   );
 };
