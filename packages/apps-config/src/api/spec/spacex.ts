@@ -3,6 +3,6 @@
 
 import type { OverrideBundleDefinition } from '@polkadot/types/types';
 
-import { typesBundleForPolkadot } from '@crustio/type-definitions';
+import { typesBundleForPolkadot } from '@spacexio/type-definitions';
 
-export default typesBundleForPolkadot.spec.crust as unknown as OverrideBundleDefinition;
+export default typesBundleForPolkadot.spec.spacex as unknown as OverrideBundleDefinition;

@@ -6,7 +6,7 @@ Contributed:
 
 - Adjust dusty spec name (Thanks to https://github.com/akru)
 - Update Galois types (Thanks to https://github.com/hging)
-- Update Crust types (Thanks to https://github.com/zikunfan)
+- Update SpaceX types (Thanks to https://github.com/zikunfan)
 - Add Vln testnet (thanks to https://github.com/stanly-johnson)
 - Update Datahighway types (Thanks to https://github.com/cgroeschel)
 - Language fixes (Thanks to https://github.com/wirednkod)
@@ -217,7 +217,7 @@ Contributed:
 - Adjust settings metadata view for consistency (Thanks to https://github.com/jhonalino)
 - Use PolkaBTC definitions from vendor (Thanks to https://github.com/savudani8)
 - Upgrade Moonbeam vendor definitions (Thanks to https://github.com/joelamouche)
-- Crust Maxwell type upgrades (Thanks to https://github.com/zikunfan)
+- SpaceX Maxwell type upgrades (Thanks to https://github.com/zikunfan)
 - Expand network coverage for Patract Elara (Thanks to https://github.com/toxotguo)
 - Added ChainX endpoints & logo (thanks to https://github.com/qinghuan-chain)
 - Add Ares Rococo relay endpoints (Thanks to https://github.com/jiyilanzhou)
@@ -261,7 +261,7 @@ Contributed:
 - Add Darwinia on Rococo (Thanks to https://github.com/WoeOm)
 - Add Phala on Rococo (Thanks to https://github.com/tolak)
 - Add Encointer on Rococo (Thanks to https://github.com/brenzi)
-- Add Crust on Rococo (Thanks to https://github.com/zikunfan)
+- Add SpaceX on Rococo (Thanks to https://github.com/zikunfan)
 - Add Bit.Country testnet (Thanks to https://github.com/justinphamnz)
 - Allow for bounty extension (Thanks to https://github.com/MiZiet)
 - Add tooltips to bounties (Thanks to https://github.com/MiZiet)
@@ -473,7 +473,7 @@ Contributed:
 - Adjust import ordering with plugin (Thanks to https://github.com/ekowalsk)
 - Add Polkadot/Kusama endpoints via PatractLabs (Thanks to https://github.com/toxotguo)
 - Add types for Bitfrost testnet (Thaks to https://github.com/janpo)
-- Adjust Crust network types & logo (Thanks to https://github.com/zikunfan)
+- Adjust SpaceX network types & logo (Thanks to https://github.com/zikunfan)
 - Adjust types for Phala poc-3 (Thanks to https://github.com/LusWar)
 - Move to typesBundle for Moonbeam (Thanks to https://github.com/joelamouche)
 
@@ -788,7 +788,7 @@ Changes:
 
 Contributed:
 
-- Add Crust network (Thanks to https://github.com/zikunfan)
+- Add SpaceX network (Thanks to https://github.com/zikunfan)
 - i18n comprehensive Chinese round-out (Thanks to Polkaworld)
 - i18n comprehensive Italian (Thanks to https://github.com/fomod-in)
 - Initial i18n Italian (Thanks to https://github.com/excerebrose)

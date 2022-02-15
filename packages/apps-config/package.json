@@ -9,7 +9,6 @@
   "dependencies": {
     "@acala-network/type-definitions": "^0.7.1",
     "@babel/runtime": "^7.13.10",
-    "@crustio/type-definitions": "1.2.0",
     "@darwinia/types": "^1.1.0-alpha.1",
     "@edgeware/node-types": "^3.3.2",
     "@interlay/polkabtc-types": "^0.5.3",
@@ -17,6 +16,7 @@
     "@polkadot/networks": "^6.0.5",
     "@snowfork/snowbridge-types": "^0.2.3",
     "@sora-substrate/type-definitions": "^0.6.11",
+    "@spacexio/type-definitions": "1.2.0",
     "@subsocial/types": "^0.4.35-beta.2",
     "moonbeam-types-bundle": "1.1.10"
   },
