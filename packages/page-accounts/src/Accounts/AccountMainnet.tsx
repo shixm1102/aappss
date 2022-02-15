@@ -603,7 +603,8 @@ function AccountMainnet ({ account: { address, meta }, className = '', delegatio
         {isFunction(api.api.tx.balances?.transfer) && (
           <Button
             icon='paper-plane'
-            label={t<string>('Send CRU')}
+            // label={t<string>('Send CRU')}
+            label={t<string>('Send')}
             onClick={toggleTransfer}
           />
         )}
