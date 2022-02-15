@@ -14,7 +14,7 @@ const languageDetector = new LanguageDetector();
 languageDetector.addDetector({
   lookup: () => {
     const i18nLang = settings.i18nLang;
-
+    
     return i18nLang === LANGUAGE_DEFAULT
       ? undefined
       : i18nLang;
@@ -27,6 +27,7 @@ i18next
   .use(initReactI18next)
   .use(Backend)
   .init({
+    lng: "en",
     backend: {},
     detection: {
       order: ['i18nLangDetector', 'navigator']
