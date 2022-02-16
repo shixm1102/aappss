@@ -43,7 +43,7 @@ function Summary({ info, isLoading }: Props): React.ReactElement<Props> | null {
       </section>
       <section className='media--800'>
         <CardSummary label={t<string>('Total Rewards')}>
-          {<>{`54,000 CRU`}</>}
+          {<>{`54,000 HEIM`}</>}
         </CardSummary>
       </section>
       <section>
@@ -51,7 +51,7 @@ function Summary({ info, isLoading }: Props): React.ReactElement<Props> | null {
           className='media--1000'
           label={t<string>('Issued Rewards')}
         >
-          { info ? <> {formatNumber(info.calculatedRewards)} CRU </>: (<Spinner noLabel />)}
+          { info ? <> {formatNumber(info.calculatedRewards)} HEIM </>: (<Spinner noLabel />)}
         </CardSummary>
       </section>
 
@@ -60,7 +60,7 @@ function Summary({ info, isLoading }: Props): React.ReactElement<Props> | null {
           className='media--1100'
           label={t<string>('Daily Rewards')}
         >
-          {<>{`0 CRU`}</>}
+          {<>{`0 HEIM`}</>}
         </CardSummary>
       </section>
       <section>
