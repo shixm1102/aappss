@@ -629,7 +629,7 @@ function Account ({ account: { address, meta }, className = '', delegation, filt
         {/* {isFunction(api.api.tx.balances?.transfer) && (
           <Button
             icon='paper-plane'
-            label={t<string>('Send CRU')}
+            label={t<string>('Send HEIM')}
             onClick={toggleTransfer}
           />
         )} */}
@@ -646,7 +646,7 @@ function Account ({ account: { address, meta }, className = '', delegation, filt
           {isFunction(api.api.tx.balances?.transfer) && (
             <Button
               icon='paper-plane'
-              label={t<string>('Send CRU')}
+              label={t<string>('Send HEIM')}
               onClick={toggleTransfer}
             />
           )}
