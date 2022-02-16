@@ -15,9 +15,12 @@ languageDetector.addDetector({
   lookup: () => {
     const i18nLang = settings.i18nLang;
     
+    // return i18nLang === LANGUAGE_DEFAULT
+    //   ? undefined
+    //   : i18nLang;
     return i18nLang === LANGUAGE_DEFAULT
-      ? undefined
-      : i18nLang;
+    ? 'en'
+    : i18nLang;
   },
   name: 'i18nLangDetector'
 });
@@ -27,7 +30,6 @@ i18next
   .use(initReactI18next)
   .use(Backend)
   .init({
-    lng: "en",
     backend: {},
     detection: {
       order: ['i18nLangDetector', 'navigator']
