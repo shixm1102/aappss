@@ -191,10 +191,10 @@ function WorkReport({ className = '' }: Props): React.ReactElement<Props> {
         />
       )}
       <h2>
-        {t<string>('Lock CRU to reduce the transaction fees of work reporting')}
+        {t<string>('Lock HEIM to reduce the transaction fees of work reporting')}
       </h2>
       <Banner type='warning'>
-        <p>{t<string>('Group Owners can reduce the transaction fees of work reporting for Group members by locking CRU. For each 3CRU locked up, the transaction fees can be reduced once for each Era. If the number of reduced transaction fees is exceeded, the transaction fee of Group members will be charged normally.')}</p>
+        <p>{t<string>('Group Owners can reduce the transaction fees of work reporting for Group members by locking HEIM. For each 3HEIM locked up, the transaction fees can be reduced once for each Era. If the number of reduced transaction fees is exceeded, the transaction fee of Group members will be charged normally.')}</p>
       </Banner>
       <Button.Group>
         <Button

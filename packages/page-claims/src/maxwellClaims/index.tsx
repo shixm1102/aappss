@@ -291,7 +291,7 @@ function MaxwellClaims (): React.ReactElement<Props> {
                 replace: {
                   chain: systemChain
                 }
-              })} <a href='https://etherscan.io/token/0x32a7C02e79c4ea1008dD6564b35F131428673c41'>{t('ERC20 CRU')}</a> {t<string>('transfer tx hash')}, <span>{t<string>(`The remaining claim limit is `)}<span style={{'color': '#ff8812', 'textDecoration': 'underline', 'fontStyle': 'italic'}}>{formatBalance(claimLimit, { withUnit: 'CRU' })}</span><span>{t<string>(`, If your claim amount is greater than the claim limit, please wait for the limit update`)}</span></span> </h3>
+              })} <a href='https://etherscan.io/token/0x32a7C02e79c4ea1008dD6564b35F131428673c41'>{t('ERC20 HEIM')}</a> {t<string>('transfer tx hash')}, <span>{t<string>(`The remaining claim limit is `)}<span style={{'color': '#ff8812', 'textDecoration': 'underline', 'fontStyle': 'italic'}}>{formatBalance(claimLimit, { withUnit: 'HEIM' })}</span><span>{t<string>(`, If your claim amount is greater than the claim limit, please wait for the limit update`)}</span></span> </h3>
             <InputAddress
               defaultValue={accountId}
               help={t<string>('The account you want to claim to.')}
@@ -303,7 +303,7 @@ function MaxwellClaims (): React.ReactElement<Props> {
             <Input
               autoFocus
               className='full'
-              help={t<string>('The Ethereum CRU transfer tx hash (starting by "0x")')}
+              help={t<string>('The Ethereum HEIM transfer tx hash (starting by "0x")')}
               isDisabled={ethereumTxHashValid}
               isError={!isValid}
               label={t<string>('Ethereum tx hash')}

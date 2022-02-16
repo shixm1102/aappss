@@ -24,23 +24,23 @@ function ApyInfoDisplay({ className = '', apy}: Props): React.ReactElement<Props
                 <table style={{ margin: "0 auto",  display: "table" }}>
                     <tr>       
                         <td style={{ textAlign: 'center' }}>{t<string>('Staking time')}</td>
-                        <td style={{ textAlign: 'center' }}>{t<string>('Return Per 1000CRU')}</td>
+                        <td style={{ textAlign: 'center' }}>{t<string>('Return Per 1000HEIM')}</td>
                     </tr>
                     <tr>
                         <td style={{ textAlign: 'center' }}>{t<string>('1d')}</td>
-                        <td style={{ textAlign: 'center' }}>{(Math.pow((1 + apy), 1) * 1000 - 1000).toFixed(2) } CRU</td>
+                        <td style={{ textAlign: 'center' }}>{(Math.pow((1 + apy), 1) * 1000 - 1000).toFixed(2) } HEIM</td>
                     </tr>
                     <tr>
                         <td style={{ textAlign: 'center' }}>{t<string>('7d')}</td>
-                        <td style={{ textAlign: 'center' }}>{(Math.pow((1 + apy), 7) * 1000 - 1000).toFixed(2) } CRU</td>
+                        <td style={{ textAlign: 'center' }}>{(Math.pow((1 + apy), 7) * 1000 - 1000).toFixed(2) } HEIM</td>
                     </tr>
                     <tr>
                         <td style={{ textAlign: 'center' }}>{t<string>('30d')}</td>
-                        <td style={{ textAlign: 'center' }}>{(Math.pow((1 + apy), 30) * 1000 - 1000).toFixed(2) } CRU</td>
+                        <td style={{ textAlign: 'center' }}>{(Math.pow((1 + apy), 30) * 1000 - 1000).toFixed(2) } HEIM</td>
                     </tr>
                     <tr>
                         <td style={{ textAlign: 'center' }}>{t<string>('365d')}</td>
-                        <td style={{ textAlign: 'center' }}>{(Math.pow((1 + apy), 365) * 1000 - 1000).toFixed(2) } CRU</td>
+                        <td style={{ textAlign: 'center' }}>{(Math.pow((1 + apy), 365) * 1000 - 1000).toFixed(2) } HEIM</td>
                     </tr>     
                 </table>
             </div>

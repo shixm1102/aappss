@@ -124,7 +124,7 @@ function Nominate ({ className = '', controllerId, onChange, stashId, targets: {
         <Modal.Columns>
           {showReward && (validatorApy[selected[0]] !== undefined
             ? <Banner type='warning'>
-              <p>{t<string>('Estimated return (1day): {{ reward }} CRU', {
+              <p>{t<string>('Estimated return (1day): {{ reward }} HEIM', {
                 replace: {
                   reward: reward
                 }

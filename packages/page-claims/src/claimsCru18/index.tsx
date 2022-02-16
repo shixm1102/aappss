@@ -82,9 +82,9 @@ interface TypeOption {
 
 export function createTokenTypePrev (t: TFunction): TypeOption[] {
   return [
-    { text: t('CRU18'), value: 'CRU18' },
-    // { text: t('CRU24'), value: 'CRU24' },
-    // { text: t('CRU24D6'), value: 'CRU24D6' }
+    { text: t('HEIM18'), value: 'HEIM18' },
+    // { text: t('HEIM24'), value: 'HEIM24' },
+    // { text: t('HEIM24D6'), value: 'HEIM24D6' }
   ];
 }
 
@@ -200,14 +200,14 @@ function ClaimsMainnet (): React.ReactElement<Props> {
       <Columar>
         <Columar.Column>
           <Banner type='error'>
-            <p>{t<string>('The claim of CRU18 has ended. For unclaimed accounts, please wait for notification after the mainnet launch')}</p>
+            <p>{t<string>('The claim of HEIM18 has ended. For unclaimed accounts, please wait for notification after the mainnet launch')}</p>
           </Banner>
           <Card withBottomMargin>
             {/* <h3>{t<string>(`1. Select your {{chain}} account and enter`, {
                 replace: {
                   chain: systemChain
                 }
-              })} <a href='https://etherscan.io/token/0x32a7C02e79c4ea1008dD6564b35F131428673c41'>{t('ERC20 CRU')}</a> {t<string>('transfer tx hash')} </h3> */}
+              })} <a href='https://etherscan.io/token/0x32a7C02e79c4ea1008dD6564b35F131428673c41'>{t('ERC20 HEIM')}</a> {t<string>('transfer tx hash')} </h3> */}
             <InputAddress
               defaultValue={accountId}
               help={t<string>('The account you want to claim to.')}

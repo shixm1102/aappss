@@ -8,7 +8,7 @@ import { Icon } from '@polkadot/react-components';
 
 const CruTooltip: React.FC = () => {
   const createIndex = (index: number) => <span style={{ fontSize: 8, verticalAlign: 'text-top' }}> {index}</span>;
-  const createRow = (idx: number, txt: string, desc: string) => <span style={{ whiteSpace: 'nowrap' }}>{`1.0 ${txt} = 1.0 ${desc}  = 1x10`}{createIndex(idx)}{' CRU'} </span>;
+  const createRow = (idx: number, txt: string, desc: string) => <span style={{ whiteSpace: 'nowrap' }}>{`1.0 ${txt} = 1.0 ${desc}  = 1x10`}{createIndex(idx)}{' HEIM'} </span>;
 
   return <Popup
     className='my-popup dib-l'
@@ -18,13 +18,13 @@ const CruTooltip: React.FC = () => {
     trigger={<span>&nbsp;&nbsp;<Icon icon='question-circle' /></span>}
   >
     <>
-      {createRow(-12, 'pCRU', 'pico CRU')}
+      {createRow(-12, 'pHEIM', 'pico HEIM')}
       <br/>
-      {createRow(-9, 'nCRU', 'nano CRU')}
+      {createRow(-9, 'nHEIM', 'nano HEIM')}
       <br/>
-      {createRow(-6, 'µCRU', 'micro CRU')}
+      {createRow(-6, 'µHEIM', 'micro HEIM')}
       <br/>
-      {createRow(-3, 'mCRU', 'milli CRU')}
+      {createRow(-3, 'mHEIM', 'milli HEIM')}
       <br/>
     </>
 

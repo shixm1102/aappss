@@ -23,7 +23,7 @@ function parserStrToObj (str) {
 }
 
 
-function formatBn(bn, round = 12, unit = 'CRU' ) {
+function formatBn(bn, round = 12, unit = 'HEIM' ) {
   const decimals = formatBalance.getDefaults().decimals
   const createZero = (count) => {
     let zeroText = ''
@@ -54,8 +54,8 @@ const OrderModal = ({ className = '', doAddOrder, file, onClose, t, title = 'ord
   const fileName = file && file.fileName ? file.fileName : DEF_FILE_NAME
   const [fileCid, setFileCID] = useState(file ? file.cid.toString() : '');
   const [fileSize, setFileSize] = useState(file ? file.originalSize.toString() : '0');
-  const [price, setPrice] = useState('0 CRU');
-  const [originPrice, setOriginPrice] = useState('0 CRU');
+  const [price, setPrice] = useState('0 HEIM');
+  const [originPrice, setOriginPrice] = useState('0 HEIM');
   const [tip, setTip] = useState(0);
   const [cidNotValid, setCidNotValid] = useState(false);
   const { api, isApiReady } = useApi();

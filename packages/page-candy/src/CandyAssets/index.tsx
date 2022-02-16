@@ -41,7 +41,7 @@ function CandyAssets ({ className = '', senderId: propSenderId }: Props): React.
       <Columar.Column>
         <Card withBottomMargin>
           <Banner type='warning'>
-            <p>{t<string>('Change Candy into CRU at a ratio of 1000:1')}</p>
+            <p>{t<string>('Change Candy into HEIM at a ratio of 1000:1')}</p>
           </Banner>
           <InputAddress
             defaultValue={propSenderId}

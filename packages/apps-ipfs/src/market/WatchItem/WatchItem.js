@@ -200,7 +200,7 @@ const WatchItem = ({
         <div style={{ textTransform: 'capitalize' }}>{t(`status.${watchItem.fileStatus}`)}</div>
     }</div>
     <div className='relative tr flex flex-auto justify-center items-center  ph2 pv1 w-15' style={{ paddingBottom: 10 }}>
-      {/*<span className='dib tc' style={{minWidth:"50%"}}>{watchItem.amount ? formatBalance(new BN(watchItem.amount.toString() || 0).divn(ratio), { decimals: 12, forceUnit: 'CRU' }).replace('CRU', '') : '-'}</span>*/}
+      {/*<span className='dib tc' style={{minWidth:"50%"}}>{watchItem.amount ? formatBalance(new BN(watchItem.amount.toString() || 0).divn(ratio), { decimals: 12, forceUnit: 'HEIM' }).replace('HEIM', '') : '-'}</span>*/}
       <Popup
         trigger={
           <span
@@ -247,8 +247,8 @@ const WatchItem = ({
     <div className='relative tr flex flex-auto justify-center items-center  ph2 pv1 w-15'>
       <span className='dib tc' style={{ minWidth: '50%' }}>{formatBalance(watchItem.prepaid, {
         decimals: 12,
-        forceUnit: 'CRU'
-      }).replace('CRU', '') || '-'}</span>
+        forceUnit: 'HEIM'
+      }).replace('HEIM', '') || '-'}</span>
       <span>
           <Popup
             trigger={<span><GlyphPrepaid onClick={() => {

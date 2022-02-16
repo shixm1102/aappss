@@ -48,7 +48,7 @@ const PoolModal = ({ file, onClose, onSuccess }) => {
           value={fileCid}
         />
         <InputBalance
-          labelExtra={`Current balance ${formatBalance(file.prepaid, { decimals: 12, forceUnit: 'CRU' })}`}
+          labelExtra={`Current balance ${formatBalance(file.prepaid, { decimals: 12, forceUnit: 'HEIM' })}`}
           autoFocus
           onlyCru
           defaultValue={prepaid}

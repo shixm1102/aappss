@@ -153,10 +153,10 @@ function StorageMarket ({ className = '' }: Props): React.ReactElement<Props> {
         />
       )}   */}
       <h2>
-        {t<string>('Lock CRU Tokens to obtain Storage Market Benefits')}
+        {t<string>('Lock HEIM Tokens to obtain Storage Market Benefits')}
       </h2>
       <Banner type='warning'>
-        <p>{t<string>('Users can obtain storage order discounts and reductions of order settlement transaction fees by locking CRU tokens as storage market collateral. As a storage merchant, the collateral is a necessary condition for receiving the storage market income. The collateal can obtain the same amount of income limit, accumulated storage market income will not increase after the  reaches the income limit, and the storage merchant needs to get income in time.')}</p>
+        <p>{t<string>('Users can obtain storage order discounts and reductions of order settlement transaction fees by locking HEIM tokens as storage market collateral. As a storage merchant, the collateral is a necessary condition for receiving the storage market income. The collateal can obtain the same amount of income limit, accumulated storage market income will not increase after the  reaches the income limit, and the storage merchant needs to get income in time.')}</p>
       </Banner>
       <Button.Group>
         {/* <Button

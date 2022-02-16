@@ -22,7 +22,7 @@ const OrderModal = ({ className = '', doAddOrder, file, onClose, t, title = 'ord
   const [account, setAccount] = useState(null);
   const [fileCid, setFileCID] = useState(file ? file.cid.toString() : '');
   const [fileSize, setFileSize] = useState(file ? file.originalSize.toString() : '0');
-  const [price, setPrice] = useState('0 CRU');
+  const [price, setPrice] = useState('0 HEIM');
   const [tip, setTip] = useState(0);
   const [cidNotValid, setCidNotValid] = useState(false);
   const { api, isApiReady } = useApi();
@@ -33,7 +33,7 @@ const OrderModal = ({ className = '', doAddOrder, file, onClose, t, title = 'ord
 
   useEffect(() => {
     const tipFee= new BN(tip.toString())
-    setPrice(formatBalance(filePrice?.mul(new BN(fileSize)).divn(1024*1024).add(new BN(basePrice)).add(tipFee), { decimals: 12, forceUnit: 'CRU' }));
+    setPrice(formatBalance(filePrice?.mul(new BN(fileSize)).divn(1024*1024).add(new BN(basePrice)).add(tipFee), { decimals: 12, forceUnit: 'HEIM' }));
   }, [fileSize, filePrice, tip, basePrice]);
   useEffect(() => {
     setCidNotValid(fileCid && !isIPFS.cid(fileCid) && !isIPFS.path(fileCid));

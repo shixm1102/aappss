@@ -27,15 +27,15 @@ function ClaimsApp ({ basePath, onStatusChange }: Props): React.ReactElement<Pro
   const itemsRef = !isMaxwell ? useRef([{
     isRoot: true,
     name: 'claims',
-    text: t<string>('Claim CRU')
+    text: t<string>('Claim HEIM')
   }]) : useRef([{
     isRoot: true,
     name: 'claims',
-    text: t<string>('Claim CRU')
+    text: t<string>('Claim HEIM')
   }, 
   {
     name: 'claimsCru18',
-    text: t<string>('Claim CRU18')
+    text: t<string>('Claim HEIM18')
   },
    {
     name: 'maxwellCsmClaims',

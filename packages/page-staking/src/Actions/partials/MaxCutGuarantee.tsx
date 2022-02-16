@@ -21,7 +21,7 @@ function MaxCutGuaranteeDisplay ({ params }: Props): React.ReactElement<Props> {
 
   return (
     <>
-      <span className='highlight'>{t<string>('cutGuaranteeable')} {formatBalance(params, {withUnit: "CRU"})}</span>
+      <span className='highlight'>{t<string>('cutGuaranteeable')} {formatBalance(params, {withUnit: "HEIM"})}</span>
     </>
   );
 }

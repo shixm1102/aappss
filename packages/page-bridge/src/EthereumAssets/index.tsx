@@ -114,7 +114,7 @@ function EthereumAssets ({ className = '' }: Props): React.ReactElement<Props> {
     [accounts]
   );
 
-  const unitOption = [{ text: "CRU", value: "CRU" }]
+  const unitOption = [{ text: "HEIM", value: "HEIM" }]
 
   useEffect(() => {
     if (accounts.length) {

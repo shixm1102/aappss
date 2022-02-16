@@ -82,10 +82,10 @@ function Overview ({ className = '', onStatusChange }: Props): React.ReactElemen
     [t('type'), 'address media--1400'],
     // [t('tags'), 'start'],
     [t('transactions'), 'start'],
-    [t('CRU'), 'expand'],
+    [t('HEIM'), 'expand'],
     [t('CSM'), 'expand'],
     [t('Candy')],
-    [t('CRU18')],
+    [t('HEIM18')],
     [],
     [undefined, 'media--1400']
   ]) : useRef([
@@ -94,7 +94,7 @@ function Overview ({ className = '', onStatusChange }: Props): React.ReactElemen
     [t('type'), 'address media--1400'],
     [t('tags'), 'start'],
     [t('transactions'), 'start'],
-    [t('CRU'), 'expand'],
+    [t('HEIM'), 'expand'],
     [],
     [undefined, 'media--1400']
   ]);

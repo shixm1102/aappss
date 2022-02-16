@@ -107,7 +107,7 @@ function PreClaim ({ accountId, className = '', ethereumAddress, ethereumSignatu
           ? (
             <>
               {t<string>('has a valid claim for')}
-              <h2>{formatBalance(new BN(Number(claimValue).toString()), {decimals: 12, withUnit: 'CRU18'})}</h2>
+              <h2>{formatBalance(new BN(Number(claimValue).toString()), {decimals: 12, withUnit: 'HEIM18'})}</h2>
               <Button.Group>
                 <TxButton
                   icon='paper-plane'
@@ -121,7 +121,7 @@ function PreClaim ({ accountId, className = '', ethereumAddress, ethereumSignatu
           )
           : (
             <>
-              {t<string>('does not appear to have a valid CRU18 claim. Please double check that you have signed the transaction correctly on the correct ETH account.')}
+              {t<string>('does not appear to have a valid HEIM18 claim. Please double check that you have signed the transaction correctly on the correct ETH account.')}
             </>
           )}
       </div>

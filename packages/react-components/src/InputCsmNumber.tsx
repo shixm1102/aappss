@@ -73,7 +73,7 @@ function getRegex (isDecimal: boolean): RegExp {
 
 function getSiOptions (): { text: string; value: string }[] {
   return formatBalance.getOptions().map(({ power, text, value }): { text: string; value: string } => ({
-    text: text === 'CRU'
+    text: text === 'HEIM'
       ? 'CSM'
       : text,
     value
