@@ -16,7 +16,7 @@ interface Props {
   senderId?: string;
 }
 
-function JoinGroup ({ className = '', onClose, recipientId: propRecipientId, senderId: propSenderId }: Props): React.ReactElement<Props> {
+function JoinGroup({ className = '', onClose, recipientId: propRecipientId, senderId: propSenderId }: Props): React.ReactElement<Props> {
   const { t } = useTranslation();
   const { api } = useApi();
   const [senderId, setSenderId] = useState<string | null>(propSenderId || null);
@@ -25,18 +25,18 @@ function JoinGroup ({ className = '', onClose, recipientId: propRecipientId, sen
 
   useEffect(() => {
     const address = JSON.parse(JSON.stringify(senderId));
-    if (address) {  
-      api.query.swork
-      .identities<any>(address)
-      .then((identity): void => {
-        const identityOpt = JSON.parse(JSON.stringify(identity));
-        if (identityOpt) {
-          setIsDisable(false)
-        } else {
-          setIsDisable(true)
-        }
-      })
-      .catch((): void => setIsDisable(true));
+    if (address) {
+      api.query.storage
+        .identities<any>(address)
+        .then((identity): void => {
+          const identityOpt = JSON.parse(JSON.stringify(identity));
+          if (identityOpt) {
+            setIsDisable(false)
+          } else {
+            setIsDisable(true)
+          }
+        })
+        .catch((): void => setIsDisable(true));
     }
 
   }, [api, senderId])

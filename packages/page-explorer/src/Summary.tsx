@@ -45,7 +45,7 @@ function Summary (): React.ReactElement {
             <ClaimPot />
           </CardSummary>
         )}
-        {api.query.swork && (
+        {api.query.storage && (
           <CardSummary
             className='media--800'
             label={t<string>('total storage')}

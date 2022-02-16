@@ -77,7 +77,7 @@ function GroupOwner ({ account: { address }, className = '', filter, isFavorite,
     const legder = sworkBenefitLedger && JSON.parse(JSON.stringify(sworkBenefitLedger))
     if (isFunction(api.rpc.payment?.queryInfo) && legder) {
       try {
-        api.tx.swork
+        api.tx.storage
           .reportWorks('0x11', '0x11', 0, '0x11', 0, 0, [], [], '0x11', '0x11', '0x11')
           .paymentInfo(fromId)
           .then(({ partialFee }): void => {

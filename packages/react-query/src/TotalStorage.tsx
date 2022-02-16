@@ -17,8 +17,8 @@ interface Props {
 function TotalStorage ({ children, className = '', label }: Props): React.ReactElement<Props> {
   const { api, systemChain } = useApi();
   const isMaxwell = systemChain === 'Crust Maxwell';
-  const reportedFilesSize = useCall<BN>(api.query.swork?.reportedFilesSize);
-  const free = useCall<BN>(api.query.swork?.free);
+  const reportedFilesSize = useCall<BN>(api.query.storage?.reportedFilesSize);
+  const free = useCall<BN>(api.query.storage?.free);
   let totalStorage = new BN(0);
 
   if (free && reportedFilesSize) {

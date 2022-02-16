@@ -41,7 +41,7 @@ function CreateGroup ({ className = '', onClose, onSuccess, senderId: propSender
     if (balances && balances.accountId.eq(senderId) && senderId && isFunction(api.rpc.payment?.queryInfo)) {
       setTimeout((): void => {
         try {
-          api.tx.swork
+          api.tx.storage
             .createGroup()
             .paymentInfo(senderId)
             .then(({ partialFee }): void => {
