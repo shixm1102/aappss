@@ -1,1 +1,0 @@
-/*! file-extension v4.0.5 | (c) silverwind | BSD license */
