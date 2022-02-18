@@ -26,7 +26,7 @@ function BannerExtension (): React.ReactElement | null {
   const { t } = useTranslation();
   const { hasInjectedAccounts } = useApi();
   const upgradableCount = useExtensionCounter();
-  const phishing = useRef<string>(t<string>('Since some extensions, such as the polkadot-js extension, protects you against all community reported phishing sites, there are valid reasons to use them for additional protection, even if you are not storing accounts in it.'));
+  const phishing = useRef<string>(t<string>('Since some extensions, such as the metalink-js extension, protects you against all community reported phishing sites, there are valid reasons to use them for additional protection, even if you are not storing accounts in it.'));
 
   if (!isSupported || !browserName) {
     return null;
@@ -65,7 +65,7 @@ function BannerExtension (): React.ReactElement | null {
       <ul>{availableExtensions[browserName].map(({ desc, link, name }): React.ReactNode => (
         <li key={name}>
           <a
-            href={link}
+            // href={link}
             rel='noopener noreferrer'
             target='_blank'
           >

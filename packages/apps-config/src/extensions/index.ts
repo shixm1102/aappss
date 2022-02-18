@@ -20,7 +20,7 @@ export const availableExtensions: Record<Browser, Extension[]> = [
       firefox: 'https://addons.mozilla.org/en-US/firefox/addon/polkadot-js-extension/'
     },
     desc: 'Basic account injection and signer',
-    name: 'polkadot-js extension'
+    name: 'metalink-js extension'
   }
 ].reduce((available: Record<Browser, Extension[]>, { browsers, desc, name }): Record<Browser, Extension[]> => {
   Object.entries(browsers).forEach(([browser, link]): void => {
