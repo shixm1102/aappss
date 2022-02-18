@@ -64,13 +64,15 @@ function BannerExtension (): React.ReactElement | null {
       })}</p>
       <ul>{availableExtensions[browserName].map(({ desc, link, name }): React.ReactNode => (
         <li key={name}>
-          <a
-            // href={link}
+          {/* <a
+            href={link}
             rel='noopener noreferrer'
             target='_blank'
           >
             {name}
-          </a> ({t(desc)})
+          </a>  */}
+          {name}
+          ({t(desc)})
         </li>
       ))
       }</ul>
