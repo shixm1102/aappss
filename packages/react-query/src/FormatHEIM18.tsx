@@ -42,7 +42,7 @@ function format (value: Compact<any> | BN | string, withCurrency = true, withSi?
   return <>{`${prefix}${isShort ? '' : '.'}`}{!isShort && <span className='ui--FormatBalance-postfix'>{`0000${postfix || ''}`.slice(-4)}</span>}<span className='ui--FormatBalance-unit'> {unitPost}</span>{labelPost || ''}</>;
 }
 
-function FormatCru18 ({ children, className = '', isShort, label, labelPost, value, withCurrency, withSi }: Props): React.ReactElement<Props> {
+function FormatHEIM18 ({ children, className = '', isShort, label, labelPost, value, withCurrency, withSi }: Props): React.ReactElement<Props> {
   const { t } = useTranslation();
 
   // labelPost here looks messy, however we ensure we have one less text node
@@ -59,7 +59,7 @@ function FormatCru18 ({ children, className = '', isShort, label, labelPost, val
   );
 }
 
-export default React.memo(styled(FormatCru18)`
+export default React.memo(styled(FormatHEIM18)`
   display: inline-block;
   vertical-align: baseline;
   white-space: nowrap;

@@ -24,7 +24,7 @@ export { default as TotalIssuance } from './TotalIssuance';
 export { default as FormatCandy } from './FormatCandy';
 export { default as TotalStorage } from './TotalStorage';
 export { default as FormatCapacity } from './FormatCapacity';
-export { default as FormatCru18 } from './FormatCru18';
+export { default as FormatHEIM18 } from './FormatHEIM18';
 export { default as FormatCsmBalance } from './FormatCsmBalance';
 export { default as CsmFree } from './CsmFree';
 export { default as CsmLocked } from './CsmLocked';

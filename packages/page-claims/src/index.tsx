@@ -14,7 +14,7 @@ import { Route, Switch } from 'react-router-dom';
 
 export { default as useCounter } from './useCounter';
 import Claims from './claims';
-import ClaimsCru18 from './claimsCru18';
+import ClaimsHEIM18 from './claimsHEIM18';
 import CSMClaims from './maxwellCsmClaims';
 import { useApi } from '@polkadot/react-hooks';
 import MaxwellClaims from './maxwellClaims';
@@ -34,7 +34,7 @@ function ClaimsApp ({ basePath, onStatusChange }: Props): React.ReactElement<Pro
     text: t<string>('Claim HEIM')
   }, 
   {
-    name: 'claimsCru18',
+    name: 'claimsHEIM18',
     text: t<string>('Claim HEIM18')
   },
    {
@@ -66,8 +66,8 @@ function ClaimsApp ({ basePath, onStatusChange }: Props): React.ReactElement<Pro
         />
       </header>
       <Switch>
-        <Route path={`${basePath}/claimsCru18`}>
-          <ClaimsCru18 />
+        <Route path={`${basePath}/claimsHEIM18`}>
+          <ClaimsHEIM18 />
         </Route>
         <Route path={`${basePath}/maxwellCsmClaims`}>
           <CSMClaims />

@@ -40,7 +40,7 @@ import TransferCsm from '../modals/TransferCsm';
 import UndelegateModal from '../modals/Undelegate';
 import { useTranslation } from '../translate';
 import { createMenuGroup } from '../util';
-import PreClaimCRU18 from './PreClaimCRU18';
+import PreClaimHEIM18 from './PreClaimHEIM18';
 import useMultisigApprovals from './useMultisigApprovals';
 import useProxies from './useProxies';
 
@@ -622,7 +622,7 @@ function Account ({ account: { address, meta }, className = '', delegation, filt
         <FormatCandy value={candyAmount} />
       </td>
       <td className='number'>
-        <PreClaimCRU18 value={address} />
+        <PreClaimHEIM18 value={address} />
       </td>
 
       <td className='button'>

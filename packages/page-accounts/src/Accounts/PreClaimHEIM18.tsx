@@ -13,7 +13,7 @@ import { Icon, Tooltip } from '@polkadot/react-components';
 import { useApi } from '@polkadot/react-hooks';
 import lodash from 'lodash';
 import { BN_ZERO, formatBalance, u8aConcat, u8aToHex } from '@polkadot/util';
-import { FormatCru18 } from '@polkadot/react-query';
+import { FormatHEIM18 } from '@polkadot/react-query';
 
 interface Props {
   totalStake?: BN | BN[];
@@ -44,7 +44,7 @@ interface PreClaimsMapping {
   value: BN
 }
 
-function PreClaimCRU18 ({ className = '', isHighlight, isPadded = true, value, withShrink = false }: Props): React.ReactElement<Props> | null {
+function PreClaimHEIM18 ({ className = '', isHighlight, isPadded = true, value, withShrink = false }: Props): React.ReactElement<Props> | null {
   const { api } = useApi();
   const [preClaims, setPreClaims] = useState<PreClaimsMapping[]>([]);
   const [ownPreClaims, setOwnPreClaims ] = useState<PreClaimsMapping[]>([]);
@@ -100,7 +100,7 @@ function PreClaimCRU18 ({ className = '', isHighlight, isPadded = true, value, w
     <div className={`ui--AddressMini${isHighlight ? ' isHighlight' : ''}${isPadded ? ' padded' : ''}${withShrink ? ' withShrink' : ''} ${className}`}>
       <div className='ui--AddressMini-balances'>
         <React.Fragment key={3}>
-          <FormatCru18
+          <FormatHEIM18
             className='result'
             label={
               <Icon
@@ -113,20 +113,20 @@ function PreClaimCRU18 ({ className = '', isHighlight, isPadded = true, value, w
             <Tooltip
               text={ownPreClaims.map(({ ethAddress, value }, index): React.ReactNode => (
                 <div key={index}>
-                  {formatBalance(value, { forceUnit: '-', withUnit: 'CRU18' })
+                  {formatBalance(value, { forceUnit: '-', withUnit: 'HEIM18' })
                   }<div className='faded'>{ethAddress.toString()}</div>
                 </div>
               ))}
               trigger={`${value}-locks-trigger`}
             />
-          </FormatCru18>
+          </FormatHEIM18>
         </React.Fragment>
       </div>
     </div>
   );
 }
 
-export default React.memo(styled(PreClaimCRU18)`
+export default React.memo(styled(PreClaimHEIM18)`
   display: inline-block;
   padding: 0 0.25rem 0 1rem;
   text-align: left;

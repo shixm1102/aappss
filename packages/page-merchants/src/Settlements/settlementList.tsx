@@ -7,7 +7,7 @@ import _ from 'lodash';
 import React, { useEffect, useState } from 'react';
 
 import { useTranslation } from '@polkadot/apps/translate';
-import CruTooltip from '@polkadot/apps-merchants/Settlements/CruTooltip';
+import HEIMTooltip from '@polkadot/apps-merchants/Settlements/HEIMTooltip';
 import SettleModal from '@polkadot/apps-merchants/Settlements/settle-modal';
 import SettlementItem from '@polkadot/apps-merchants/Settlements/settlementItem';
 import { useApi, useCall } from '@polkadot/react-hooks';
@@ -180,7 +180,7 @@ const SettlementList: React.FC<Props> = ({ settlementList }) => {
                   {item.label === 'Total Commission' && t('Total Commission')}
                   {item.label === 'Action' && t('Action')}
                 </span>
-                {item.tip && <CruTooltip/>}
+                {item.tip && <HEIMTooltip/>}
               </span>
               {item.sortable && sortByIcon(item.name)}
             </div>
