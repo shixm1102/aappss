@@ -22,7 +22,7 @@ const browserInfo = detect();
 const browserName: Browser | null = (browserInfo && (browserInfo.name as Browser)) || null;
 const isSupported = browserName && Object.keys(availableExtensions).includes(browserName);
 
-function BannerExtension (): React.ReactElement | null {
+function BannerExtension(): React.ReactElement | null {
   const { t } = useTranslation();
   const { hasInjectedAccounts } = useApi();
   const upgradableCount = useExtensionCounter();
@@ -76,11 +76,14 @@ function BannerExtension (): React.ReactElement | null {
         </li>
       ))
       }</ul>
-      <p>{t<string>('Accounts injected from any of these extensions will appear in this application and be available for use. The above list is updated as more extensions with external signing capability become available.')}&nbsp;<a
-        href='https://github.com/polkadot-js/extension'
-        rel='noopener noreferrer'
-        target='_blank'
-      >{t<string>('Learn more...')}</a></p>
+      <p>
+        {t<string>('Accounts injected from any of these extensions will appear in this application and be available for use. The above list is updated as more extensions with external signing capability become available.')}&nbsp;
+        <a
+          href='https://github.com/polkadot-js/extension'
+          rel='noopener noreferrer'
+          target='_blank'
+        >{t<string>('Learn more...')}</a>
+      </p>
       <p>{phishing.current}</p>
     </Banner>
   );
