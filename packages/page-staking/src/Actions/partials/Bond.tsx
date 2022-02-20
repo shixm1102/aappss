@@ -35,7 +35,7 @@ const EMPTY_INFO = {
   stashId: null
 };
 
-function Bond ({ className = '', isNominating, minNomination, onChange }: Props): React.ReactElement<Props> {
+function Bond({ className = '', isNominating, minNomination, onChange }: Props): React.ReactElement<Props> {
   const { t } = useTranslation();
   const { api, systemChain } = useApi();
   const [amount, setAmount] = useState<BN | undefined>();
@@ -161,25 +161,27 @@ function Bond ({ className = '', isNominating, minNomination, onChange }: Props)
           )}
         </Modal.Columns>
       )}
-      {isMaxwell && <Modal.Columns hint={t<string>('Rewards (once paid) can be deposited to either the stash or controller, with different effects.')}>
-        <Dropdown
-          defaultValue={0}
-          help={t<string>('The destination account for any payments as either a nominator or validator')}
-          label={t<string>('payment destination')}
-          onChange={setDestination}
-          options={options}
-          value={destination}
-        />
-        {isAccount && (
-          <InputAddress
-            help={t('An account that is to receive the rewards')}
-            label={t('the payment account')}
-            onChange={setDestAccount}
-            type='account'
-            value={destAccount}
+      {
+        // isMaxwell &&
+        <Modal.Columns hint={t<string>('Rewards (once paid) can be deposited to either the stash or controller, with different effects.')}>
+          <Dropdown
+            defaultValue={0}
+            help={t<string>('The destination account for any payments as either a nominator or validator')}
+            label={t<string>('payment destination')}
+            onChange={setDestination}
+            options={options}
+            value={destination}
           />
-        )}
-      </Modal.Columns>}
+          {isAccount && (
+            <InputAddress
+              help={t('An account that is to receive the rewards')}
+              label={t('the payment account')}
+              onChange={setDestAccount}
+              type='account'
+              value={destAccount}
+            />
+          )}
+        </Modal.Columns>}
     </div>
   );
 }
