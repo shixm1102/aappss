@@ -352,7 +352,7 @@ export default function useSortedTargets (favorites: string[], withLedger: boole
       })
       api.query.staking.erasStakingPayout(lastEraInfo.activeEra.toNumber() - 1).then((res) => {
         const erasStakingPayout = JSON.parse(JSON.stringify(res));
-        const totalPayout = Number(erasStakingPayout) / 0.8;
+        const totalPayout = String(Number(erasStakingPayout) / 0.8);
   
         setTotalReward(new BN(totalPayout));
       });

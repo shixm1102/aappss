@@ -41,7 +41,7 @@ interface Filtered {
 
 const EmptyAuthorsContext: React.Context<Authors> = React.createContext<Authors>({ byAuthor: {}, eraPoints: {}, lastBlockAuthors: [], lastHeaders: [] });
 
-function filterAccounts (accounts: string[] = [], elected: string[], favorites: string[], without: string[]): AccountExtend[] {
+function filterAccounts(accounts: string[] = [], elected: string[], favorites: string[], without: string[]): AccountExtend[] {
   return accounts
     .filter((accountId) => !without.includes(accountId))
     .map((accountId): AccountExtend => [
@@ -49,18 +49,18 @@ function filterAccounts (accounts: string[] = [], elected: string[], favorites: 
       elected.includes(accountId),
       favorites.includes(accountId)
     ])
-    .sort(([,, isFavA]: AccountExtend, [,, isFavB]: AccountExtend) =>
+    .sort(([, , isFavA]: AccountExtend, [, , isFavB]: AccountExtend) =>
       isFavA === isFavB
         ? 0
         : (isFavA ? -1 : 1)
     );
 }
 
-function accountsToString (accounts: AccountId[]): string[] {
+function accountsToString(accounts: AccountId[]): string[] {
   return accounts.map((accountId) => accountId.toString());
 }
 
-function getFiltered (stakingOverview: DeriveStakingOverview, favorites: string[], next?: string[]): Filtered {
+function getFiltered(stakingOverview: DeriveStakingOverview, favorites: string[], next?: string[]): Filtered {
   const allElected = accountsToString(stakingOverview.nextElected);
   const validatorIds = accountsToString(stakingOverview.validators);
   const validators = filterAccounts(validatorIds, allElected, favorites, []);
@@ -74,7 +74,7 @@ function getFiltered (stakingOverview: DeriveStakingOverview, favorites: string[
   };
 }
 
-function CurrentList ({ favorites, hasQueries, isIntentions, stakingOverview, targets, toggleFavorite }: Props): React.ReactElement<Props> | null {
+function CurrentList({ favorites, hasQueries, isIntentions, stakingOverview, targets, toggleFavorite }: Props): React.ReactElement<Props> | null {
   const { t } = useTranslation();
   const { api } = useApi();
   const { byAuthor, eraPoints } = useContext(isIntentions ? EmptyAuthorsContext : BlockAuthorsContext);
@@ -109,7 +109,7 @@ function CurrentList ({ favorites, hasQueries, isIntentions, stakingOverview, ta
       setTotalEffectiveStake(targets.totalStaked as BN);
       api.query.staking.erasStakingPayout(stakingOverview.activeEra.toNumber() - 1).then((res) => {
         const erasStakingPayout = JSON.parse(JSON.stringify(res));
-        const totalPayout = Number(erasStakingPayout) / 0.8;
+        const totalPayout = String(Number(erasStakingPayout) / 0.8);
 
         setTotalReward(new BN(totalPayout));
       });
