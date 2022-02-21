@@ -122,7 +122,7 @@ export declare const spacexTypes: {
             };
         };
     };
-    swork: {
+    spacex: {
         rpc: {};
         types: {
             Group: {

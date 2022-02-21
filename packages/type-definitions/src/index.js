@@ -12,7 +12,7 @@ const utils_1 = require("@open-web3/orml-type-definitions/utils");
 const locks_1 = __importDefault(require("./locks"));
 const market_1 = __importDefault(require("./market"));
 const staking_1 = __importDefault(require("./staking"));
-const swork_1 = __importDefault(require("./swork"));
+const spacex_1 = __importDefault(require("./spacex"));
 exports.spacexTypes = {
     base: base_1.default,
     benefit: benefit_1.default,
@@ -21,7 +21,7 @@ exports.spacexTypes = {
     locks: locks_1.default,
     market: market_1.default,
     staking: staking_1.default,
-    swork: swork_1.default,
+    spacex: spacex_1.default,
 };
 exports.types = Object.assign({}, utils_1.typesFromDefs(exports.spacexTypes));
 exports.rpc = utils_1.jsonrpcFromDefs(exports.spacexTypes);
