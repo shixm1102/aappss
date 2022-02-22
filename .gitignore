@@ -1,4 +1,6 @@
-build/
+# build/
+/build/
+packages/apps-config/build/
 coverage/
 node_modules/
 tmp/
