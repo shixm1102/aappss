@@ -21,12 +21,12 @@ export function createAuthIpfsEndpoints (t: TFunction): AuthIpfsEndpoint[] {
     {
       location: t('Singapore'),
       text: t('DCF'),
-      value: 'https://crustipfs.xyz'
+      value: 'https://rubikipfs.xyz'
     },
     {
       location: t('Seattle'),
       text: t('⚡ Thunder Gateway'),
-      value: 'https://crustwebsites.net'
+      value: 'https://rubikwebsites.net'
     },
     // {
     //   location: t('United States'),
@@ -36,7 +36,7 @@ export function createAuthIpfsEndpoints (t: TFunction): AuthIpfsEndpoint[] {
     {
       location: t('Shanghai'),
       text: t('️⚡ Thunder Gateway'),
-      value: 'https://gw.crustapps.net'
+      value: 'https://gw.rubikapps.net'
     }
   ];
 }

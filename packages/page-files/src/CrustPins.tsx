@@ -24,7 +24,7 @@ function PinsApp ({ basePath, className }: Props): React.ReactElement<Props> {
   const itemsRef = useRef([
     {
       isRoot: true,
-      name: 'crust',
+      name: 'rubik',
       text: t<string>('Your Pins')
     }
   ]);

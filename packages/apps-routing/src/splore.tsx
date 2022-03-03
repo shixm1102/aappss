@@ -25,7 +25,7 @@ export default function create (t: TFunction): Route {
       ]
     },
     group: 'network',
-    href: 'https://splorer.crust.network',
+    href: 'https://splorer.rubik.network',
     icon: 'boxes',
     name: 'splorer',
     text: t('nav.splorer', 'Splorer', { ns: 'apps-routing' })

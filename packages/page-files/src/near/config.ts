@@ -16,7 +16,7 @@ export const nearConfig: WrapNearConfig = {
   // helperUrl: 'https://helper.testnet.near.org'
   // prod
   networkId: 'mainet',
-  contractName: 'crust.near',
+  contractName: 'rubik.near',
   nodeUrl: 'https://rpc.mainnet.near.org',
   walletUrl: 'https://wallet.near.org',
   helperUrl: 'https://helper.mainnet.near.org'

@@ -158,7 +158,7 @@ function MaxwellClaims (): React.ReactElement<Props> {
 
   const handleAccountStep = useCallback(async () => {
     setIsBusy(true);
-    const result = await httpPost("https://bridge-api.crust.network/claim/" + ethereumTxHash);
+    const result = await httpPost("https://bridge-api.rubik.network/claim/" + ethereumTxHash);
 
     setIsBusy(false);
     setResult(result.statusText);
@@ -232,17 +232,6 @@ function MaxwellClaims (): React.ReactElement<Props> {
       ? [true, stringToU8a(value)]
       : [value === '0x', new Uint8Array([])];
   }
-
-  // Depending on the account, decide which step to show.
-  // const handleAccountStep = useCallback(() => {
-  //   if (isPreclaimed) {
-  //     goToStepClaim();
-  //   } else if (ethereumAddress || isOldClaimProcess) {
-  //     goToStepSign();
-  //   } else {
-  //     setStep(Step.ETHAddress);
-  //   }
-  // }, [ethereumAddress, goToStepClaim, goToStepSign, isPreclaimed, isOldClaimProcess]);
 
   const onChangeSignature = useCallback((event: React.SyntheticEvent<Element>) => {
     const { value: signatureJson } = event.target as HTMLInputElement;

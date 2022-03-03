@@ -169,7 +169,7 @@ function Claims(): React.ReactElement<Props> {
           setStatus('error');
           setStatusOpen(true);
         } else {
-          const result = await httpPost("https://claim.crust.network/claim/" + ethereumTxHash);
+          const result = await httpPost("https://claim.rubik.network/claim/" + ethereumTxHash);
           setIsBusy(false);
           setResult(result.statusText);
           setStatus(result.status);
