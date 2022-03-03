@@ -13,13 +13,13 @@ import { Tabs } from '@polkadot/react-components';
 import { useAccounts, useApi } from '@polkadot/react-hooks';
 import { BlockAuthorsContext } from '@polkadot/react-query';
 
-import basicMd from './md/basic.md';
-import basicMd_zh from './md/basic_zh.md';
+// import basicMd from './md/basic.md';
+// import basicMd_zh from './md/basic_zh.md';
 import { versionsRecord, versionsStartBlockRecord } from './versionQuery/VersionsState';
 import Summary, { PKInfo } from './SummaryInfo';
 import { SworkerVersion } from './VersionInfo';
 import VersionQuery from './versionQuery';
-import SworkerHelpOverlay from '@polkadot/react-components/SworkerHelpOverlay';
+// import SworkerHelpOverlay from '@polkadot/react-components/SworkerHelpOverlay';
 import mcache from "memory-cache";
 
 const HIDDEN_ACC = ['vanity'];
@@ -141,7 +141,7 @@ function BridgeApp ({ basePath, onStatusChange }: Props): React.ReactElement<Pro
           items={itemsRef.current}
         />
       </header>
-      <SworkerHelpOverlay md={i18n.language == 'zh' ? basicMd_zh as string : basicMd as string} />
+      {/* <SworkerHelpOverlay md={i18n.language == 'zh' ? basicMd_zh as string : basicMd as string} /> */}
       <Summary current={current}
         isLoading={isLoading}
         summaryInfo={summaryInfo} />
