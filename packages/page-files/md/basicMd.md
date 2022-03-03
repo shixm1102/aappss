@@ -16,14 +16,6 @@ will continue to fund Rubik Pinner for its daily usage within normal limits.
 
 Learn more about Web3-authed IPFS Gateway:
 
-[https://github.com/crustio/ipfs-w3auth](https://github.com/crustio/ipfs-w3auth)
-
 Contribute an IPFS public gateway to Files:
 
-[https://github.com/crustio/crust-apps/tree/master/packages/apps-config/src/ipfs-gateway-endpoints#ipfs-public-gateway-endpoints](https://github.com/crustio/crust-apps/tree/master/packages/apps-config/src/ipfs-gateway-endpoints#ipfs-public-gateway-endpoints)
-
 Learn how to build on Rubik:
-
-[https://wiki.crust.network/docs/en/buildGettingStarted.html](https://wiki.crust.network/docs/en/buildGettingStarted.html)
-
-[https://github.com/crustio/ipfs-w3auth](https://github.com/crustio/ipfs-w3auth)

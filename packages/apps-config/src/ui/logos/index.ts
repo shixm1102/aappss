@@ -17,17 +17,17 @@ import chainRococoTrack from './chains/rococo-track.svg';
 import chainRococoTrick from './chains/rococo-trick.svg';
 import chainSnakenet from './chains/snakenet.svg';
 import chainUnique from './chains/unique.svg';
-import extensionCrustWallet from './extensions/crust-wallet.png';
+// import extensionCrustWallet from './extensions/crust-wallet.png';
 import extensionPolkadotJs from './extensions/polkadot-js.svg';
-import externalCrustFilesBox from './external/box.png';
+import externalRubikFilesBox from './external/box.png';
 import externalCommonwealth from './external/commonwealth.png';
-import externalCrustPinsPin from './external/pins.png';
+import externalRubikPinsPin from './external/pins.png';
 import externalPolkadotExt from './external/polkadotExt.png';
 import externalPolkascan from './external/polkascan.png';
 import externalPolkassembly from './external/polkassembly.png';
 import externalPolkastats from './external/polkastats.png';
 import externalSubscan from './external/subscan.svg';
-import externalWalletCrust from './external/wallet_crust.png';
+// import externalWalletCrust from './external/wallet_crust.png';
 import externalWalletElrond from './external/wallet_elrond.png';
 import externalWalletFlow from './external/wallet_flow.png';
 import externalWalletMetamask from './external/wallet_metamask.png';
@@ -44,8 +44,8 @@ import nodeCentrifuge from './nodes/centrifuge.png';
 import nodeChainx from './nodes/chainx.svg';
 import nodeClover from './nodes/clover.svg';
 import nodeCrab from './nodes/crab.svg';
-import nodeCrust from './nodes/crust.svg';
-import nodeCrustMaxwell from './nodes/crust-maxwell.svg';
+// import nodeCrust from './nodes/crust.svg';
+// import nodeCrustMaxwell from './nodes/crust-maxwell.svg';
 import nodeDarwinia from './nodes/darwinia.png';
 import nodeDataHighway from './nodes/datahighway.png';
 import nodeDockMainnet from './nodes/dock-mainnet.png';
@@ -96,8 +96,8 @@ import emptyLogo from './empty.svg';
 // NOTE: This is as retrieved via system.chain RPC
 export const chainLogos: Record<string, unknown> = [
   ['Ares PC1', nodeAres],
-  ['Crust PC1', nodeCrustMaxwell],
-  ['Crust', nodeCrust],
+  // ['Crust PC1', nodeCrustMaxwell],
+  // ['Crust', nodeCrust],
   ['Rubik', nodeRubik],
   ['ChainX', nodeChainx],
   ['darwinia crab', nodeCrab],
@@ -126,8 +126,8 @@ export const chainLogos: Record<string, unknown> = [
   ['Polkadex Testnet', nodePolkadex],
   ['Phala PC1', nodePhala],
   ['ReAlis Network', nodeRealis],
-  ['Crust Rocky', logoRocky],
-  ['Crust Maxwell', nodeCrustMaxwell],
+  // ['Crust Rocky', logoRocky],
+  // ['Crust Maxwell', nodeCrustMaxwell],
   ['Rococo', chainRococo],
   ['Sgc', nodeSgc],
   ['Tick', chainRococoTick],
@@ -161,10 +161,10 @@ export const nodeLogos: Record<string, unknown> = [
   ['ChainX Node', nodeChainx],
   ['Clover Node', nodeClover],
   ['darwinia crab', nodeCrab],
-  ['crust', nodeCrust],
+  // ['crust', nodeCrust],
   ['rubik', nodeRubik],
-  ['Crust Maxwell', nodeCrustMaxwell],
-  ['Crust Collator', nodeCrust],
+  // ['Crust Maxwell', nodeCrustMaxwell],
+  // ['Crust Collator', nodeCrust],
   ['darwinia', nodeDarwinia],
   ['darwinia parachain', nodeDarwinia],
   ['Darwinia Runtime Module Library', nodeDarwinia],
@@ -234,10 +234,10 @@ export const namedLogos: Record<string, unknown> = {
   chainx: nodeChainx,
   clover: nodeClover,
   crab: nodeCrab,
-  crust: nodeCrust,
+  // crust: nodeCrust,
   rubik: nodeRubik,
-  'crust-maxwell': nodeCrustMaxwell,
-  'crust-rocky': logoRocky,
+  // 'crust-maxwell': nodeCrustMaxwell,
+  // 'crust-rocky': logoRocky,
   darwinia: nodeDarwinia,
   datahighway: nodeDataHighway,
   'dock-mainnet': nodeDockMainnet,
@@ -272,7 +272,7 @@ export const namedLogos: Record<string, unknown> = {
   rococoBitCountry: nodeBitCountry,
   rococoChainX: nodeChainx,
   rococoClover: nodeClover,
-  rococoCrust: nodeCrust,
+  // rococoCrust: nodeCrust,
   rococoDarwinia: nodeDarwinia,
   rococoDataHighway: nodeDataHighway,
   rococoEncointer: nodeEncointerNotee,
@@ -311,19 +311,19 @@ export const namedLogos: Record<string, unknown> = {
 // extension logos
 export const extensionLogos: Record<string, unknown> = {
   'polkadot-js': extensionPolkadotJs,
-  'crust wallet': extensionCrustWallet
+  // 'crust wallet': extensionCrustWallet
 };
 
 // external logos, i.e. for explorers
 export const externalLogos: Record<string, unknown> = {
   commonwealth: externalCommonwealth,
-  crustFilesBox: externalCrustFilesBox,
-  crustPinsPin: externalCrustPinsPin,
+  rubikFilesBox: externalRubikFilesBox,
+  rubikPinsPin: externalRubikPinsPin,
   polkascan: externalPolkascan,
   polkassembly: externalPolkassembly,
   polkastats: externalPolkastats,
   subscan: externalSubscan,
-  walletCrust: externalWalletCrust,
+  // walletCrust: externalWalletCrust,
   walletMetamask: externalWalletMetamask,
   walletNear: externalWalletNear,
   walletFlow: externalWalletFlow,

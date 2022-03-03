@@ -53,7 +53,7 @@ export interface OrderInfo {
 }
 
 export async function fetchFileTobeClaimed (opt: QuestOptions, { baseFee, currentBn, fileDuration, filePrice, renewRewardRatio }: OrderInfo, fileStatus: FileStatus) {
-  return fetch('https://crust.api.subscan.io/api/scan/swork/orders', {
+  return fetch('https://rubik.api.subscan.io/api/scan/swork/orders', {
     method: 'post',
     headers: {
       Accept: 'application/json,text/plain,*/*',

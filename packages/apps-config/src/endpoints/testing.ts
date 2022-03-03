@@ -16,14 +16,6 @@ import { expandEndpoints } from './util';
 
 export function createTesting (t: TFunction): LinkOption[] {
   return expandEndpoints(t, [
-    // alphabetical based on chain name, e.g. Amber, Arcadia, Beresheet, ...
-    // {
-    //   info: 'crust-rocky',
-    //   text: t('rpc.crust.network', 'Crust Rocky', { ns: 'apps-config' }),
-    //   providers: {
-    //     'Crust Network': 'wss://rpc-rocky.crust.network'
-    //   }
-    // }
     {
       info: 'rubik',
       text: t('rpc.rubik.network', 'Rubik', { ns: 'apps-config' }),

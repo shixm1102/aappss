@@ -19,7 +19,7 @@ interface Props {
 }
 
 
-function EasterEggsOrders ({ isLoading }: Props): React.ReactElement<Props> {
+function EasterEggsOrders({ isLoading }: Props): React.ReactElement<Props> {
   const { t, i18n } = useTranslation();
   // we have a very large list, so we use a loading delay
   // const [nameFilter, setNameFilter] = useState<string>('');
@@ -31,7 +31,7 @@ function EasterEggsOrders ({ isLoading }: Props): React.ReactElement<Props> {
   const [previousList, setPreviousList] = useState<EasterEggsOrder[]>([]);
 
   useEffect(() => {
-    httpGet('https://lder-api.crust.network/currentList').then((res: { code: number; statusText: React.SetStateAction<EasterEggsOrder>; }) => {
+    httpGet('https://lder-api.rubik.network/currentList').then((res: { code: number; statusText: React.SetStateAction<EasterEggsOrder>; }) => {
       if (res.code === 200) {
         setCurrentList(res.statusText)
       }
@@ -39,7 +39,7 @@ function EasterEggsOrders ({ isLoading }: Props): React.ReactElement<Props> {
   }, []);
 
   useEffect(() => {
-    httpGet('https://lder-api.crust.network/previousList').then((res: { code: number; statusText: React.SetStateAction<EasterEggsOrder[]> }) => {
+    httpGet('https://lder-api.rubik.network/previousList').then((res: { code: number; statusText: React.SetStateAction<EasterEggsOrder[]> }) => {
       if (res.code === 200 && currentList) {
         const orders = [currentList]
         setPreviousList(orders.concat(res.statusText as []))
@@ -55,10 +55,11 @@ function EasterEggsOrders ({ isLoading }: Props): React.ReactElement<Props> {
   return (<>
     <h3 style={{ "textAlign": 'center' }}>
       <span style={{ "wordWrap": "break-word", "wordBreak": "break-all", float: "right", 'display': 'inline-block' }}><span style={{ 'fontWeight': 'bold', fontSize: '16px' }}>
-        <a href={i18n.language == 'zh' ? 'https://www.yuque.com/qm003f/cr9w38/cldb5y' : 'https://medium.com/crustnetwork/tutorial-exit-the-maxwell-preview-network-lucky-order-rewards-78cbf3d36639'} target="_blank">
-          {t<string>(`How to get lucky order reward >>`)}</a>
+        {/* <a href={i18n.language == 'zh' ? 'https://www.yuque.com/qm003f/cr9w38/cldb5y' : 'https://medium.com/rubiknetwork/tutorial-exit-the-maxwell-preview-network-lucky-order-rewards-78cbf3d36639'} target="_blank"> */}
+          {t<string>(`How to get lucky order reward >>`)}
+        {/* </a> */}
       </span>
-      
+
       </span>
     </h3>
     {/* <h1>
@@ -77,18 +78,18 @@ function EasterEggsOrders ({ isLoading }: Props): React.ReactElement<Props> {
 
     </Table> */}
     <h1>
-        {t<string>('Previous lucky orders')}
+      {t<string>('Previous lucky orders')}
     </h1>
     <Table
       header={preHeaderRef.current}
       empty={!isLoading && t<string>('No funds lucky orders yet.')}
     >
-        {!isLoading && previousList?.map((order): React.ReactNode => (
-          <PreviousOrders
-            key={order.date}
-            info={order}
-          />
-        ))}
+      {!isLoading && previousList?.map((order): React.ReactNode => (
+        <PreviousOrders
+          key={order.date}
+          info={order}
+        />
+      ))}
 
     </Table>
   </>

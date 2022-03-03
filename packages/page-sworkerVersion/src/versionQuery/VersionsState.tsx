@@ -55,9 +55,9 @@ export const versionsStartBlockRecord: Record<string, number> = {
 };
 
 export const versionsReleaseRecord: Record<string, string> = {
-    '0xe6f4e6ab58d6ba4ba2f684527354156c009e4969066427ce18735422180b38f4': 'https://github.com/crustio/crust-sworker/releases/tag/v1.0.0',
-    '0xff2c145fd797e1aef56b47a91adf3d3294c433bb29b035b3020d04a76200da0a': 'https://github.com/crustio/crust-sworker/releases/tag/v1.1.0',
-    '0xa61ea2065a26a3f9f1e45ad02d8b2965c377b85ba409f6de7185c485d36dc503': 'https://github.com/crustio/crust-sworker/releases/tag/v1.1.1'
+    '0xe6f4e6ab58d6ba4ba2f684527354156c009e4969066427ce18735422180b38f4': 'https://github.com/rubikio/rubik-sworker/releases/tag/v1.0.0',
+    '0xff2c145fd797e1aef56b47a91adf3d3294c433bb29b035b3020d04a76200da0a': 'https://github.com/rubikio/rubik-sworker/releases/tag/v1.1.0',
+    '0xa61ea2065a26a3f9f1e45ad02d8b2965c377b85ba409f6de7185c485d36dc503': 'https://github.com/rubikio/rubik-sworker/releases/tag/v1.1.1'
 };
 
 function VersionState ({ address, className = '', current, isLoading: summaryLoading, pkInfos, setMessage, setStatus, setStatusOpen }: Props): React.ReactElement<Props> {

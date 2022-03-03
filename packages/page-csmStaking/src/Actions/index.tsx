@@ -26,7 +26,7 @@ interface Props {
 function Actions({ providers }: Props): React.ReactElement<Props> {
   const { t } = useTranslation();
   const { systemChain } = useApi();
-  const accountsUrl = systemChain == 'Crust Maxwell' ? 'https://pd-api.crust.network/accounts' : 'http://crust-sg1.ownstack.cn:8866/accounts';
+  const accountsUrl = systemChain == 'Rubik Maxwell' ? 'https://pd-api.rubik.network/accounts' : 'http://rubik-sg1.ownstack.cn:8866/accounts';
   const { allAccounts, hasAccounts } = useAccounts();
   const [ownProviders, setOwnProviders] = useState<ProviderState[]>([]);
   const [ownGuarantors, setOwnGuarantors] = useState<GuarantorState[]>([]);

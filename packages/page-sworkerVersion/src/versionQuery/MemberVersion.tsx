@@ -31,7 +31,7 @@ function MemberVersionDisplay({ className = '', memberVersion: { address, versio
     const [cliamedLabel, setCliamedLabel] = useState<string>('Claim reward');
 
     useEffect(() => {
-        httpGet('https://api-sur.crust.network/api/addressRewarded/' + address).then((res: any) => {
+        httpGet('https://api-sur.rubik.network/api/addressRewarded/' + address).then((res: any) => {
             if (res.code == 200) {
                 setCanClaimed(res.statusText)
                 setCliamedLabel(Claim_Status[res.statusCode])
@@ -42,9 +42,9 @@ function MemberVersionDisplay({ className = '', memberVersion: { address, versio
     const handleAccountStep = useCallback(async () => {
         try {
             setIsBusy(true);
-            const result = await httpPost("https://api-sur.crust.network/api/claimReward", JSON.stringify({
+            const result = await httpPost("https://api-sur.rubik.network/api/claimReward", JSON.stringify({
                 address
-            }));    
+            }));
 
             setIsBusy(false);
             setMessage(result.statusText);
@@ -67,7 +67,7 @@ function MemberVersionDisplay({ className = '', memberVersion: { address, versio
                         current={current}
                         code={version}
                     />
-                    <AddressMini value={address} />        
+                    <AddressMini value={address} />
                 </td>
                 <td className='start'>
                     {versionsRecord[version]}&nbsp;&nbsp;
@@ -80,7 +80,7 @@ function MemberVersionDisplay({ className = '', memberVersion: { address, versio
                             isBusy={isBusy}
                         />
                     </Button.Group>)}
-                </td> 
+                </td>
 
             </tr>
         </>

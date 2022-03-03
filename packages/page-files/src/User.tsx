@@ -14,17 +14,17 @@ export interface Props {
   className?: string,
 }
 
-function shortAccount (account: string) {
+function shortAccount(account: string) {
   if (account.length <= 8) return account;
 
   return `${account.substr(0, 4)}...${account.substr(account.length - 4, 4)}`;
 }
 
-function User ({ className, user }: Props) {
+function User({ className, user }: Props) {
   const { i18n, t } = useTranslation();
   const devLink = i18n.language === 'zh-CN'
-    ? 'https://wiki.crust.network/docs/zh-CN/buildGettingStarted'
-    : 'https://wiki.crust.network/docs/en/buildGettingStarted';
+    ? 'https://wiki.rubik.network/docs/zh-CN/buildGettingStarted'
+    : 'https://wiki.rubik.network/docs/en/buildGettingStarted';
   const onClickDev = useCallback(() => {
     window.open(devLink, '_blank');
   }, [devLink]);
@@ -34,17 +34,17 @@ function User ({ className, user }: Props) {
       <div
         className='item'
         onClick={onClickDev}>
-        <Icon icon={['far', 'user']}/>{t('Developer Guide')}
+        <Icon icon={['far', 'user']} />{t('Developer Guide')}
       </div>
       {
         user.account &&
         <div className='item'>
-          {shortAccount(user.account)} <Icon icon='caret-down'/>
+          {shortAccount(user.account)} <Icon icon='caret-down' />
           <div className='options'>
             <div
               className='option'
               onClick={user.logout}>
-              <Icon icon='sign-out-alt'/> {t('Logout')}
+              <Icon icon='sign-out-alt' /> {t('Logout')}
             </div>
           </div>
         </div>

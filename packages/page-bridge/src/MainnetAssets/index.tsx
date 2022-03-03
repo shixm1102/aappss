@@ -12,7 +12,7 @@ import { Available, Button, Card, Columar, Input, InputAddress, InputBalance, Ma
 import { useApi } from '@polkadot/react-hooks';
 import { BN_ZERO, formatBalance } from '@polkadot/util';
 
-import logoCrust from '../images/crust.svg';
+import logoRubik from '../images/rubik.png';
 import ethereumLogo from '../images/Ethereum_logo_2014.svg';
 import Banner from '@polkadot/app-accounts/Accounts/Banner';
 import { abi } from '../contractAbi';
@@ -25,7 +25,7 @@ interface Props {
 const contractAddress = "0x32a7C02e79c4ea1008dD6564b35F131428673c41";
 const handler = '0x18FCb27e4712AC11B8BecE851DAF96ba8ba34720'
 
-function EthereumAssets ({ className = '', senderId: propSenderId }: Props): React.ReactElement<Props> {
+function EthereumAssets({ className = '', senderId: propSenderId }: Props): React.ReactElement<Props> {
   const { t } = useTranslation();
   const { api, systemChain } = useApi();
   const [amount, setAmount] = useState<BN | undefined>(BN_ZERO);
@@ -34,7 +34,7 @@ function EthereumAssets ({ className = '', senderId: propSenderId }: Props): Rea
   const [ethereumAddress, setEthereumAddress] = useState<string | undefined | null>(null);
   const [isValid, setIsValid] = useState(false);
   const [bridgeFee, setBridgeFee] = useState<BN>(BN_ZERO);
-  const isMaxwell = systemChain === 'Crust Maxwell';
+  const isMaxwell = systemChain === 'Rubik Maxwell';
   const bridgeTxStatusLink = isMaxwell ? 'https://etherscan.io/address/0x9d332427e6d1b91d9cf8d2fa3b41df2012887aab' : 'https://etherscan.io/address/0x18FCb27e4712AC11B8BecE851DAF96ba8ba34720';
   const whitePot = isMaxwell ? 0 : 2
   const [handlerAsset, setHandlerAsset] = useState<BN | undefined>(BN_ZERO);
@@ -52,7 +52,7 @@ function EthereumAssets ({ className = '', senderId: propSenderId }: Props): Rea
 
     const erc20Contract = new ethers.Contract(contractAddress, abi, provider);
 
-    erc20Contract.getBalance(handler).then((res: any) => {                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      
+    erc20Contract.getBalance(handler).then((res: any) => {
       setHandlerAsset(new BN((Number(res) / 1000000.0).toString()))
     })
   }, [])
@@ -84,8 +84,7 @@ function EthereumAssets ({ className = '', senderId: propSenderId }: Props): Rea
           </Banner>
           <h3><span style={{ fontWeight: 'bold' }}>{t<string>('From Rubik')}</span></h3>
           <div style={{ display: 'flex' }}>
-            <img src={logoCrust as string}
-              style={{ width: '64px', height: '64px', padding: '1px', verticalAlign: 'middle' }} />
+            <img src={logoRubik as string} style={{ width: '64px', height: '64px', padding: '1px', verticalAlign: 'middle' }} />
             <div style={{ flex: 1, verticalAlign: 'middle' }}>
               <InputAddress
                 defaultValue={propSenderId}
@@ -124,7 +123,7 @@ function EthereumAssets ({ className = '', senderId: propSenderId }: Props): Rea
 
           <h3><span style={{ fontWeight: 'bold' }}>{t<string>('Amount')}</span></h3>
           <div style={{ display: 'flex', alignItems: 'center' }}>
-            <div style={{ width: '64px', verticalAlign: 'middle' }}/>
+            <div style={{ width: '64px', verticalAlign: 'middle' }} />
             <div style={{ flex: 1, verticalAlign: 'middle' }}>
               <InputBalance
                 autoFocus
@@ -135,7 +134,7 @@ function EthereumAssets ({ className = '', senderId: propSenderId }: Props): Rea
                 withMax
               />
               <MarkWarning content={t<string>('The transaction fee is ')}>
-                <span style={{'color': '#ff8812', 'textDecoration': 'underline', 'fontStyle': 'italic'}}>{formatBalance(bridgeFee)}</span>&nbsp;<span>{t<string>('(The transaction fee will be dynamically adjusted according to the Gwei of Ethereum)')}</span>
+                <span style={{ 'color': '#ff8812', 'textDecoration': 'underline', 'fontStyle': 'italic' }}>{formatBalance(bridgeFee)}</span>&nbsp;<span>{t<string>('(The transaction fee will be dynamically adjusted according to the Gwei of Ethereum)')}</span>
               </MarkWarning>
             </div>
           </div>

@@ -70,8 +70,8 @@ const Card = styled.div`
 function devGuide({ className }) {
   const { t, i18n } = useTranslation('order');
   const devLink = i18n.language === 'zh-CN' ?
-    "https://wiki.crust.network/docs/zh-CN/buildGettingStarted" :
-    "https://wiki.crust.network/docs/en/buildGettingStarted"
+    "https://wiki.rubik.network/docs/zh-CN/buildGettingStarted" :
+    "https://wiki.rubik.network/docs/en/buildGettingStarted"
   return <div
     className={className}
     onClick={() => window.open(devLink, '_blank')}>

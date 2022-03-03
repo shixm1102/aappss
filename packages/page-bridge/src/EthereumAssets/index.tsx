@@ -18,7 +18,7 @@ import { decodeAddress } from '@polkadot/util-crypto';
 
 import { createAccountsOpt } from './EthereumAccounts';
 import ethereumLogo from '../images/Ethereum_logo_2014.svg';
-import logoCrust from '../images/crust.svg';
+import logoRubik from '../images/rubik.png';
 import { useApi } from '@polkadot/react-hooks';
 
 interface Props {
@@ -37,7 +37,7 @@ function EthereumAssets ({ className = '' }: Props): React.ReactElement<Props> {
   const [receiveId, setReceiveId] = useState<string | null>('' || null);
   const [transferrable, setTransferrable] = useState<boolean>(true);
   const { systemChain: substrateName } = useApi();
-  const isMaxwell = substrateName === 'Crust Maxwell';
+  const isMaxwell = substrateName === 'Rubik Maxwell';
   const bridgeTxStatusLink = isMaxwell ? 'https://etherscan.io/address/0x9d332427e6d1b91d9cf8d2fa3b41df2012887aab' : 'https://etherscan.io/address/0x18FCb27e4712AC11B8BecE851DAF96ba8ba34720'
 
   useEffect(() => {
@@ -146,7 +146,7 @@ function EthereumAssets ({ className = '' }: Props): React.ReactElement<Props> {
             </div>
             <h3><span style={{ 'fontWeight': 'bold' }}>{t<string>('To Rubik')}</span></h3>
             <div style={{display: "flex"}}>
-                <img style={{ "width": "64px", "height": "64px", padding: '1px', 'verticalAlign': 'middle' }} src={logoCrust as string} />
+                <img style={{ "width": "64px", "height": "64px", padding: '1px', 'verticalAlign': 'middle' }} src={logoRubik as string} />
                 <div style={{ flex: 1, 'verticalAlign': 'middle' }}>
                     <InputAddress
                         help={t<string>('The selected account is used to receive tokens')}

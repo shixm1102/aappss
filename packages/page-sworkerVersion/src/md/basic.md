@@ -2,7 +2,7 @@
 This article is intended to explain the basic information and upgrade methods of each version to help you successfully complete the version upgrade of sWorker. Here are some basic questions and answers:
 
 Q: Why is there a new version?
-- Rubik is a constantly updating and evolving network, some functions need to be deploied by updating sWorker
+- rubik is a constantly updating and evolving network, some functions need to be deploied by updating sWorker
 
 Q: What impact will the old version have when it expires?
 - After the old version expires, all workloads will be invalid
@@ -17,9 +17,9 @@ Q: What is the iteration cycle of sWorker version?
 - Generally from six months to one year
 
 Q: What versions are currently available?
-- <a href="https://github.com/crustio/crust-sworker/releases/tag/v1.0.0" target="_blank" >V1.0.0 : First Version (0xe6f4e6ab58d6ba4ba2f684527354156c009e4969066427ce18735422180b38f4)</a>
-- <a href="https://github.com/crustio/crust-sworker/releases/tag/v1.1.0" target="_blank" >V1.1.0 : Support Metaverse (0xff2c145fd797e1aef56b47a91adf3d3294c433bb29b035b3020d04a76200da0a)</a>
-- <a href="https://github.com/crustio/crust-sworker/releases/tag/v1.1.1" target="_blank" >V1.1.1 : Protect Diskdrop (0xa61ea2065a26a3f9f1e45ad02d8b2965c377b85ba409f6de7185c485d36dc503)</a>
+- <a href="https://github.com/rubikio/rubik-sworker/releases/tag/v1.0.0" target="_blank" >V1.0.0 : First Version (0xe6f4e6ab58d6ba4ba2f684527354156c009e4969066427ce18735422180b38f4)</a>
+- <a href="https://github.com/rubikio/rubik-sworker/releases/tag/v1.1.0" target="_blank" >V1.1.0 : Support Metaverse (0xff2c145fd797e1aef56b47a91adf3d3294c433bb29b035b3020d04a76200da0a)</a>
+- <a href="https://github.com/rubikio/rubik-sworker/releases/tag/v1.1.1" target="_blank" >V1.1.1 : Protect Diskdrop (0xa61ea2065a26a3f9f1e45ad02d8b2965c377b85ba409f6de7185c485d36dc503)</a>
 
 
 # **Nodes**

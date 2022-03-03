@@ -13,7 +13,7 @@ Here you can contribute your IPFS W3Auth gateway to Rubik Apps, it will show lik
 
 ### 2. Run W3Auth service
 
-Please refer [this doc](https://wiki.crust.network/docs/en/buildIPFSWeb3AuthGW#deploy) to install and config W3Auth service.
+Please refer [this doc](https://wiki.rubik.network/docs/en/buildIPFSWeb3AuthGW#deploy) to install and config W3Auth service.
 
 ### 3. Propose a PR
 
@@ -21,8 +21,8 @@ Please fork this repo, and add your gateway to `index.ts` with the following for
 
 ```typescript
 {
-    value: 'https://crustipfs.xyz',
-    text: t('Crust Network'),
+    value: 'https://rubikipfs.xyz',
+    text: t('Rubik Network'),
     location: t('Singapore')
 }
 // value:    your gateway url
@@ -30,4 +30,4 @@ Please fork this repo, and add your gateway to `index.ts` with the following for
 // location: where is your gateway?
 ```
 
-Then, after your PR merged, you'll see your gateway on [Rubik Apps](https://apps.crust.network/)
+Then, after your PR merged, you'll see your gateway on [Rubik Apps](https://apps.rubik.network/)

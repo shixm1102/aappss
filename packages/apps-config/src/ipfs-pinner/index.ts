@@ -7,7 +7,7 @@ import type { AuthIpfsPinner } from './types';
 // Definitions here are with the following values -
 //   text: the IPFS pinner name
 //   value: the IPFS pinner domain
-export function createAuthIpfsPinner (t: TFunction): AuthIpfsPinner[] {
+export function createAuthIpfsPinner(t: TFunction): AuthIpfsPinner[] {
   return [
     // for Beta
     // {
@@ -15,10 +15,6 @@ export function createAuthIpfsPinner (t: TFunction): AuthIpfsPinner[] {
     //   value: 'https://pinning-service.decoo-cloud.cn'
     // },
     // for prod
-    // {
-    //   text: t<string>('Crust Pinner'),
-    //   value: 'https://pin.crustcode.com'
-    // }
     {
       text: t<string>('Rubik Pinner'),
       value: 'https://pin.rubikcode.com'

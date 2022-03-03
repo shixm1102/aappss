@@ -90,13 +90,13 @@ function Overview({ providers, isLoading, summaryInfo }: Props): React.ReactElem
     // let now_time = new Date().getTime();
     // var remaining = endTime - now_time;
     const timer = setInterval(() => {
-        if (remaining > 1000) {
-          setRemaing(remaining-1000)
-        } else {
-          clearInterval(timer)
-        }
+      if (remaining > 1000) {
+        setRemaing(remaining - 1000)
+      } else {
+        clearInterval(timer)
+      }
     }, 1000)
-}, [activeEra]);
+  }, [activeEra]);
 
   const filtered = useMemo(
     () => providers && applyFilter(providers),
@@ -172,23 +172,29 @@ function Overview({ providers, isLoading, summaryInfo }: Props): React.ReactElem
     : sorted;
 
   return (<>
-      <h3 style={{ "textAlign": 'center' }}>
-        <span style={{ "wordWrap": "break-word", "wordBreak": "break-all", float: "left", 'display': 'inline-block' }}><span style={{ 'fontWeight': 'bold', fontSize: '16px' }}>
-          <a href={i18n.language == 'zh' ? 'https://mp.weixin.qq.com/s/vLnuyU5gJCRcOSv_PrLAsw' : 'https://medium.com/crustnetwork/profit-data-activity-rules-3ef2c9b364c4'} target="_blank">
-            {t<string>(`Learn more about "Profit Data" >>`)}</a>
+    <h3 style={{ "textAlign": 'center' }}>
+      <span style={{ "wordWrap": "break-word", "wordBreak": "break-all", float: "left", 'display': 'inline-block' }}><span style={{ 'fontWeight': 'bold', fontSize: '16px' }}>
+        {/* <a href={i18n.language == 'zh' ? 'https://mp.weixin.qq.com/s/vLnuyU5gJCRcOSv_PrLAsw' : 'https://medium.com/crustnetwork/profit-data-activity-rules-3ef2c9b364c4'} target="_blank"> */}
+        {t<string>(`Learn more about "Profit Data" >>`)}
+        {/* </a> */}
+      </span>
+      </span>
+      {remaining > 1000 ? (<section style={{ 'display': 'inline-block', "wordWrap": "break-word", "wordBreak": "break-all" }}>
+        <span style={{ "marginRight": "5px", 'fontWeight': 'bold', fontSize: '16px' }}>
+          {/* <a href={i18n.language == 'zh' ? 'https://mp.weixin.qq.com/s/P3kCjhPNg9UUH8eLXpvvZg' : 'https://crustnetwork.medium.com/10x-for-10-days-data-power-boost-is-launched-fd6e05b44115'} target="_blank"> */}
+          {t<string>('Data Power Booster 🔥 >>')}
+          {/* </a> */}
         </span>
-        </span>
-        {remaining > 1000 ? (<section style={{'display': 'inline-block', "wordWrap": "break-word", "wordBreak": "break-all"}}>
-          <span style={{"marginRight": "5px", 'fontWeight': 'bold', fontSize: '16px'}}><a href={i18n.language == 'zh' ? 'https://mp.weixin.qq.com/s/P3kCjhPNg9UUH8eLXpvvZg' : 'https://crustnetwork.medium.com/10x-for-10-days-data-power-boost-is-launched-fd6e05b44115'} target="_blank">{t<string>('Data Power Booster 🔥 >>')}</a></span>
-          <BoosterCountDown />
-        </section>) : null}
-        <span style={{ "wordWrap": "break-word", "wordBreak": "break-all", float: "right", 'display': 'inline-block' }}><span style={{ 'fontWeight': 'bold', fontSize: '16px' }}>
-          <a href={i18n.language == 'zh' ? 'https://mp.weixin.qq.com/s/pp74MQMODwID_gkrbMdHug' : 'https://medium.com/crustnetwork/profit-data-data-power-rules-adjustments-and-upgrades-9fa406c6fc34'} target="_blank">
-            {t<string>(`About "Data Power" >>`)}</a>
-        </span>
-        </span>
-      </h3>
-      {isLoading ? <Spinner noLabel /> : <Summary isLoading={isLoading} info={summaryInfo} />}
+        <BoosterCountDown />
+      </section>) : null}
+      <span style={{ "wordWrap": "break-word", "wordBreak": "break-all", float: "right", 'display': 'inline-block' }}><span style={{ 'fontWeight': 'bold', fontSize: '16px' }}>
+        {/* <a href={i18n.language == 'zh' ? 'https://mp.weixin.qq.com/s/pp74MQMODwID_gkrbMdHug' : 'https://medium.com/crustnetwork/profit-data-data-power-rules-adjustments-and-upgrades-9fa406c6fc34'} target="_blank"> */}
+        {t<string>(`About "Data Power" >>`)}
+        {/* </a> */}
+      </span>
+      </span>
+    </h3>
+    {isLoading ? <Spinner noLabel /> : <Summary isLoading={isLoading} info={summaryInfo} />}
     <Table
       empty={!isLoading && t<string>('No funds staked yet. Bond funds to validate or nominate a validator')}
       header={header}

@@ -198,7 +198,7 @@ function Login ({ className, user }: Props) {
             </div>
             <img
               className='specIcon'
-              src={externalLogos.crustFilesBox as string}
+              src={externalLogos.rubikFilesBox as string}
             />
           </div>
         }
@@ -211,7 +211,7 @@ function Login ({ className, user }: Props) {
             </div>
             <img
               className='specIcon'
-              src={externalLogos.crustPinsPin as string}
+              src={externalLogos.rubikPinsPin as string}
             />
           </div>
         }

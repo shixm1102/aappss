@@ -87,14 +87,14 @@ export function createRococo (t: TFunction): LinkOption[] {
           Clover: 'wss://api-rococo.clover.finance'
         }
       },
-      {
-        info: 'rococoCrust',
-        paraId: 7777,
-        text: t('rpc.rococo.crust', 'Crust PC1', { ns: 'apps-config' }),
-        providers: {
-          Crust: 'wss://api-rococo.crust.network'
-        }
-      },
+      // {
+      //   info: 'rococoCrust',
+      //   paraId: 7777,
+      //   text: t('rpc.rococo.crust', 'Crust PC1', { ns: 'apps-config' }),
+      //   providers: {
+      //     Crust: 'wss://api-rococo.crust.network'
+      //   }
+      // },
       {
         info: 'rococoChainX',
         paraId: 59,

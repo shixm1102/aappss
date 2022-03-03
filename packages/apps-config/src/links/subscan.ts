@@ -11,8 +11,8 @@ export default {
     'Bifrost Asgard Nightly': 'bitfrost',
     'Centrifuge Mainnet': 'centrifuge',
     ChainX: 'chainx',
-    'Crust Maxwell': 'maxwell',
-    Crust: 'crust',
+    // 'Crust Maxwell': 'maxwell',
+    // Crust: 'crust',
     'Darwinia CC1': 'darwinia-cc1',
     'Darwinia Crab': 'crab',
     Edgeware: 'edgeware',
@@ -28,8 +28,7 @@ export default {
     Westend: 'westend',
     Rubik: 'rubik'
   },
-  create: (chain: string, path: string, data: BN | number | string): string =>
-    `https://${chain}.subscan.io/${path}/${data.toString()}`,
+  create: (chain: string, path: string, data: BN | number | string): string => `https://${chain}.subscan.io/${path}/${data.toString()}`,
   isActive: true,
   logo: externalLogos.subscan as string,
   paths: {

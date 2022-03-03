@@ -47,7 +47,7 @@ const MDropdown = styled(DropdownWrap)`
   }
 `;
 
-function randomSort (a, b) {
+function randomSort(a, b) {
   return Math.random() > 0.5 ? -1 : 1;
 }
 
@@ -86,7 +86,7 @@ const Order = ({ routeInfo: { url, params }, watchList: list, doAddOrders }) => 
     window.localStorage.setItem('uploadMode', mode);
     const hash = window.location.hash
     console.info('hash::', hash)
-    if (!hash.startsWith('#/storage') || hash === '#/storage' || hash === '#/storage_files'){
+    if (!hash.startsWith('#/storage') || hash === '#/storage' || hash === '#/storage_files') {
       window.location.hash = mode === 'ipfs' ? '/storage' : '/storage_files';
     }
   };
@@ -112,7 +112,7 @@ const Order = ({ routeInfo: { url, params }, watchList: list, doAddOrders }) => 
   const [loading, setLoading] = useState(false);
   const [fetchModalShow, toggleFetchModalShow] = useState(false);
   const { systemChain } = useApi();
-  const disableGateway = systemChain === 'Crust Maxwell';
+  const disableGateway = systemChain === 'Rubik Maxwell';
 
   const inputRef = useRef();
   const _clickUploadFile = useCallback((dir = false) => {
@@ -289,10 +289,10 @@ const Order = ({ routeInfo: { url, params }, watchList: list, doAddOrders }) => 
   };
 
   if (uploadMode.isLoad) {
-    return <Spinner label={t('Loading')}/>;
+    return <Spinner label={t('Loading')} />;
   }
   if (!isWatchOne && isShowSelectedMode) {
-    return <SelectUploadMode onClick={doSetUploadMode}/>;
+    return <SelectUploadMode onClick={doSetUploadMode} />;
   }
   return (
     <div className={'w-100'}>
@@ -300,7 +300,7 @@ const Order = ({ routeInfo: { url, params }, watchList: list, doAddOrders }) => 
         repaidModal && <PoolModal onClose={() => {
           setFileInfo(null);
           togglerepaidModal(false);
-        }} file={fileInfo}/>
+        }} file={fileInfo} />
       }
       {
         fetchModalShow &&
@@ -320,13 +320,13 @@ const Order = ({ routeInfo: { url, params }, watchList: list, doAddOrders }) => 
             setFileInfo(null);
             toggleModal(false);
           }}
-          title={title}/>}
+          title={title} />}
       {
         upFile && showUpFiles && <UpFiles
           onClose={_onUpFileClose}
           onSuccess={_onUpFileSuccess}
           file={upFile}
-          endpoint={currentEndpoint}/>
+          endpoint={currentEndpoint} />
       }
       {!isWatchOne && <>
         <div className={'w-100 btn-wrapper flex-l'}>
@@ -337,7 +337,7 @@ const Order = ({ routeInfo: { url, params }, watchList: list, doAddOrders }) => 
                   type={'file'}
                   style={{ display: 'none' }}
                   ref={inputRef}
-                  onChange={_onInputFile}/>
+                  onChange={_onInputFile} />
                 :
                 <button
                   className='btn'
@@ -376,9 +376,12 @@ const Order = ({ routeInfo: { url, params }, watchList: list, doAddOrders }) => 
                     setCurrentEndpoint(endpoints.find(item => item.value === value));
                   }}
                   header={
-                    <div className='footer'
-                         onClick={() => window.open('https://github.com/crustio/crust-apps/tree/master/packages/apps-config/src/ipfs-gateway-endpoints', '_blank')}
-                    >{t('Contribute to Web3 IPFS Gateway')}</div>
+                    <div
+                      className='footer'
+                      onClick={() => window.open('https://github.com/rubikio/rubik-apps/tree/master/packages/apps-config/src/ipfs-gateway-endpoints', '_blank')}
+                    >
+                      {t('Contribute to Web3 IPFS Gateway')}
+                    </div>
                   }
                 />
               </>
@@ -404,12 +407,12 @@ const Order = ({ routeInfo: { url, params }, watchList: list, doAddOrders }) => 
         />
       </>}
 
-      {loading ? <Spinner label={t('Loading')}/>
+      {loading ? <Spinner label={t('Loading')} />
         : <OrderList
           isWatchOne={isWatchOne}
           gateway={gateway}
           onAddPool={handleAddPool} onToggleBtn={handleToggleBtn}
-          watchList={tableData}/>
+          watchList={tableData} />
       }
       {/* <MDevGuide /> */}
     </div>

@@ -16,7 +16,7 @@ interface IRes<ISettlement> {
 }
 
 export function fetchFileTobeClaimed<ISettlement> (): Promise<ISettlement[]> {
-  return fetch('https://splorer-api.crust.network/api/filesToBeClaimed', requestOptions)
+  return fetch('https://splorer-api.rubik.network/api/filesToBeClaimed', requestOptions)
     .then((res) => res.json())
     .then((r: IRes<ISettlement>) => {
       console.log(r);
