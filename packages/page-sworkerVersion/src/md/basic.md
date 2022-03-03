@@ -2,7 +2,7 @@
 This article is intended to explain the basic information and upgrade methods of each version to help you successfully complete the version upgrade of sWorker. Here are some basic questions and answers:
 
 Q: Why is there a new version?
-- Crust is a constantly updating and evolving network, some functions need to be deploied by updating sWorker
+- Rubik is a constantly updating and evolving network, some functions need to be deploied by updating sWorker
 
 Q: What impact will the old version have when it expires?
 - After the old version expires, all workloads will be invalid
@@ -45,7 +45,7 @@ Make sure that the sworker sent the work report successfully in the past hours. 
 
 Use the following command to check whether the workload is reported successfully
 
-<div style="background: black; font-size: 18px; font-weight:bold; color: white">sudo crust logs --tail 10 sworker
+<div style="background: black; font-size: 18px; font-weight:bold; color: white">sudo rubik logs --tail 10 sworker
 </div>
 <br>
 
@@ -53,18 +53,18 @@ Use the following command to check whether the workload is reported successfully
 
 ### **2.2.2 Upgrade IPFS image**
 <br>
-<div style="background: black; font-size: 18px; font-weight:bold; color: white">sudo crust tools upgrade-image ipfs</div>
+<div style="background: black; font-size: 18px; font-weight:bold; color: white">sudo rubik tools upgrade-image ipfs</div>
 <br>
 
 ### **2.2.3 Restart IPFS service**
 <br>
-<div style="background: black; font-size: 18px; font-weight:bold; color: white">sudo crust reload ipfs</div>
+<div style="background: black; font-size: 18px; font-weight:bold; color: white">sudo rubik reload ipfs</div>
 <br>
 
 ### **2.2.4 sWorker Upgrade**
 The upgrade process is a background process, which takes time ranging from 1000s to 10000s. <text style="color: red">**It is strongly recommended to execute the upgrade command manually**</text> to avoid unnecessary errors. If the upgrade is abnormal, <text style="color: red">**do not restart the sworker service, which will cause data loss**</text>. 
 <br>
-<div style="background: black; font-size: 18px; font-weight:bold; color: white">nohup sudo crust tools sworker-ab-upgrade a61ea2065a26a3f9f1e45ad02d8b2965c377b85ba409f6de7185c485d36dc503 > upgrade.log 2>&1 &</div>
+<div style="background: black; font-size: 18px; font-weight:bold; color: white">nohup sudo rubik tools sworker-ab-upgrade a61ea2065a26a3f9f1e45ad02d8b2965c377b85ba409f6de7185c485d36dc503 > upgrade.log 2>&1 &</div>
 <br>
 
 
@@ -75,7 +75,7 @@ The upgrade process is a background process, which takes time ranging from 1000s
 
 ![sworker_version](../assets/upgrade_status.png)
 
-<div style="background: black; font-size: 18px; font-weight:bold; color: white">sudo crust version
+<div style="background: black; font-size: 18px; font-weight:bold; color: white">sudo rubik version
 </div>
 <br>
 
@@ -90,7 +90,7 @@ Make sure that the sworker sent the work report successfully in the past hours. 
 
 Use the following command to check whether the workload is reported successfully
 
-<div style="background: black; font-size: 18px; font-weight:bold; color: white">sudo crust logs --tail 10 sworker
+<div style="background: black; font-size: 18px; font-weight:bold; color: white">sudo rubik logs --tail 10 sworker
 </div>
 <br>
 
@@ -99,7 +99,7 @@ Use the following command to check whether the workload is reported successfully
 ### **3.1.2 sWorker Upgrade**
 The upgrade process is a background process, which takes time ranging from 1000s to 10000s. <text style="color: red">**It is strongly recommended to execute the upgrade command manually**</text> to avoid unnecessary errors. If the upgrade is abnormal, <text style="color: red">**do not restart the sworker service, which will cause data loss**</text>. 
 <br>
-<div style="background: black; font-size: 18px; font-weight:bold; color: white">nohup sudo crust tools sworker-ab-upgrade a61ea2065a26a3f9f1e45ad02d8b2965c377b85ba409f6de7185c485d36dc503 > upgrade.log 2>&1 &</div>
+<div style="background: black; font-size: 18px; font-weight:bold; color: white">nohup sudo rubik tools sworker-ab-upgrade a61ea2065a26a3f9f1e45ad02d8b2965c377b85ba409f6de7185c485d36dc503 > upgrade.log 2>&1 &</div>
 <br>
 
 ## **3.2 Upgrade status detection**
@@ -109,7 +109,7 @@ The upgrade process is a background process, which takes time ranging from 1000s
 
 ![sworker_version](../assets/upgrade_status.png)
 
-<div style="background: black; font-size: 18px; font-weight:bold; color: white">sudo crust version
+<div style="background: black; font-size: 18px; font-weight:bold; color: white">sudo rubik version
 </div>
 <br>
 

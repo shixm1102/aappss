@@ -2,15 +2,15 @@
 
 Files is a Web3 IPFS file storage application built inside Polkadot-js/apps. Easy-to-use, lightweight and open-source.
 With your Polkadot Wallet signed-in and just a few clicks, you can have your files uploaded and pinned to IPFS and get
-more than dozens of replicas in a decentralized storage network offered by Crust, a substrate-based IPFS incentive layer
+more than dozens of replicas in a decentralized storage network offered by Rubik, a substrate-based IPFS incentive layer
 protocol. deposit for a certain period of time (No. of Blocks). If someone likes the proposal, they could deposit the
 same amount of tokens to support it. The minimum deposit is currently 5 Units/DOTs.
 
 # How to use
 
 Files asks your Polkadot wallet (or any substrate-based wallet) for authentication. Connect your wallet in
-Polkadot-js/apps and sign a message before uploading your files. Files is for now free of charge because Crust Network
-will continue to fund Crust Pinner for its daily usage within normal limits.
+Polkadot-js/apps and sign a message before uploading your files. Files is for now free of charge because Rubik Network
+will continue to fund Rubik Pinner for its daily usage within normal limits.
 
 # Developer Guide
 
@@ -22,7 +22,7 @@ Contribute an IPFS public gateway to Files:
 
 [https://github.com/crustio/crust-apps/tree/master/packages/apps-config/src/ipfs-gateway-endpoints#ipfs-public-gateway-endpoints](https://github.com/crustio/crust-apps/tree/master/packages/apps-config/src/ipfs-gateway-endpoints#ipfs-public-gateway-endpoints)
 
-Learn how to build on Crust:
+Learn how to build on Rubik:
 
 [https://wiki.crust.network/docs/en/buildGettingStarted.html](https://wiki.crust.network/docs/en/buildGettingStarted.html)
 

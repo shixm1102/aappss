@@ -5,7 +5,7 @@
 import { base64Encode } from '@polkadot/util-crypto';
 const MAX_RETRY = 3;
 const RETRY_INTERVAL = 1000;
-const USERNAME = 'crustbridgeadmin';
+const USERNAME = 'rubikbridgeadmin';
 const PASSWD = '102938'
 
 function sleep(ms){

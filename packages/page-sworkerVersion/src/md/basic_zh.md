@@ -2,7 +2,7 @@
 本文意在说明各版本的基础信息和升级方式，来帮助大家顺利完成sWorker的版本升级。下面是一些基础的问答：
 
 问：为什么会有新版本？
-- Crust是一个不断更新与进化的网络，有些功能需要通过更新sWorker的方式进行升级
+- Rubik是一个不断更新与进化的网络，有些功能需要通过更新sWorker的方式进行升级
 
 问：老版本过期后会产生什么影响？ 
 - 老版本在过期之后，所有的工作量都会无效
@@ -44,7 +44,7 @@
 通过命令查询工作量是否上报成功
 <br>
 
-<div style="background: black; font-size: 18px; font-weight:bold; color: white">sudo crust logs --tail 100 sworker</div>
+<div style="background: black; font-size: 18px; font-weight:bold; color: white">sudo rubik logs --tail 100 sworker</div>
 <br>
 
 ![workreport_status](../assets/workreport_status_zh.png)
@@ -52,14 +52,14 @@
 ### **2.2.2 更新IPFS镜像** 
 <br>
 
-<div style="background: black; font-size: 18px; font-weight:bold; color: white">sudo crust tools upgrade-image ipfs</div>
+<div style="background: black; font-size: 18px; font-weight:bold; color: white">sudo rubik tools upgrade-image ipfs</div>
 <br>
 
 ### **2.2.3 重启IPFS服务**
 
 <br>
 
-<div style="background: black; font-size: 18px; font-weight:bold; color: white">sudo crust reload ipfs</div>
+<div style="background: black; font-size: 18px; font-weight:bold; color: white">sudo rubik reload ipfs</div>
 <br>
 
 ### **2.2.4 sWorker升级**
@@ -67,7 +67,7 @@
 
  升级过程是一个后台进程，耗时在100s-10000s不等，<text style="color: red">**强烈建议手动执行升级命令**</text>，避免出现不必要的错误，如果升级出现异常，<text style="color: red">**切记不能reload sworker服务，以防数据丢失**</text>。 
 
-<div style="background: black; font-size: 18px; font-weight:bold; color: white">nohup sudo crust tools sworker-ab-upgrade a61ea2065a26a3f9f1e45ad02d8b2965c377b85ba409f6de7185c485d36dc503 > upgrade.log 2>&1 &</div>
+<div style="background: black; font-size: 18px; font-weight:bold; color: white">nohup sudo rubik tools sworker-ab-upgrade a61ea2065a26a3f9f1e45ad02d8b2965c377b85ba409f6de7185c485d36dc503 > upgrade.log 2>&1 &</div>
 <br>
 
 
@@ -78,7 +78,7 @@
 
 ![upgrade_status](../assets/upgrade_status_zh.png)
 
-<div style="background: black; font-size: 18px; font-weight:bold; color: white">sudo crust version
+<div style="background: black; font-size: 18px; font-weight:bold; color: white">sudo rubik version
 </div>
 <br>
 
@@ -92,7 +92,7 @@
 通过sworker日志文件来确认近期工作量处于正常上报状态。如不正常，请优先修复后再进行升级操作。
 通过命令查询工作量是否上报成功
 <br>
-<div style="background: black; font-size: 18px; font-weight:bold; color: white">sudo crust logs --tail 100 sworker</div>
+<div style="background: black; font-size: 18px; font-weight:bold; color: white">sudo rubik logs --tail 100 sworker</div>
 <br>
 
 ![workreport_status](../assets/workreport_status_zh.png)
@@ -102,7 +102,7 @@
 
  升级过程是一个后台进程，耗时在100s-10000s不等，<text style="color: red">**强烈建议手动执行升级命令**</text>，避免出现不必要的错误，如果升级出现异常，<text style="color: red">**切记不能reload sworker服务，以防数据丢失**</text>。 
 <br>
-<div style="background: black; font-size: 18px; font-weight:bold; color: white">nohup sudo crust tools sworker-ab-upgrade a61ea2065a26a3f9f1e45ad02d8b2965c377b85ba409f6de7185c485d36dc503 > upgrade.log 2>&1 &</div>
+<div style="background: black; font-size: 18px; font-weight:bold; color: white">nohup sudo rubik tools sworker-ab-upgrade a61ea2065a26a3f9f1e45ad02d8b2965c377b85ba409f6de7185c485d36dc503 > upgrade.log 2>&1 &</div>
 <br>
 
 ## **3.2 升级状态检测**
@@ -112,7 +112,7 @@
 
 ![upgrade_status](../assets/upgrade_status_zh.png)
 
-<div style="background: black; font-size: 18px; font-weight:bold; color: white">sudo crust version
+<div style="background: black; font-size: 18px; font-weight:bold; color: white">sudo rubik version
 </div>
 <br>
 
