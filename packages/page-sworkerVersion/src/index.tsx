@@ -25,7 +25,7 @@ import mcache from "memory-cache";
 const HIDDEN_ACC = ['vanity'];
 const cacheDuration = 60 * 30;
 
-function getSum (total: string, num: string) {
+function getSum(total: string, num: string) {
   return total + num;
 }
 
@@ -33,8 +33,9 @@ const getNumber = (str: string) => {
   return Number(str.split(',').reduce(getSum));
 };
 
-function BridgeApp ({ basePath, onStatusChange }: Props): React.ReactElement<Props> {
-  const { i18n, t } = useTranslation();
+function BridgeApp({ basePath, onStatusChange }: Props): React.ReactElement<Props> {
+  // const { i18n, t } = useTranslation();
+  const { t } = useTranslation();
   const { hasAccounts } = useAccounts();
   const { lastBlockNumber } = useContext(BlockAuthorsContext);
   const [current, setCurrent] = useState<number>(0);
@@ -62,17 +63,17 @@ function BridgeApp ({ basePath, onStatusChange }: Props): React.ReactElement<Pro
     let summaryInfoKey = '_summaryInfo_key_';
     let pkInfoCachedBody = mcache.get(pkInfoKey);
     let summaryInfoCachedBody = mcache.get(summaryInfoKey);
-    if (pkInfoCachedBody && summaryInfoCachedBody) { 
+    if (pkInfoCachedBody && summaryInfoCachedBody) {
       setPkInfos(pkInfoCachedBody);
       setSummaryInfo(summaryInfoCachedBody);
-      setIsLoading(false);   
+      setIsLoading(false);
     } else {
       const fns: any[] = [
         [api.query.storage.pubKeys.entries]
       ];
       const sv: SworkerVersion[] = [];
       const pkInfos: PKInfo[] = [];
-      Object.keys(versionsRecord).forEach( key => {
+      Object.keys(versionsRecord).forEach(key => {
         api.query.storage.codes(key).then((res) => {
           const codeInfo = JSON.parse(JSON.stringify(res));
           sv.push({
@@ -94,11 +95,11 @@ function BridgeApp ({ basePath, onStatusChange }: Props): React.ReactElement<Pro
           });
           const codeGroup = _.groupBy(availabeCode, 'code');
           const total = availabeCode.length;
-  
+
           Object.entries(codeGroup).forEach(([code, entries]) => {
             // api.query.storage.codes(code).then((res) => {
             //   const codeInfo = JSON.parse(JSON.stringify(res));
-  
+
             //   sv.push({
             //     version: code,
             //     start: versionsStartBlockRecord[code],
@@ -118,9 +119,9 @@ function BridgeApp ({ basePath, onStatusChange }: Props): React.ReactElement<Pro
           setIsLoading(false);
         }
       }).then((_unsub): void => {
-        
+
       }).catch(console.error);
-  
+
       // return (): void => {
       //   unsub && unsub();
       // };
