@@ -74,7 +74,7 @@ import nodePolkadot from './nodes/polkadot-circle.svg';
 import nodePolkadotJs from './nodes/polkadot-js.svg';
 import nodeRealis from './nodes/realis.png';
 import nodeRobonomics from './nodes/robonomics.svg';
-import logoRocky from './nodes/rocky.svg';
+// import logoRocky from './nodes/rocky.svg';
 import nodeRubik from './nodes/rubik.png';
 import nodeSgc from './nodes/sgc.svg';
 import nodeSora from './nodes/sora-substrate.svg';

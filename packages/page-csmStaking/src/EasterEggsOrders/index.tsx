@@ -20,7 +20,8 @@ interface Props {
 
 
 function EasterEggsOrders({ isLoading }: Props): React.ReactElement<Props> {
-  const { t, i18n } = useTranslation();
+  // const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
   // we have a very large list, so we use a loading delay
   // const [nameFilter, setNameFilter] = useState<string>('');
   const [currentList, setCurrentList] = useState<EasterEggsOrder>({

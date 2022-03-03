@@ -62,7 +62,8 @@ function sort(sortBy: ProviderSortBy, sortFromMax: boolean, providers: DataProvi
 const SORT_KEYS = ['storage', 'csmLimit', 'effectiveCSM', 'stakedCSM', 'guaranteeFee'];
 
 function Overview({ providers, isLoading, summaryInfo }: Props): React.ReactElement<Props> {
-  const { t, i18n } = useTranslation();
+  // const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
   const { api } = useApi();
   // we have a very large list, so we use a loading delay
   // const [nameFilter, setNameFilter] = useState<string>('');
@@ -175,21 +176,21 @@ function Overview({ providers, isLoading, summaryInfo }: Props): React.ReactElem
     <h3 style={{ "textAlign": 'center' }}>
       <span style={{ "wordWrap": "break-word", "wordBreak": "break-all", float: "left", 'display': 'inline-block' }}><span style={{ 'fontWeight': 'bold', fontSize: '16px' }}>
         {/* <a href={i18n.language == 'zh' ? 'https://mp.weixin.qq.com/s/vLnuyU5gJCRcOSv_PrLAsw' : 'https://medium.com/crustnetwork/profit-data-activity-rules-3ef2c9b364c4'} target="_blank"> */}
-        {t<string>(`Learn more about "Profit Data" >>`)}
+          {t<string>(`Learn more about "Profit Data" >>`)}
         {/* </a> */}
       </span>
       </span>
       {remaining > 1000 ? (<section style={{ 'display': 'inline-block', "wordWrap": "break-word", "wordBreak": "break-all" }}>
         <span style={{ "marginRight": "5px", 'fontWeight': 'bold', fontSize: '16px' }}>
           {/* <a href={i18n.language == 'zh' ? 'https://mp.weixin.qq.com/s/P3kCjhPNg9UUH8eLXpvvZg' : 'https://crustnetwork.medium.com/10x-for-10-days-data-power-boost-is-launched-fd6e05b44115'} target="_blank"> */}
-          {t<string>('Data Power Booster 🔥 >>')}
+            {t<string>('Data Power Booster 🔥 >>')}
           {/* </a> */}
         </span>
         <BoosterCountDown />
       </section>) : null}
       <span style={{ "wordWrap": "break-word", "wordBreak": "break-all", float: "right", 'display': 'inline-block' }}><span style={{ 'fontWeight': 'bold', fontSize: '16px' }}>
         {/* <a href={i18n.language == 'zh' ? 'https://mp.weixin.qq.com/s/pp74MQMODwID_gkrbMdHug' : 'https://medium.com/crustnetwork/profit-data-data-power-rules-adjustments-and-upgrades-9fa406c6fc34'} target="_blank"> */}
-        {t<string>(`About "Data Power" >>`)}
+          {t<string>(`About "Data Power" >>`)}
         {/* </a> */}
       </span>
       </span>
