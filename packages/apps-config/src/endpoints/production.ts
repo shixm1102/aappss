@@ -21,7 +21,7 @@ export function createProduction (t: TFunction): LinkOption[] {
       text: t('rpc.rubik.network', 'Rubik', { ns: 'apps-config' }),
       providers: {
         // 'Rubik Network': 'ws://101.200.164.225:9944'
-        // 'Rubik Network': 'ws://3.222.215.241:19944'
+        'Rubik Network': 'ws://3.222.215.241:19944'
       }
     }
   ]);
