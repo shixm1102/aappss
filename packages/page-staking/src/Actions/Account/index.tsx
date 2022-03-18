@@ -445,8 +445,8 @@ function Account ({ allSlashes, className = '', info: { controllerId, destinatio
 
                   </> : null
                 }
-                
-                {(role !== 'Validator' && role != 'Candidate' ) ? <>
+                Guardian
+                {(role !== '' && role != 'Candidate' ) ? <>
                   <Menu.Divider />
                   { 'Guarantee' }
                   {

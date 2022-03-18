@@ -383,7 +383,7 @@
   "Set to 0 to make transaction immortal": "Establecer a 0 para hacer la transacción inmortal",
   "Set validator preferences": "Establecer preferencias del validador",
   "Setup Nominator {{step}}/{{NUM_STEPS}}": "Configuración nominador {{step}}/{{NUM_STEPS}}",
-  "Setup Validator {{step}}/{{NUM_STEPS}}": "Configurar validador {{step}}/{{NUM_STEPS}}",
+  "Setup Guardian {{step}}/{{NUM_STEPS}}": "Configurar validador {{step}}/{{NUM_STEPS}}",
   "Setup account as recoverable": "Configurar la cuenta como recuperable",
   "Should the search be case sensitive, e.g if you select \"no\" your search for \"Some\" may return addresses containing \"somE\" or \"sOme\"...": "Si la búsqueda distingue entre mayúsculas y minúsculas, por ejemplo, si selecciona \"no\", la búsqueda de \"Algunos\" puede dar como resultado direcciones que contengan \"algUnos\" o \"algunOs\"...",
   "Show address on hardware device": "Mostrar la dirección en el dispositivo hardware",
