@@ -67,11 +67,11 @@ function JoinGroup({ className = '', onClose, recipientId: propRecipientId, send
                 defaultValue={propSenderId}
                 help={t<string>('The account you will join group.')}
                 isDisabled={!!propSenderId}
-                label={t<string>('member account')}
+                label={t<string>('miner account')}
                 onChange={setSenderId}
                 type='account'
               />
-              {isDisable && (<MarkError content={t<string>('Please wait for member account to report the first work report and then join the group')} />)}
+              {isDisable && (<MarkError content={t<string>('Please wait for miner account to report the first work report and then join the group')} />)}
             </Modal.Columns>
           </Modal.Content>
         </div>

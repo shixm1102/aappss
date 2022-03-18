@@ -33,7 +33,7 @@ function QuitGroup ({ className = '', onClose, senderId: propSenderId }: Props):
                 defaultValue={propSenderId}
                 help={t<string>('The account you will quit group.')}
                 isDisabled={!!propSenderId}
-                label={t<string>('member account')}
+                label={t<string>('miner account')}
                 onChange={setSenderId}
                 type='account'
               />

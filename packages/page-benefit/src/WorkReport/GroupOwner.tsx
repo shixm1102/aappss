@@ -166,7 +166,7 @@ function GroupOwner ({ account: { address }, className = '', filter, isFavorite,
         {(members) && (
           <Expander summary={
             <>
-              <div>{t<string>('Members ({{count}})', { replace: { count: members.length } })}</div>
+              <div>{t<string>('Miners ({{count}})', { replace: { count: members.length } })}</div>
             </>
           }>
             {members.map((address: { toString: () => React.Key | null | undefined; }) => (
