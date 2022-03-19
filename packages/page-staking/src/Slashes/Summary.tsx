@@ -36,7 +36,7 @@ function Header ({ slash: { era, nominators, reporters, total, validators } }: P
   return (
     <SummaryBox>
       <section>
-        <CardSummary label={t<string>('validators')}>
+        <CardSummary label={t<string>('guardians')}>
           {formatNumber(validators.length)}
         </CardSummary>
         <CardSummary label={t<string>('guarantors')}>

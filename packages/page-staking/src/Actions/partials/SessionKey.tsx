@@ -56,7 +56,7 @@ function SessionKey ({ className = '', controllerId, onChange, stashId, withSend
           />
         </Modal.Columns>
       )}
-      <Modal.Columns hint={t<string>('The hex output from author_rotateKeys, as executed on the validator node. The keys will show as pending until applied at the start of a new session.')}>
+      <Modal.Columns hint={t<string>('The hex output from author_rotateKeys, as executed on the guardian node. The keys will show as pending until applied at the start of a new session.')}>
         <Input
           autoFocus
           help={t<string>('Changing the key only takes effect at the start of the next session. The input here is generates from the author_rotateKeys command')}

@@ -20,7 +20,7 @@ const [now, minimumValidatorCount, validators] = await Promise.all([
 ]);
 
 console.log('The current date is: ' + now);
-console.log('The minimum validator count: ' + minimumValidatorCount);
+console.log('The minimum guardian count: ' + minimumValidatorCount);
 
 if (validators && validators.length > 0) {
   // Retrieve the balances for all validators

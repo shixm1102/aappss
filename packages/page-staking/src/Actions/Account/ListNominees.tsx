@@ -80,41 +80,41 @@ function ListNominees ({ nominating, stashId }: Props): React.ReactElement<Props
       {renOver && (
         <Expander
           className='stakeOver'
-          help={t<string>('These validators are active but only the top {{max}} nominators by backing stake will be receiving rewards. The nominating stash is not one of those to be rewarded in the current era.', { replace: api.consts.staking?.maxNominatorRewardedPerValidator?.toString() })}
+          help={t<string>('These guardians are active but only the top {{max}} nominators by backing stake will be receiving rewards. The nominating stash is not one of those to be rewarded in the current era.', { replace: api.consts.staking?.maxNominatorRewardedPerValidator?.toString() })}
           renderChildren={renOver[1]}
           summary={t<string>('Oversubscribed nominations ({{count}})', { replace: { count: renOver[0] } })}
         />
       )}
       {renActive && (
         <Expander
-          help={t<string>('The validators selected by the Phragmen algorithm to nominate for this era.')}
+          help={t<string>('The guardians selected by the Phragmen algorithm to nominate for this era.')}
           renderChildren={renActive[1]}
           summary={t<string>('Active nominations ({{count}})', { replace: { count: renActive[0] } })}
         />
       )}
       {renInactive && (
         <Expander
-          help={t<string>('The elected validator list that did not get selected by the Phragmen algorithm for this era. However they may be selected in the future.')}
+          help={t<string>('The elected guardian list that did not get selected by the Phragmen algorithm for this era. However they may be selected in the future.')}
           renderChildren={renInactive[1]}
           summary={t<string>('Inactive nominations ({{count}})', { replace: { count: renInactive[0] } })}
         />
       )}
       {renChilled && (
         <Expander
-          help={t<string>('The validators that got slashed and for which your nomination got auto-chilled. Re-nominating these will make them available to the Phragmen algorithm.')}
+          help={t<string>('The guardians that got slashed and for which your nomination got auto-chilled. Re-nominating these will make them available to the Phragmen algorithm.')}
           renderChildren={renChilled[1]}
           summary={t<string>('Renomination required ({{count}})', { replace: { count: renChilled[0] } })}
         />
       )}
       {renWaiting && (
         <Expander
-          help={t<string>('The validators that are not in the validator set because they need more nominations or because they have willingly stop validating. Any nominations made before the next election will also appear here.')}
+          help={t<string>('The guardians that are not in the guardian set because they need more nominations or because they have willingly stop validating. Any nominations made before the next election will also appear here.')}
           renderChildren={renWaiting[1]}
           summary={t<string>('Waiting nominations ({{count}})', { replace: { count: renWaiting[0] } })}
         />
       )}
       {nomsActive && nomsInactive && (nomsActive.length === 0) && (nomsInactive.length !== 0) && (
-        <MarkWarning content={t<string>('Your nomination has not been applied to any validator in the active set by the election algorithm. This could mean that all your validators are over-subscribed or that you have less bonded than the lowest nominator elected for each of the validators.')} />
+        <MarkWarning content={t<string>('Your nomination has not been applied to any guardian in the active set by the election algorithm. This could mean that all your guardians are over-subscribed or that you have less bonded than the lowest nominator elected for each of the guardians.')} />
       )}
     </>
   );

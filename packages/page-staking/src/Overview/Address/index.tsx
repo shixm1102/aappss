@@ -278,7 +278,7 @@ function Address ({ address, className = '', filterName, hasQueries, isElected, 
         <LinkExternal
           data={address}
           isLogo
-          type={isMain ? 'validator' : 'intention'}
+          type={isMain ? 'guardian' : 'intention'}
         />
       </td>
     </tr>

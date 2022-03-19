@@ -85,10 +85,10 @@ function Validate ({ className = '', controllerId, onChange, stashId, withSender
         />
       </Modal.Columns>
       {isFunction(api.tx.staking.kick) && (
-        <Modal.Columns hint={t<string>('The validator can block any new nominations. By default it is set to allow all nominations.')}>
+        <Modal.Columns hint={t<string>('The guardian can block any new nominations. By default it is set to allow all nominations.')}>
           <Dropdown
             defaultValue={true}
-            help={t<string>('Does this validator allow nominations or is it blocked for all')}
+            help={t<string>('Does this guardian allow nominations or is it blocked for all')}
             label={t<string>('allows new nominations')}
             onChange={setAllowNoms}
             options={blockedOptions.current}

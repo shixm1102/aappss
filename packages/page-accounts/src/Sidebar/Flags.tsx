@@ -26,7 +26,7 @@ function Flags ({ flags: { isCouncil, isDevelopment, isExternal, isInjected, isM
       {isValidator && (
         <Tag
           color='theme'
-          label={t<string>('Validator')}
+          label={t<string>('Guardian')}
           size='tiny'
         />
       )}

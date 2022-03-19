@@ -118,7 +118,7 @@ function Account ({ allSlashes, className = '', info: { controllerId, destinatio
     } else if (isCandidate) {
       setRole('Candidate');
     } else if (isValidator) {
-      setRole('Validator');
+      setRole('Guardian');
     } else {
       setRole('Bonded');
     }
@@ -268,7 +268,7 @@ function Account ({ allSlashes, className = '', info: { controllerId, destinatio
         <StakingUnbonding stakingInfo={stakingAccount} />
         <StakingRedeemable stakingInfo={stakingAccount} />
       </td>
-      {activeEra && (role !== 'Validator' && role !== 'Candidate')
+      {activeEra && (role !== 'Guardian' && role !== 'Candidate')
         ? <EffectiveGuaranteed
           activeEra = {activeEra}
           stakeValue = {stakeValue}
@@ -416,7 +416,7 @@ function Account ({ allSlashes, className = '', info: { controllerId, destinatio
                         disabled={!isOwnController}
                         onClick={toggleValidate}
                       >
-                        {t<string>('Change validator preferences')}
+                        {t<string>('Change guardian preferences')}
                       </Menu.Item>
                       {isFunction(api.tx.staking.kick) && (
                         <Menu.Item

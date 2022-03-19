@@ -129,7 +129,7 @@ function CurrentList({ favorites, hasQueries, isIntentions, stakingOverview, tar
   ]);
 
   const headerActiveRef = useRef([
-    [t('validators'), 'start', 2],
+    [t('guardians'), 'start', 2],
     [t('APY of Guarantor')],
     [t('other effective stake')],
     [t('own effective stake'), 'media--1100'],
@@ -171,11 +171,11 @@ function CurrentList({ favorites, hasQueries, isIntentions, stakingOverview, tar
   return isIntentions
     ? (
       <Table
-        empty={!isLoading && waiting && nominatedBy && t<string>('No waiting validators found')}
+        empty={!isLoading && waiting && nominatedBy && t<string>('No waiting guardians found')}
         emptySpinner={
           <>
-            {!waiting && <div>{t<string>('Retrieving validators')}</div>}
-            {!infoMap && <div>{t<string>('Retrieving validator info')}</div>}
+            {!waiting && <div>{t<string>('Retrieving guardians')}</div>}
+            {!infoMap && <div>{t<string>('Retrieving guardian info')}</div>}
             {!nominatedBy && <div>{t<string>('Retrieving guarantors')}</div>}
           </>
         }
@@ -195,11 +195,11 @@ function CurrentList({ favorites, hasQueries, isIntentions, stakingOverview, tar
     )
     : (
       <Table
-        empty={!isLoading && recentlyOnline && validators && infoMap && t<string>('No active validators found')}
+        empty={!isLoading && recentlyOnline && validators && infoMap && t<string>('No active guardians found')}
         emptySpinner={
           <>
-            {!validators && <div>{t<string>('Retrieving validators')}</div>}
-            {!infoMap && <div>{t<string>('Retrieving validator info')}</div>}
+            {!validators && <div>{t<string>('Retrieving guardians')}</div>}
+            {!infoMap && <div>{t<string>('Retrieving guardian info')}</div>}
             {!recentlyOnline && <div>{t<string>('Retrieving online status')}</div>}
           </>
         }

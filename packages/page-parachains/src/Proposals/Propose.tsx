@@ -38,7 +38,7 @@ function Validator ({ address, index, setAddress, t }: ValidatorProps): React.Re
   return (
     <InputAddress
       defaultValue={address}
-      label={t('validator {{index}}', { replace: { index: index + 1 } })}
+      label={t('guardian {{index}}', { replace: { index: index + 1 } })}
       onChange={_setAddress}
     />
   );
@@ -132,7 +132,7 @@ function Propose ({ className, onClose }: Props): React.ReactElement<Props> {
             onChange={_setGenesisState}
           />
         </Modal.Columns>
-        <Modal.Columns hint={t<string>('The validators for this parachain. At least one is required and where multiple is supplied, they need to be unique.')}>
+        <Modal.Columns hint={t<string>('The guardians for this parachain. At least one is required and where multiple is supplied, they need to be unique.')}>
           {validators.map((address, index) => (
             <Validator
               address={address}
@@ -143,21 +143,21 @@ function Propose ({ className, onClose }: Props): React.ReactElement<Props> {
             />
           ))}
           {!validators.length && (
-            <MarkWarning content={t<string>('You need to supply at last one running validator for your parachain alongside this request.')} />
+            <MarkWarning content={t<string>('You need to supply at last one running guardian for your parachain alongside this request.')} />
           )}
           {isValDuplicate && (
-            <MarkWarning content={t<string>('You have duplicated validator entries, ensure each is unique.')} />
+            <MarkWarning content={t<string>('You have duplicated guardian entries, ensure each is unique.')} />
           )}
           <Button.Group>
             <Button
               icon='plus'
-              label={t<string>('Add validator')}
+              label={t<string>('Add guardian')}
               onClick={_addValidator}
             />
             <Button
               icon='minus'
               isDisabled={validators.length === 0}
-              label={t<string>('Remove validator')}
+              label={t<string>('Remove guardian')}
               onClick={_delValidator}
             />
           </Button.Group>

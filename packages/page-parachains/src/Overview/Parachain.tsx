@@ -153,7 +153,7 @@ function Parachain ({ bestNumber, className = '', id, lastBacked, lastInclusion,
         {validators && validators.length !== 0 && (
           <Expander
             renderChildren={valRender}
-            summary={t<string>('Validators ({{count}})', { replace: { count: formatNumber(validators.length) } })}
+            summary={t<string>('Guardians ({{count}})', { replace: { count: formatNumber(validators.length) } })}
           />
         )}
         {nonBacked && (

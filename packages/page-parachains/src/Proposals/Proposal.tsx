@@ -74,7 +74,7 @@ function Proposal ({ approvedIds, id, scheduled }: Props): React.ReactElement<Pr
         {proposal.proposal?.validators && (
           <Expander
             renderChildren={renderVals}
-            summary={t<string>('Validators ({{count}})', { replace: { count: formatNumber(proposal.proposal?.validators.length) } })}
+            summary={t<string>('Guardians ({{count}})', { replace: { count: formatNumber(proposal.proposal?.validators.length) } })}
           />
         )}
       </td>

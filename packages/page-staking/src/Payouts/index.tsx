@@ -174,7 +174,7 @@ function Payouts ({ className = '', isInElection, ownValidators }: Props): React
   );
 
   const headerStashes = useMemo(() => [
-    [myStashesIndex ? t('payout/stash') : t('overall/validator'), 'start', 2],
+    [myStashesIndex ? t('payout/stash') : t('overall/guardian'), 'start', 2],
     [t('eras'), 'start'],
     // [t('available')],
     [('remaining')],
@@ -190,7 +190,7 @@ function Payouts ({ className = '', isInElection, ownValidators }: Props): React
   ]);
 
   const valOptions = useMemo(() => [
-    { isDisabled: !hasOwnValidators, text: t('Validator/Candidate rewards'), value: 'val' },
+    { isDisabled: !hasOwnValidators, text: t('Guardian/Candidate rewards'), value: 'val' },
     { text: t('Guarantor rewards'), value: 'all' }
   ], [hasOwnValidators, t]);
 
@@ -230,8 +230,8 @@ function Payouts ({ className = '', isInElection, ownValidators }: Props): React
       <ElectionBanner isInElection={isInElection} />
       {hasPayouts && !isLoadingRewards && !stashes?.length && (
         <article className='warning centered'>
-          <p>{t('Payouts of rewards for a validator can be initiated by any account. This means that as soon as a validator or nominator requests a payout for an era, all the nominators for that validator will be rewarded. Each user does not need to claim individually and the suggestion is that validators should claim rewards for everybody as soon as an era ends.')}</p>
-          <p>{t('If you have not claimed rewards straight after the end of the era, the validator is in the active set and you are seeing no rewards, this would mean that the reward payout transaction was made by another account on your behalf. Always check your favorite explorer to see any historic payouts made to your accounts.')}</p>
+          <p>{t('Payouts of rewards for a guardian can be initiated by any account. This means that as soon as a guardian or nominator requests a payout for an era, all the nominators for that guardian will be rewarded. Each user does not need to claim individually and the suggestion is that guardians should claim rewards for everybody as soon as an era ends.')}</p>
+          <p>{t('If you have not claimed rewards straight after the end of the era, the guardian is in the active set and you are seeing no rewards, this would mean that the reward payout transaction was made by another account on your behalf. Always check your favorite explorer to see any historic payouts made to your accounts.')}</p>
         </article>
       )}
       <Table

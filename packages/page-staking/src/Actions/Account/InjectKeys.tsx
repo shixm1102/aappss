@@ -84,7 +84,7 @@ function InjectKeys ({ onClose }: Props): React.ReactElement<Props> | null {
       size='large'
     >
       <Modal.Content>
-        <Modal.Columns hint={t<string>('The seed and derivation path will be submitted to the validator node. this is an advanced operation, only to be performed when you are sure of the security and connection risks.')}>
+        <Modal.Columns hint={t<string>('The seed and derivation path will be submitted to the guardian node. this is an advanced operation, only to be performed when you are sure of the security and connection risks.')}>
           <Input
             autoFocus
             isError={publicKey.length !== 66}
@@ -92,7 +92,7 @@ function InjectKeys ({ onClose }: Props): React.ReactElement<Props> | null {
             onChange={setSuri}
             value={suri}
           />
-          <MarkWarning content={t<string>('This operation will submit the seed via an RPC call. Do not perform this operation on a public RPC node, but ensure that the node is local, connected to your validator and secure.')} />
+          <MarkWarning content={t<string>('This operation will submit the seed via an RPC call. Do not perform this operation on a public RPC node, but ensure that the node is local, connected to your guardian and secure.')} />
         </Modal.Columns>
         <Modal.Columns hint={t<string>('The key type and crypto type to use for this key. Be aware that different keys have different crypto requirements. You should be familiar with the type requirements for the different keys.')}>
           <Dropdown

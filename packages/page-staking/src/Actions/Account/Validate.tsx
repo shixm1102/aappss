@@ -22,7 +22,7 @@ function Validate ({ controllerId, onClose, stashId }: Props): React.ReactElemen
 
   return (
     <Modal
-      header={t<string>('Set validator preferences')}
+      header={t<string>('Set guardian preferences')}
       size='large'
     >
       <Modal.Content>

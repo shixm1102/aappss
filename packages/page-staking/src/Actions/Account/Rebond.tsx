@@ -49,7 +49,7 @@ function Rebond ({ className = '', controllerId, onClose, stakingLedger, stashId
             label={t<string>('controller account')}
           />
         </Modal.Columns>
-        <Modal.Columns hint={t<string>('The funds will only be available for withdrawal after the unbonding period, however will not be part of the staked amount after the next validator election. You can follow the unlock countdown in the UI.')}>
+        <Modal.Columns hint={t<string>('The funds will only be available for withdrawal after the unbonding period, however will not be part of the staked amount after the next guardian election. You can follow the unlock countdown in the UI.')}>
           <InputBalance
             autoFocus
             defaultValue={maxBalance}

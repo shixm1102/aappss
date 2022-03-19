@@ -51,7 +51,7 @@ function extractState (api: ApiPromise, stashId: string, slashes: Option<Slashin
     )
     .filter((nominee): nominee is string => !!nominee);
 
-  // waiting if validator is inactive or we have not submitted long enough ago
+  // waiting if guardian is inactive or we have not submitted long enough ago
   const nomsWaiting = exposures
     .map((exposure, index) =>
       exposure.total.unwrap().isZero() || (

@@ -28,7 +28,7 @@ function CutGuarantee ({ className = '', controllerId, nominating, onClose, stas
   return (
     <Modal
       className={className}
-      header={t<string>('CutGuarantee Validators')}
+      header={t<string>('CutGuarantee Guardians')}
       size='large'
     >
       <Modal.Content>

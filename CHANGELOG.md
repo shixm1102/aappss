@@ -13,7 +13,7 @@ Contributed:
 
 Changes:
 
-- Display validator votes on parachains
+- Display guardian votes on parachains
 - Adjust society (display split, expand member/candidate info & payouts)
 - Adjust inflation calculation for zero staked/issuance
 - Display call hash on signer modal
@@ -71,8 +71,8 @@ Contributed:
 Changes:
 
 - Fix address ion display in explorer (compatibility with `MultiAddress`)
-- Add block status to validator preferences setup
-- Allow validators to remove nominators (currently active-only)
+- Add block status to guardian preferences setup
+- Allow guardians to remove nominators (currently active-only)
 - Stash derives now check for events for refresh triggers
 - Adjust Electron CSP to allow workers as used in QR operations
 - Swap code-generation to ESM modules
@@ -97,7 +97,7 @@ Contributed:
 Changes:
 
 - Explicit messages around extension phishing support
-- Adjust parachain validators to always show stashes
+- Adjust parachain guardians to always show stashes
 - Adjust block links display on a per-contract view
 - Adjust display of disabled items on popup menus (dark-mode driven)
 - Align bounty row display with the rest of the UI
@@ -121,11 +121,11 @@ Contributed:
 
 Changes:
 
-- Display validators for all connected parachains
+- Display guardians for all connected parachains
 - Adjust included block parachain calculation
 - Align bounties display with UI styling
 - Rework calculation for min-available balance warning in signer
-- Adjust slashed validators display (check against known eras)
+- Adjust slashed guardians display (check against known eras)
 - Cleanup JS console app examples for system.account usage
 - Adjust JS console app sending example (incl. Signer fix)
 - Display error on contracts deploy pre-3.0 Substrate with no utility.batch
@@ -152,7 +152,7 @@ Changes:
 
 - Adjust explorer block display to not show unsigned as immortal (no era info)
 - Protect against overflows in staking returns calculations
-- Add warning on none bonded to not send to validators, but rather bond
+- Add warning on none bonded to not send to guardians, but rather bond
 - Adjust staking min-bonded overall calculations
 - Cleanup accounts loading display (no initial flash)
 - Add Register action for parachains (non-proposal mode)
@@ -171,7 +171,7 @@ Changes:
 
 Contributed:
 
-- Display Validator/Nominator flags on account sidebar (Thanks to https://github.com/jhonalino)
+- Display Guardian/Nominator flags on account sidebar (Thanks to https://github.com/jhonalino)
 - Add ChainX endpoints from Patract Elana (Thanks to https://github.com/toxotguo)
 - Add Ternoa network (Thanks to https://github.com/ETeissonniere)
 - Add Idavoll network (Thanks to https://github.com/jasonberger0)
@@ -509,7 +509,7 @@ Changes:
 - Expand staking account filters (payouts, # nominators, grouping)
 - Use percentage-based model for returns on staking targets
 - Display actual chain inflation as well as average staking returns
-- Adjust refresh on validator chill, i.e. it moves to correct location
+- Adjust refresh on guardian chill, i.e. it moves to correct location
 - User-defined RPCs (via config), not are treated first-class (operating everywhere)
 - MultiSig now allows any participant to reject (despite any prior approvals)
 - Adjust base fonts with saner cross-platform (from new.css) defaults
@@ -683,7 +683,7 @@ Changes:
 - Add experimental dark UI theme
 - Adjust i18n strings for network endpoint (explicit as per display)
 - Adjust vesting display with no countdown when fully vested
-- Adjust validator rewards, fixing issues with "keeps loading" when retrieved in the current era
+- Adjust guardian rewards, fixing issues with "keeps loading" when retrieved in the current era
 - Adjust updates on per-era change, protecting against non-existent (not yet retrieved) exposures
 - Add RoboHash icon theme
 - Adjust logging in InputAddress transforms (don't log already-handled errors)
@@ -713,7 +713,7 @@ Changes:
 - Add toggle to control unlock duration
 - URI-encode RPC param (allowing for WS url params)
 - Bump Edgeware types (after 2.0-rc upgrade)
-- Adjust warning icon for oversubscribed validators
+- Adjust warning icon for oversubscribed guardians
 - Simplify JSON import via new keyring functionality
 - Adjust button hover highlights for consistency
 - `@polkadot/api` 2.0.1
@@ -728,7 +728,7 @@ Contributed:
 - Update Commonwealth links to support Kulupu (Thanks to https://github.com/carumusan)
 - Update Kulupu treasury thresholds (Thanks to https://github.com/sorpaas)
 - Update Darwinia Crab types (Thanks to https://github.com/WoeOm)
-- display per-validator breakdown values to nominators (Thanks to https://github.com/Tbaut)
+- display per-guardian breakdown values to nominators (Thanks to https://github.com/Tbaut)
 - Update Italian i18n (Thanks to https://github.com/fomod-in)
 - Update Indonesian i18n (Thanks to https://github.com/nzjourney)
 
@@ -767,9 +767,9 @@ Changes:
 
 - Block explorer will display error message where block cannot be retrieved
 - Allow for display of Reward destination as Account on account actions
-- Display commission graphs in validator chart breakdown
+- Display commission graphs in guardian chart breakdown
 - Optimize rendering of staking charts
-- Show own nomination (badge) in all validator lists
+- Show own nomination (badge) in all guardian lists
 - QR codes are checked for hex validity before sending
 - Optimization of re-renders in signer
 - Ensure signer does not confuse Ledger with QR (button text)
@@ -832,7 +832,7 @@ Changes:
 - Add bulk tipping (median) functionality to treasury tips
 - Add a calendar app that show current and upcoming chain events
 - Ensure max nomination limits (64) badges are displayed in all location on staking
-- Show oversubscribed validators under accounts & on staking overview
+- Show oversubscribed guardians under accounts & on staking overview
 - Show the next burn amount on treasury
 - Add warning on new treasury proposals that rejections will lose the bond
 - Add explicit Aye/Nay buttons on all voting modals (no toggle)
@@ -922,7 +922,7 @@ Changes:
 - Display own slashes for all nominators (Actions & Slashes pages)
 - Display overall staked average and minimum on targets page
 - Adjust council display to show desired runnersup
-- Validator-only payout toggles (as detected)
+- Guardian-only payout toggles (as detected)
 - Base support for time-delay proxies (API-level only, both old and new calls)
 - Adjust saving for address inputs via AccountIndex (incl. logo from AccountId)
 - Don't allow chain selection on IPNS-with-chain endpoints
@@ -977,7 +977,7 @@ Changes:
 
 - Remove auto-select defaults for nomination, adjust loading for all selector
 - Display Slashing tab on staking overview (as available)
-- Indicate per-validator slashes in accounts (chilled) & staking targets
+- Indicate per-guardian slashes in accounts (chilled) & staking targets
 - Display scheduled tasks (ongoing) on democracy page
 - Adjust endpoint selector with slide-out as opposed to modal (all visible)
 - Cleanup democracy delegation to highlight invalid amounts
@@ -1148,8 +1148,8 @@ Changes:
 - Display referendum & treasury tips voting status
 - Add tips close buttons & countdown timer
 - Disabled nominations via targets when in election
-- Expand targets page to include waiting validators (full overview of all)
-- Apply shared filters (name, toggles) on all validator lists
+- Expand targets page to include waiting guardians (full overview of all)
+- Apply shared filters (name, toggles) on all guardian lists
 - Display balances in account view sidebar
 - Adjust signer dialog ith split sign/send (better status displays)
 - Adjust proxy checks for sudo calls to closer align with Polkadot
@@ -1230,7 +1230,7 @@ Changes:
 
 - Support for Polkadot CC1 types & RPC endpoints
 - Detect & support new proposal close process in Substrate
-- Adjust checks for on-click validator (immediate isActive)
+- Adjust checks for on-click guardian (immediate isActive)
 - `@polkadot/api` 1.16.1
 - `@polkadot/util` 2.11.1
 
@@ -1264,7 +1264,7 @@ Changes:
 - Ledger address on-wallet display option
 - Add support for new per-staker payouts
 - Allow for "best" selection in staking
-- Simplified nominator & validator creation flows
+- Simplified nominator & guardian creation flows
 - Display >64 nominators on staking pages (clipped payouts)
 - Remove tooltips on staking and elsewhere (large number causes performance issues)
 - Council isMember checks uses council in addition to elections
@@ -1300,14 +1300,14 @@ Contributed:
 Changes:
 
 - Show remaining time on staking payout actions, link payouts from actions
-- Display per-validator nominators on waiting list
+- Display per-guardian nominators on waiting list
 - Add support for Treasury tipping (display of available & creation)
 - Adjust display of passing/failing calcs in democracy (incl. no display when other side is 0)
 - Enable use of `system_chainType` to detect development chains
 - Adjust Expander display for balances as used in accounts
 - Adjust formatting outputs (via cleanup) for state queries
 - Cleanup nowrap on Extender as part of tables
-- Optimize retrieval of old-style validator/nominator payouts (not full historyDepth)
+- Optimize retrieval of old-style guardian/nominator payouts (not full historyDepth)
 - Optimize AccountName with caching & when used in lists (no lookup information attached, but not shown)
 - Optimize IdentityIcon with removal of extra queries
 - Optimize Transfers, no unneeded useEffect
@@ -1415,18 +1415,18 @@ Changes:
 - Speed improvements for the staking pages
 - Add account derivation from existing account
 - Council voting with runner up & phragmen
-- Allow favorites in validators pages
+- Allow favorites in guardians pages
 - Rework nominations to take favorites & current into account
 - Enhance AddressCard with additional info (incl. vested)
 - Move account/address actions to popup menu
 - Convert a large number of components to use hooks
-- Display validator graphs
+- Display guardian graphs
 - Refactor of backup modal (Thanks to @LukeSugiura)
 - Enable language setting options (Thanks to @LukeSugiura)
 - Allow for signRaw to be used in the signing toolbox (injected accounts)
 - Display account names in status events
 - Nomination targets dashboard
-- Validator preferences are expressed as commission % as supported by chains
+- Guardian preferences are expressed as commission % as supported by chains
 - Account locks are applied on a genesis range (e.g. CC2 & CC3 allow availability)
 - ... lots of smaller enhancements & bug fixes
 
@@ -1465,7 +1465,7 @@ Changes:
 - Support for accounts tied to specific chains (instead of just available to all)
 - GenericAsset app transfers
 - Support for Edgeware with default types
-- Display received heartbeats for validators
+- Display received heartbeats for guardians
 - Allow optional params (really as optional) in RPC toolbox
 - Add Polkascan for Kusama
 - Fix account derivation with `///password`

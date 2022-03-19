@@ -35,7 +35,7 @@ function Summary ({ className = '', isVisible, stakingOverview, targets: { infla
   return (
     <SummaryBox className={`${className}${!isVisible ? ' staking--hidden' : ''}`}>
       <section>
-        <CardSummary label={t<string>('validators')}>
+        <CardSummary label={t<string>('guardians')}>
           {stakingOverview
             ? <>{formatNumber(stakingOverview.validators.length)}&nbsp;/&nbsp;{formatNumber(stakingOverview.validatorCount)}</>
             : <Spinner noLabel />

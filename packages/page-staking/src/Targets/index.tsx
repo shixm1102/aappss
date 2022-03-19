@@ -233,7 +233,7 @@ function Targets ({ className = '', isInElection, ownStashes, targets: { avgStak
   );
 
   const header = useMemo(() => [
-    [t('validators'), 'start', 3],
+    [t('guardians'), 'start', 3],
     [t('payout'), 'media--1400'],
     [t('guarantors'), 'media--1200', 2],
     [t('guarantee fee'), 'media--1100'],
@@ -316,10 +316,10 @@ function Targets ({ className = '', isInElection, ownStashes, targets: { avgStak
       </Button.Group>
       <ElectionBanner isInElection={isInElection} />
       <Table
-        empty={sorted && t<string>('No active validators to check')}
+        empty={sorted && t<string>('No active guardians to check')}
         emptySpinner={
           <>
-            {!(validators && allIdentity) && <div>{t('Retrieving validators')}</div>}
+            {!(validators && allIdentity) && <div>{t('Retrieving guardians')}</div>}
             {!nominatedBy && <div>{t('Retrieving guarantors')}</div>}
           </>
         }

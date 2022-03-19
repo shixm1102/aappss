@@ -86,7 +86,7 @@ function CutGuarantee ({ className = '', controllerId, onChange, stashId, target
         </Modal.Content>
       )}
       <Modal.Content>
-        <Modal.Columns hint={[t<string>('Guarantors can be selected manually from the list of all currently available validators.'), t<string>('Once transmitted the new selection will only take effect in 2 eras taking the new validator election cycle into account. Until then, the nominations will show as inactive.')]}>
+        <Modal.Columns hint={[t<string>('Guarantors can be selected manually from the list of all currently available guardians.'), t<string>('Once transmitted the new selection will only take effect in 2 eras taking the new guardian election cycle into account. Until then, the nominations will show as inactive.')]}>
           <InputAddressMulti
             available={available}
             availableLabel={t<string>('guaranteed accounts')}

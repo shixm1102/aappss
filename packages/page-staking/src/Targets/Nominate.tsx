@@ -80,7 +80,7 @@ function Nominate ({ className = '', isDisabled, ownNominators, targets }: Props
       {isOpen && (
         <Modal
           className={className}
-          header={t<string>('Guarantee validators')}
+          header={t<string>('Guarantee guardians')}
           size='large'
         >
           <Modal.Content>
@@ -110,12 +110,12 @@ function Nominate ({ className = '', isDisabled, ownNominators, targets }: Props
             </Modal.Columns>
             <Modal.Columns hint={
               <>
-                <p>{t<string>('The selected validators to guarantee, either via the "currently best algorithm" or via a manual selection.')}</p>
+                <p>{t<string>('The selected guardians to guarantee, either via the "currently best algorithm" or via a manual selection.')}</p>
                 <p>{t<string>('Once transmitted the new selection will only take effect in 2 eras since the selection criteria for the next era was done at the end of the previous era. Until then, the nominations will show as inactive.')}</p>
               </>
             }>
               <Static
-                label={t<string>('selected validators')}
+                label={t<string>('selected guardians')}
                 value={
                   targets.map((validatorId) => (
                     <AddressMini
