@@ -70,7 +70,7 @@ function ProposeCuratorAction ({ description, index, proposals, value }: Props):
               <Modal.Columns hint={t<string>('The council member that will create the motion.')}>
                 <InputAddress
                   filter={members}
-                  help={t<string>('Select the council miner account you wish to use to create a motion for the Bounty.')}
+                  help={t<string>('Select the council member account you wish to use to create a motion for the Bounty.')}
                   label={t<string>('proposing account')}
                   onChange={setAccountId}
                   type='account'
