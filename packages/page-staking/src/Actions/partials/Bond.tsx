@@ -166,7 +166,7 @@ function Bond({ className = '', isNominating, minNomination, onChange }: Props):
         <Modal.Columns hint={t<string>('Rewards (once paid) can be deposited to either the stash or controller, with different effects.')}>
           <Dropdown
             defaultValue={0}
-            help={t<string>('The destination account for any payments as either a nominator or validator')}
+            help={t<string>('The destination account for any payments as either a nominator or guardian')}
             label={t<string>('payment destination')}
             onChange={setDestination}
             options={options}

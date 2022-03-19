@@ -171,7 +171,7 @@ function Actions ({ className = '', isInElection, ownStashes, targets }: Props):
       </Button.Group>
       <ElectionBanner isInElection={isInElection} />
       <Table
-        empty={filtered && t<string>('No funds staked yet. Bond funds to validate or nominate a validator')}
+        empty={filtered && t<string>('No funds staked yet. Bond funds to validate or nominate a guardian')}
         footer={footer}
         header={headerRef.current}
       >

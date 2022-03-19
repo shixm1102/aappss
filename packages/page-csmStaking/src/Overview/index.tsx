@@ -197,7 +197,7 @@ function Overview({ providers, isLoading, summaryInfo }: Props): React.ReactElem
     </h3>
     {isLoading ? <Spinner noLabel /> : <Summary isLoading={isLoading} info={summaryInfo} />}
     <Table
-      empty={!isLoading && t<string>('No funds staked yet. Bond funds to validate or nominate a validator')}
+      empty={!isLoading && t<string>('No funds staked yet. Bond funds to validate or nominate a guardian')}
       header={header}
       filter={filter}
     >

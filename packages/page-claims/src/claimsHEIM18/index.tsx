@@ -218,7 +218,7 @@ function ClaimsMainnet (): React.ReactElement<Props> {
             />
             {/* <Dropdown
               defaultValue={accountId?.toString()}
-              help={t<string>('The destination account for any payments as either a nominator or validator')}
+              help={t<string>('The destination account for any payments as either a nominator or guardian')}
               label={t<string>('token types')}
               onChange={setTokenType}
               options={options}

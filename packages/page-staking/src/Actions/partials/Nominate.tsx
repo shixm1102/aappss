@@ -131,7 +131,7 @@ function Nominate ({ className = '', controllerId, onChange, stashId, targets: {
               })}</p>
             </Banner>
             : <Banner type='error'>
-              <p>{t<string>('Browse the Overview and Waiting pages, you can get the validator(candidate)\'s APY')}</p>
+              <p>{t<string>('Browse the Overview and Waiting pages, you can get the guardian(candidate)\'s APY')}</p>
             </Banner>)}
         </Modal.Columns>
       </Modal.Content>

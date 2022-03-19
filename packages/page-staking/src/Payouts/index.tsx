@@ -182,7 +182,7 @@ function Payouts ({ className = '', isInElection, ownValidators }: Props): React
   ], [myStashesIndex, t]);
 
   const headerValidatorsRef = useRef([
-    [t('payout/validator'), 'start', 2],
+    [t('payout/guardian'), 'start', 2],
     [t('eras'), 'start'],
     // [t('available')],
     [('remaining')],
