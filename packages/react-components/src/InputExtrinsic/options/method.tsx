@@ -7,7 +7,7 @@ import React from 'react';
 
 import { ApiPromise } from '@polkadot/api';
 
-export default function createOptions (api: ApiPromise, sectionName: string): DropdownOptions {
+export default function createOptions(api: ApiPromise, sectionName: string): DropdownOptions {
   const section = api.tx[sectionName];
 
   if (!section || Object.keys(section).length === 0) {
@@ -24,6 +24,11 @@ export default function createOptions (api: ApiPromise, sectionName: string): Dr
         .map((arg): string => arg.name.toString())
         .join(', ');
 
+      const showtext = value.replaceAll('Member', 'Miner').replaceAll('member', 'miner').replaceAll('Validator', 'Guardian').replaceAll('validator', 'guardian');
+
+      const documentation = (method.meta.documentation[0] || showtext).toString()
+      const methoddoc = documentation.replaceAll('Member', 'Miner').replaceAll('member', 'miner').replaceAll('Validator', 'Guardian').replaceAll('validator', 'guardian');
+
       return {
         className: 'ui--DropdownLinked-Item',
         key: `${sectionName}_${value}`,
@@ -32,13 +37,13 @@ export default function createOptions (api: ApiPromise, sectionName: string): Dr
             className='ui--DropdownLinked-Item-call'
             key={`${sectionName}_${value}:call`}
           >
-            {value}({inputs})
+            {showtext}({inputs})
           </div>,
           <div
             className='ui--DropdownLinked-Item-text'
             key={`${sectionName}_${value}:text`}
           >
-            {(method.meta.documentation[0] || value).toString()}
+            {methoddoc}
           </div>
         ],
         value
