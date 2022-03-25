@@ -10,8 +10,12 @@ export default function createOptions (api: ApiPromise): DropdownOptions {
     .keys(api.query)
     .sort()
     .filter((name): number => Object.keys(api.query[name]).length)
-    .map((name): { text: string; value: string } => ({
-      text: name,
-      value: name
-    }));
+    .map((name): { text: string; value: string } => {
+      const showtext = name.replaceAll('Member', 'Miner').replaceAll('member', 'miner').replaceAll('Validator', 'Guardian').replaceAll('validator', 'guardian');
+
+      return {
+        text: showtext,
+        value: name
+      };
+    });
 }

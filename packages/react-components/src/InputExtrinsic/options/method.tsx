@@ -25,9 +25,9 @@ export default function createOptions(api: ApiPromise, sectionName: string): Dro
         .join(', ');
 
       const showtext = value.replaceAll('Member', 'Miner').replaceAll('member', 'miner').replaceAll('Validator', 'Guardian').replaceAll('validator', 'guardian');
-
-      const documentation = (method.meta.documentation[0] || showtext).toString()
-      const methoddoc = documentation.replaceAll('Member', 'Miner').replaceAll('member', 'miner').replaceAll('Validator', 'Guardian').replaceAll('validator', 'guardian');
+      const inputstext = inputs.replaceAll('Member', 'Miner').replaceAll('member', 'miner').replaceAll('Validator', 'Guardian').replaceAll('validator', 'guardian');
+      const doc = (method.meta.documentation[0] || showtext).toString();
+      const doctext = doc.replaceAll('Member', 'Miner').replaceAll('member', 'miner').replaceAll('Validator', 'Guardian').replaceAll('validator', 'guardian');
 
       return {
         className: 'ui--DropdownLinked-Item',
@@ -37,13 +37,13 @@ export default function createOptions(api: ApiPromise, sectionName: string): Dro
             className='ui--DropdownLinked-Item-call'
             key={`${sectionName}_${value}:call`}
           >
-            {showtext}({inputs})
+            {showtext}({inputstext})
           </div>,
           <div
             className='ui--DropdownLinked-Item-text'
             key={`${sectionName}_${value}:text`}
           >
-            {methoddoc}
+            {doctext}
           </div>
         ],
         value

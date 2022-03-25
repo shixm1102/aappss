@@ -9,7 +9,7 @@ import React from 'react';
 import { ApiPromise } from '@polkadot/api';
 import { unwrapStorageType } from '@polkadot/types/primitive/StorageKey';
 
-export default function createOptions (api: ApiPromise, sectionName: string): DropdownOptions {
+export default function createOptions(api: ApiPromise, sectionName: string): DropdownOptions {
   const section = api.query[sectionName];
 
   if (!section || Object.keys(section).length === 0) {
@@ -31,6 +31,12 @@ export default function createOptions (api: ApiPromise, sectionName: string): Dr
         ? `Option<${unwrapStorageType(type)}>`
         : unwrapStorageType(type);
 
+      const valuetext = value.replaceAll('Member', 'Miner').replaceAll('member', 'miner').replaceAll('Validator', 'Guardian').replaceAll('validator', 'guardian');
+      const inputtext = input.replaceAll('Member', 'Miner').replaceAll('member', 'miner').replaceAll('Validator', 'Guardian').replaceAll('validator', 'guardian');
+      const outputtext = output.replaceAll('Member', 'Miner').replaceAll('member', 'miner').replaceAll('Validator', 'Guardian').replaceAll('validator', 'guardian');
+      const doc = (method.meta.documentation[0] || method.meta.name).toString();
+      const doctext = doc.replaceAll('Member', 'Miner').replaceAll('member', 'miner').replaceAll('Validator', 'Guardian').replaceAll('validator', 'guardian');
+
       return {
         className: 'ui--DropdownLinked-Item',
         key: `${sectionName}_${value}`,
@@ -39,13 +45,13 @@ export default function createOptions (api: ApiPromise, sectionName: string): Dr
             className='ui--DropdownLinked-Item-call'
             key={`${sectionName}_${value}:call`}
           >
-            {value}({input}): {output}
+            {valuetext}({inputtext}): {outputtext}
           </div>,
           <div
             className='ui--DropdownLinked-Item-text'
             key={`${sectionName}_${value}:text`}
           >
-            {(method.meta.documentation[0] || method.meta.name).toString()}
+            {doctext}
           </div>
         ],
         value

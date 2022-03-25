@@ -5,13 +5,17 @@ import type { DropdownOptions } from '../../util/types';
 
 import { ApiPromise } from '@polkadot/api';
 
-export default function createOptions (api: ApiPromise): DropdownOptions {
+export default function createOptions(api: ApiPromise): DropdownOptions {
   return Object
     .keys(api.consts)
     .sort()
     .filter((name): number => Object.keys(api.consts[name]).length)
-    .map((name): { text: string; value: string } => ({
-      text: name,
-      value: name
-    }));
+    .map((name): { text: string; value: string } => {
+      const showtext = name.replaceAll('Member', 'Miner').replaceAll('member', 'miner').replaceAll('Validator', 'Guardian').replaceAll('validator', 'guardian');
+
+      return {
+        text: showtext,
+        value: name
+      };
+    });
 }

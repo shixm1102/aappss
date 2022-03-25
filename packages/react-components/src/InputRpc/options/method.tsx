@@ -8,7 +8,7 @@ import React from 'react';
 
 import { ApiPromise } from '@polkadot/api';
 
-export default function createOptions (api: ApiPromise, rpcs: Record<string, Record<string, DefinitionRpcExt>>, sectionName: string): DropdownOptions {
+export default function createOptions(api: ApiPromise, rpcs: Record<string, Record<string, DefinitionRpcExt>>, sectionName: string): DropdownOptions {
   const section = rpcs[sectionName];
 
   if (!section || Object.keys((api.rpc as Record<string, Record<string, unknown>>)[sectionName]).length === 0) {
@@ -24,6 +24,11 @@ export default function createOptions (api: ApiPromise, rpcs: Record<string, Rec
     .map(({ description, method, params }): DropdownOption => {
       const inputs = params.map(({ name }) => name).join(', ');
 
+      const methodtext = method.replaceAll('Member', 'Miner').replaceAll('member', 'miner').replaceAll('Validator', 'Guardian').replaceAll('validator', 'guardian');
+      const inputstext = inputs.replaceAll('Member', 'Miner').replaceAll('member', 'miner').replaceAll('Validator', 'Guardian').replaceAll('validator', 'guardian');
+      const desc = description || method;
+      const doctext = desc.replaceAll('Member', 'Miner').replaceAll('member', 'miner').replaceAll('Validator', 'Guardian').replaceAll('validator', 'guardian');
+
       return {
         className: 'ui--DropdownLinked-Item',
         key: `${sectionName}_${method}`,
@@ -32,13 +37,13 @@ export default function createOptions (api: ApiPromise, rpcs: Record<string, Rec
             className='ui--DropdownLinked-Item-call'
             key={`${sectionName}_${method}:call`}
           >
-            {method}({inputs})
+            {methodtext}({inputstext})
           </div>,
           <div
             className='ui--DropdownLinked-Item-text'
             key={`${sectionName}_${method}:text`}
           >
-            {description || method}
+            {doctext}
           </div>
         ],
         value: method

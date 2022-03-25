@@ -21,6 +21,12 @@ export default function createOptions (api: ApiPromise, sectionName: string): Dr
     .map((value): DropdownOption => {
       const method = (section[value] as ConstantCodec);
 
+      const showtext = value.replaceAll('Member', 'Miner').replaceAll('member', 'miner').replaceAll('Validator', 'Guardian').replaceAll('validator', 'guardian');
+      const type = method.meta.type.toString();
+      const typetext = type.replaceAll('Member', 'Miner').replaceAll('member', 'miner').replaceAll('Validator', 'Guardian').replaceAll('validator', 'guardian');
+      const doc = (method.meta.documentation[0] || method.meta.name).toString();
+      const doctext = doc.replaceAll('Member', 'Miner').replaceAll('member', 'miner').replaceAll('Validator', 'Guardian').replaceAll('validator', 'guardian');
+
       return {
         className: 'ui--DropdownLinked-Item',
         key: `${sectionName}_${value}`,
@@ -29,13 +35,13 @@ export default function createOptions (api: ApiPromise, sectionName: string): Dr
             className='ui--DropdownLinked-Item-call'
             key={`${sectionName}_${value}:call`}
           >
-            {value}: {method.meta.type.toString()}
+            {showtext}: {typetext}
           </div>,
           <div
             className='ui--DropdownLinked-Item-text'
             key={`${sectionName}_${value}:text`}
           >
-            {(method.meta.documentation[0] || method.meta.name).toString()}
+            {doctext}
           </div>
         ],
         value

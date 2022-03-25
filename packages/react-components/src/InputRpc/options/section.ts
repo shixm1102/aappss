@@ -10,8 +10,12 @@ export default function createOptions (api: ApiPromise): DropdownOptions {
     .keys(api.rpc)
     .sort()
     .filter((section) => Object.keys((api.rpc as Record<string, Record<string, unknown>>)[section]).length !== 0)
-    .map((name): { text: string; value: string } => ({
-      text: name,
-      value: name
-    }));
+    .map((name): { text: string; value: string } => {
+      const showtext = name.replaceAll('Member', 'Miner').replaceAll('member', 'miner').replaceAll('Validator', 'Guardian').replaceAll('validator', 'guardian');
+
+      return {
+        text: showtext,
+        value: name
+      };
+    });
 }
