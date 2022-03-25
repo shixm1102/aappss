@@ -135,7 +135,7 @@ function renderItem ({ error, extrinsic, id, removeItem, rpc, status }: QueueTx)
           </div>
           <div className='desc'>
             <div className='header'>
-              {section}.{method}
+              {section.replaceAll('Member', 'Miner').replaceAll('member', 'miner').replaceAll('Validator', 'Guardian').replaceAll('validator', 'guardian')}.{method.replaceAll('Member', 'Miner').replaceAll('member', 'miner').replaceAll('Validator', 'Guardian').replaceAll('validator', 'guardian')}
             </div>
             <div className='status'>
               {error ? (error.message || error) : status}
