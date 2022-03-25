@@ -78,7 +78,7 @@ function ExtrinsicDisplay ({ blockNumber, className = '', events, index, value }
         colSpan={2}
       >
         <Expander
-          summary={`${section}.${method}`}
+          summary={`${section.replaceAll('Member', 'Miner').replaceAll('member', 'miner').replaceAll('Validator', 'Guardian').replaceAll('validator', 'guardian')}.${method.replaceAll('Member', 'Miner').replaceAll('member', 'miner').replaceAll('Validator', 'Guardian').replaceAll('validator', 'guardian')}`}
           summaryMeta={meta}
         >
           <Call

@@ -166,7 +166,7 @@ function Query ({ className = '', onRemove, value }: Props): React.ReactElement<
         <Labelled
           label={
             <div className='storage--actionrow-label'>
-              {callName}: {callType}
+              {callName.replaceAll('Member', 'Miner').replaceAll('member', 'miner').replaceAll('Validator', 'Guardian').replaceAll('validator', 'guardian')}: {callType.replaceAll('Member', 'Miner').replaceAll('member', 'miner').replaceAll('Validator', 'Guardian').replaceAll('validator', 'guardian')}
             </div>
           }
         >

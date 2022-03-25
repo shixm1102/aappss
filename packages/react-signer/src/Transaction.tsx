@@ -20,7 +20,7 @@ interface Props {
   tip?: BN;
 }
 
-function Transaction ({ className, currentItem: { accountId, extrinsic, isUnsigned, payload }, isSendable, onError, tip }: Props): React.ReactElement<Props> | null {
+function Transaction({ className, currentItem: { accountId, extrinsic, isUnsigned, payload }, isSendable, onError, tip }: Props): React.ReactElement<Props> | null {
   const { t } = useTranslation();
 
   if (!extrinsic) {
@@ -30,6 +30,8 @@ function Transaction ({ className, currentItem: { accountId, extrinsic, isUnsign
   const { meta, method, section } = extrinsic.registry.findMetaCall(extrinsic.callIndex);
   const args = meta?.args.map(({ name }) => name).join(', ') || '';
 
+  const sendtext = `${section}.${method}(${args})`.replaceAll('Member', 'Miner').replaceAll('member', 'miner').replaceAll('Validator', 'Guardian').replaceAll('validator', 'guardian');
+
   return (
     <Modal.Columns
       className={className}
@@ -37,7 +39,7 @@ function Transaction ({ className, currentItem: { accountId, extrinsic, isUnsign
     >
       <Expander
         className='tx-details'
-        summary={<>{t<string>('Sending transaction')} <span className='highlight'>{section}.{method}({args})</span></>}
+        summary={<>{t<string>('Sending transaction')} <span className='highlight'>{sendtext}</span></>}
         summaryMeta={meta}
       >
         <Call

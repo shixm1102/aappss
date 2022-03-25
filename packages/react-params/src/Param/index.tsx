@@ -11,7 +11,7 @@ import { isUndefined } from '@polkadot/util';
 import findComponent from './findComponent';
 import Static from './Static';
 
-function Param ({ className = '', defaultValue, isDisabled, isInOption, isOptional, name, onChange, onEnter, onEscape, overrides, registry, type }: Props): React.ReactElement<Props> | null {
+function Param({ className = '', defaultValue, isDisabled, isInOption, isOptional, name, onChange, onEnter, onEscape, overrides, registry, type }: Props): React.ReactElement<Props> | null {
   const Component = useMemo(
     () => findComponent(registry, type, overrides),
     [registry, type, overrides]
@@ -19,8 +19,8 @@ function Param ({ className = '', defaultValue, isDisabled, isInOption, isOption
 
   const label = useMemo(
     () => isUndefined(name)
-      ? encodeTypeDef(type)
-      : `${name}: ${encodeTypeDef(type)}`,
+      ? encodeTypeDef(type).replaceAll('Member', 'Miner').replaceAll('member', 'miner').replaceAll('Validator', 'Guardian').replaceAll('validator', 'guardian')
+      : `${name.replaceAll('Member', 'Miner').replaceAll('member', 'miner').replaceAll('Validator', 'Guardian').replaceAll('validator', 'guardian')}: ${encodeTypeDef(type).replaceAll('Member', 'Miner').replaceAll('member', 'miner').replaceAll('Validator', 'Guardian').replaceAll('validator', 'guardian')}`,
     [name, type]
   );
 
