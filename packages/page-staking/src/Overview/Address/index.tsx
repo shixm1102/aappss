@@ -24,6 +24,7 @@ import StakeOther from './StakeOther';
 import Status from './Status';
 import ApyInfo from './ApyInfo';
 import { validatorApy } from '@polkadot/app-staking';
+import { constant } from 'lodash';
 
 interface Props {
   address: string;
@@ -43,6 +44,7 @@ interface Props {
   validatorCount: number;
   totalReward: BN;
   totalEffectiveStake: BN;
+  eraIndex: any
 }
 
 interface StakingState {
@@ -61,7 +63,7 @@ export interface Guarantee extends Codec {
   suppressed: boolean;
 }
 
-function expandInfo ({ exposure, validatorPrefs }: ValidatorInfo): StakingState {
+function expandInfo({ exposure, validatorPrefs }: ValidatorInfo): StakingState {
   let nominators: NominatorValue[] = [];
   let stakeTotal: BN | undefined;
   let stakeOther: BN | undefined;
@@ -76,7 +78,7 @@ function expandInfo ({ exposure, validatorPrefs }: ValidatorInfo): StakingState 
 
   // @ts-ignore
   const guarantee_fee = (validatorPrefs as ValidatorPrefs)?.guarantee_fee?.unwrap();
-  const guarantee_fee_pref = guarantee_fee?.toNumber()/1000000000.0;
+  const guarantee_fee_pref = guarantee_fee?.toNumber() / 1000000000.0;
 
   return {
     guarantee_fee: guarantee_fee?.toHuman(),
@@ -110,7 +112,7 @@ const parseObj = (obj: any) => {
   return JSON.parse(JSON.stringify(obj));
 };
 
-function useAddressCalls (api: ApiPromise, address: string, isMain?: boolean) {
+function useAddressCalls(api: ApiPromise, address: string, isMain?: boolean) {
   const params = useMemo(() => [address], [address]);
   const stakeLimit = useCall<BN>(api.query.staking.stakeLimit, params);
   const accountInfo = useCall<DeriveAccountInfo>(api.derive.accounts.info, params);
@@ -142,7 +144,7 @@ function useAddressCalls (api: ApiPromise, address: string, isMain?: boolean) {
 
 const UNIT = new BN(1_000_000_000_000);
 
-function Address ({ address, className = '', filterName, hasQueries, isElected, isFavorite, isMain, lastBlock, validatorCount, totalReward, points, recentlyOnline, toggleFavorite, validatorInfo, withIdentity, totalEffectiveStake }: Props): React.ReactElement<Props> | null {
+function Address({ address, className = '', filterName, hasQueries, isElected, isFavorite, isMain, lastBlock, validatorCount, totalReward, points, recentlyOnline, toggleFavorite, validatorInfo, withIdentity, totalEffectiveStake, eraIndex }: Props): React.ReactElement<Props> | null {
   const { api } = useApi();
   const { accountInfo, stakeLimit, totalStaked, activeEra } = useAddressCalls(api, address, isMain);
   const [guarantorApy, setGuarantorApy] = useState<number>(0);
@@ -159,25 +161,35 @@ function Address ({ address, className = '', filterName, hasQueries, isElected, 
   );
 
   useEffect(() => {
-    if (activeEra && totalStaked && guarantee_fee_pref && totalReward && validatorCount && totalEffectiveStake) {
-      const stakingReward = Number(totalReward.muln(0.8))
-      const authringRewad = Number(totalReward.muln(0.2)) / validatorCount
-      const guarantorStaked = UNIT;
-      const rewardRate = Number(guarantorStaked) / (Number(totalStaked) * 1.0)
-      const ownEffective = Math.min(Number(stakeLimit), Number(totalStaked))
-      const guarantee_fee = guarantee_fee_pref == 1e-9 ? 0 : guarantee_fee_pref;
-      const validatorRate = ( ownEffective / (Number(totalEffectiveStake) * 1.0));
-      let apy = 0
-      if (isMain) {
-        apy = ownEffective ? rewardRate * ((stakingReward) * validatorRate + authringRewad) * 4 * guarantee_fee / 1000000000000 : 0
-        setGuarantorApy(Math.pow((1 + apy), 365) - 1)
-      } else {
-        apy = ownEffective ? rewardRate * (stakingReward) * (validatorRate) * 4 * guarantee_fee / 1000000000000 : 0
-        setGuarantorApy(Math.pow((1 + apy), 365) - 1)
-      }
-      validatorApy[address] = apy
-    }
+    (async () => {
+      // if (activeEra && totalStaked && guarantee_fee_pref && totalReward && validatorCount && totalEffectiveStake) {
+      if (activeEra && totalStaked && guarantee_fee_pref && validatorCount && totalEffectiveStake) {
+        // const stakingReward = Number(totalReward.muln(0.8))
+        // const authringRewad = Number(totalReward.muln(0.2)) / validatorCount
+        const res = await api.query.staking.erasAuthoringPayout(eraIndex, address)
+        const erasStakingPayout = JSON.parse(JSON.stringify(res));
+        const totalPayout = String(Number(erasStakingPayout) / 0.8);
+        const totalReward = new BN(totalPayout).toNumber()
 
+        const stakingReward = totalReward
+        const guarantorStaked = UNIT;
+        const rewardRate = Number(guarantorStaked) / (Number(totalStaked) * 1.0)
+        const ownEffective = Math.min(Number(stakeLimit), Number(totalStaked))
+        const guarantee_fee = guarantee_fee_pref == 1e-9 ? 0 : guarantee_fee_pref;
+        const validatorRate = (ownEffective / (Number(totalEffectiveStake) * 1.0));
+        // let apy = 0
+        // if (isMain) {
+        //   apy = ownEffective ? rewardRate * ((stakingReward) * validatorRate + authringRewad) * 4 * guarantee_fee / 1000000000000 : 0
+        //   setGuarantorApy(Math.pow((1 + apy), 365) - 1)
+        // } else {
+        //   apy = ownEffective ? rewardRate * (stakingReward) * (validatorRate) * 4 * guarantee_fee / 1000000000000 : 0
+        //   setGuarantorApy(Math.pow((1 + apy), 365) - 1)
+        // }
+        const apy: any = ownEffective ? rewardRate * (stakingReward) * (validatorRate) * 4 * guarantee_fee / 1000000000000 : 0
+        setGuarantorApy(Math.pow((1 + apy), 365) - 1);
+        validatorApy[address] = apy;
+      }
+    })()
   }, [isMain, totalStaked, guarantee_fee_pref, activeEra, totalReward, validatorCount, totalEffectiveStake, stakeLimit, stakeOwn])
 
   const _onQueryStats = useCallback(
@@ -219,9 +231,10 @@ function Address ({ address, className = '', filterName, hasQueries, isElected, 
               icon='info-circle'
               tooltip={`summary-locks-trigger-set-fee-pool-${address}`}
             />
+            --guarantorApy validatorApy--
             <Tooltip
-                text={(<ApyInfo apy={validatorApy[address]} />)}
-                trigger={`summary-locks-trigger-set-fee-pool-${address}`}
+              text={(<ApyInfo apy={validatorApy[address]} />)}
+              trigger={`summary-locks-trigger-set-fee-pool-${address}`}
             ></Tooltip> &nbsp;&nbsp; {(guarantorApy * 100).toFixed(2) + '%'}
           </div>
         )}

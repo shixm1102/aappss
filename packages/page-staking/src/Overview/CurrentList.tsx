@@ -85,6 +85,7 @@ function CurrentList({ favorites, hasQueries, isIntentions, stakingOverview, tar
   const [validatorCount, setValidatorCount] = useState<number>(0);
   const [totalReward, setTotalReward] = useState<BN>(BN_ZERO);
   const [totalEffectiveStake, setTotalEffectiveStake] = useState<BN>(BN_ZERO);
+  const [eraIndex, setEraIndex] = useState((stakingOverview && stakingOverview.activeEra) ? (stakingOverview.activeEra.toNumber() - 1) : 0);
 
   // we have a very large list, so we use a loading delay
   const isLoading = useLoadingDelay();
@@ -107,12 +108,14 @@ function CurrentList({ favorites, hasQueries, isIntentions, stakingOverview, tar
     if (stakingOverview && targets) {
       setValidatorCount(stakingOverview.validatorCount.toNumber());
       setTotalEffectiveStake(targets.totalStaked as BN);
-      api.query.staking.erasStakingPayout(stakingOverview.activeEra.toNumber() - 1).then((res) => {
-        const erasStakingPayout = JSON.parse(JSON.stringify(res));
-        const totalPayout = String(Number(erasStakingPayout) / 0.8);
 
-        setTotalReward(new BN(totalPayout));
-      });
+      // api.query.staking.erasStakingPayout(stakingOverview.activeEra.toNumber() - 1).then((res) => {
+      //   const erasStakingPayout = JSON.parse(JSON.stringify(res));
+      //   const totalPayout = String(Number(erasStakingPayout) / 0.8);
+
+      //   setTotalReward(new BN(totalPayout));
+      // });
+      setEraIndex(stakingOverview.activeEra.toNumber() - 1)
     }
   }, [api, stakingOverview, targets]);
 
@@ -162,6 +165,7 @@ function CurrentList({ favorites, hasQueries, isIntentions, stakingOverview, tar
           totalReward={totalReward}
           validatorCount={validatorCount}
           validatorInfo={infoMap?.[address]}
+          eraIndex={eraIndex}
           withIdentity={toggles.withIdentity}
         />
       )),
