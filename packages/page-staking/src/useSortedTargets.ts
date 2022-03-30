@@ -319,14 +319,16 @@ const calculateApy = (totalReward: BN, validatorCount: number, totalEffectiveSta
   const rewardRate = Number(guarantorStaked) / (Number(validatorInfo.totalStaked) * 1.0)
   const ownEffective = Math.min(Number(validatorInfo.stakeLimit), Number(validatorInfo.totalStaked))
   const guarantee_fee = validatorInfo.commissionPer / 100.0;
-  const validatorRate = (ownEffective / (Number(totalEffectiveStake) * 1.0));
+  // const validatorRate = (ownEffective / (Number(totalEffectiveStake) * 1.0));
   // let apy = 0
   // if (validatorInfo.isElected) {
   //   apy = ownEffective ? rewardRate * ((stakingReward) * validatorRate + authringRewad) * 4 * guarantee_fee / 1000000000000 : 0
   // } else {
   //   apy = ownEffective ? rewardRate * (stakingReward) * (validatorRate) * 4 * guarantee_fee / 1000000000000 : 0
   // }
-  const apy = ownEffective ? rewardRate * (stakingReward) * (validatorRate) * 4 * guarantee_fee / 1000000000000 : 0
+  // const apy = ownEffective ? rewardRate * (stakingReward) * (validatorRate) * 4 * guarantee_fee / 1000000000000 : 0
+  const apy: any = ownEffective ? rewardRate * (stakingReward) * 3 * guarantee_fee / 1000000000000 : 0
+  // console.log("---calculateApy---", { accountId: validatorInfo.accountId.toString(), validatorInfo: JSON.parse(JSON.stringify(validatorInfo)), totalEffectiveStake: totalEffectiveStake.toString(), ownEffective, rewardRate, stakingReward, validatorRate, guarantee_fee, apy })
   validatorInfo.apy = apy
   validatorApy[validatorInfo.accountId.toString()] = apy
   return validatorInfo;

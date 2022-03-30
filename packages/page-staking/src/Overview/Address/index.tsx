@@ -175,7 +175,7 @@ function Address({ address, className = '', filterName, hasQueries, isElected, i
         const rewardRate = Number(guarantorStaked) / (Number(totalStaked) * 1.0)
         const ownEffective = Math.min(Number(stakeLimit), Number(totalStaked))
         const guarantee_fee = guarantee_fee_pref == 1e-9 ? 0 : guarantee_fee_pref;
-        const validatorRate = (ownEffective / (Number(totalEffectiveStake) * 1.0));
+        // const validatorRate = (ownEffective / (Number(totalEffectiveStake) * 1.0));
         // let apy = 0
         // if (isMain) {
         //   apy = ownEffective ? rewardRate * ((stakingReward) * validatorRate + authringRewad) * 4 * guarantee_fee / 1000000000000 : 0
@@ -184,7 +184,9 @@ function Address({ address, className = '', filterName, hasQueries, isElected, i
         //   apy = ownEffective ? rewardRate * (stakingReward) * (validatorRate) * 4 * guarantee_fee / 1000000000000 : 0
         //   setGuarantorApy(Math.pow((1 + apy), 365) - 1)
         // }
-        const apy: any = ownEffective ? rewardRate * (stakingReward) * (validatorRate) * 4 * guarantee_fee / 1000000000000 : 0
+        // const apy: any = ownEffective ? rewardRate * (stakingReward) * (validatorRate) * 4 * guarantee_fee / 1000000000000 : 0
+        const apy: any = ownEffective ? rewardRate * (stakingReward) * 3 * guarantee_fee / 1000000000000 : 0
+        // console.log("---address---", { accountId: validatorInfo && validatorInfo.accountId.toString(), totalStaked: validatorInfo && validatorInfo.totalStaked.toString(), totalEffectiveStake: totalEffectiveStake.toString(), ownEffective, rewardRate, stakingReward, validatorRate, guarantee_fee, apy })
         setGuarantorApy(Math.pow((1 + apy), 365) - 1);
         validatorApy[address] = apy;
       }
