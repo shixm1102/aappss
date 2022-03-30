@@ -24,7 +24,6 @@ import StakeOther from './StakeOther';
 import Status from './Status';
 import ApyInfo from './ApyInfo';
 import { validatorApy } from '@polkadot/app-staking';
-import { constant } from 'lodash';
 
 interface Props {
   address: string;

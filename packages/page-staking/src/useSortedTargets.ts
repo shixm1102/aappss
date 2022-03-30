@@ -7,7 +7,7 @@ import type { DeriveSessionInfo, DeriveStakingElected, DeriveStakingWaiting } fr
 import type { SortedTargets, TargetSortBy, ValidatorInfo } from './types';
 
 import BN from 'bn.js';
-import { useEffect, useMemo, useState, DependencyList } from 'react';
+import { useEffect, useState, DependencyList } from 'react';
 
 import { calcInflation, useAccounts, useApi, useCall } from '@polkadot/react-hooks';
 import { arrayFlatten, BN_HUNDRED, BN_MAX_INTEGER, BN_ONE, BN_ZERO } from '@polkadot/util';
@@ -24,8 +24,8 @@ const EMPTY_PARTIAL = {};
 const DEFAULT_FLAGS_ELECTED = { withController: true, withExposure: true, withPrefs: true };
 const DEFAULT_FLAGS_WAITING = { withController: true, withExposure: true, withPrefs: true };
 
-function useAsyncMemo<T>(factory: () => Promise<T> | undefined | null, deps: DependencyList, initial: T = undefined): T {
-  const [val, setVal] = useState<T>(initial)
+function useAsyncMemo<T>(factory: () => Promise<T> | undefined | null, deps: DependencyList, initial?: T | any): T {
+  const [val, setVal] = useState<T>(initial ? initial : null)
   useEffect(() => {
     let cancel = false
     const promise = factory()
@@ -200,7 +200,7 @@ function extractSingle(api: ApiPromise, allAccounts: string[], derive: DeriveSta
 }
 
 // async function extractInfo(api: ApiPromise, allAccounts: string[], electedDerive: DeriveStakingElected, waitingDerive: DeriveStakingWaiting, favorites: string[], totalIssuance: BN, lastEraInfo: LastEra, validatorStakeLimit: ValidatorStakeLimit[], guarantors: Guarantor[], totalReward: BN, validatorCount: number, historyDepth?: BN): Partial<SortedTargets> {
-async function extractInfo(api: ApiPromise, allAccounts: string[], electedDerive: DeriveStakingElected, waitingDerive: DeriveStakingWaiting, favorites: string[], totalIssuance: BN, lastEraInfo: LastEra, validatorStakeLimit: ValidatorStakeLimit[], guarantors: Guarantor[], validatorCount: number, historyDepth?: BN): Partial<SortedTargets> {
+async function extractInfo(api: ApiPromise, allAccounts: string[], electedDerive: DeriveStakingElected, waitingDerive: DeriveStakingWaiting, favorites: string[], totalIssuance: BN, lastEraInfo: LastEra, validatorStakeLimit: ValidatorStakeLimit[], guarantors: Guarantor[], validatorCount: number, historyDepth?: BN): Promise<Partial<SortedTargets>> {
   const [elected, nominators] = extractSingle(api, allAccounts, electedDerive, favorites, lastEraInfo, validatorStakeLimit, guarantors, historyDepth);
   const [waiting, waitingNominators] = extractSingle(api, allAccounts, waitingDerive, favorites, lastEraInfo, validatorStakeLimit, guarantors);
   const electedTotals = elected
@@ -397,9 +397,11 @@ export default function useSortedTargets(favorites: string[], withLedger: boolea
   // );
 
   const partial = useAsyncMemo(
-    async () => electedInfo && lastEraInfo && totalIssuance && waitingInfo && validatorStakeLimit && guarantors && validatorCount
-      ? await extractInfo(api, allAccounts, electedInfo, waitingInfo, favorites, totalIssuance, lastEraInfo, validatorStakeLimit, guarantors, validatorCount, typeof historyDepth === 'number' ? new BN(historyDepth) : historyDepth)
-      : EMPTY_PARTIAL,
+    async () => {
+      return electedInfo && lastEraInfo && totalIssuance && waitingInfo && validatorStakeLimit && guarantors && validatorCount
+        ? await extractInfo(api, allAccounts, electedInfo, waitingInfo, favorites, totalIssuance, lastEraInfo, validatorStakeLimit, guarantors, validatorCount, typeof historyDepth === 'number' ? new BN(historyDepth) : historyDepth)
+        : EMPTY_PARTIAL
+    },
     [api, allAccounts, electedInfo, favorites, historyDepth, lastEraInfo, totalIssuance, waitingInfo, validatorStakeLimit, validatorCount]
   );
 

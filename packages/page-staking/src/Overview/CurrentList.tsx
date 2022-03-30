@@ -83,7 +83,8 @@ function CurrentList({ favorites, hasQueries, isIntentions, stakingOverview, tar
   const [nameFilter, setNameFilter] = useState<string>('');
   const [toggles, setToggle] = useSavedFlags('staking:overview', { withIdentity: false });
   const [validatorCount, setValidatorCount] = useState<number>(0);
-  const [totalReward, setTotalReward] = useState<BN>(BN_ZERO);
+  // const [totalReward, setTotalReward] = useState<BN>(BN_ZERO);
+  const [totalReward] = useState<BN>(BN_ZERO);
   const [totalEffectiveStake, setTotalEffectiveStake] = useState<BN>(BN_ZERO);
   const [eraIndex, setEraIndex] = useState((stakingOverview && stakingOverview.activeEra) ? (stakingOverview.activeEra.toNumber() - 1) : 0);
 
