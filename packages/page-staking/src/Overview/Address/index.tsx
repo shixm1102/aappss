@@ -231,7 +231,6 @@ function Address({ address, className = '', filterName, hasQueries, isElected, i
               icon='info-circle'
               tooltip={`summary-locks-trigger-set-fee-pool-${address}`}
             />
-            --guarantorApy validatorApy--
             <Tooltip
               text={(<ApyInfo apy={validatorApy[address]} />)}
               trigger={`summary-locks-trigger-set-fee-pool-${address}`}

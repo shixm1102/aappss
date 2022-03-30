@@ -100,6 +100,7 @@ function sortValidators(list: ValidatorInfo[]): ValidatorInfo[] {
 }
 
 function extractSingle(api: ApiPromise, allAccounts: string[], derive: DeriveStakingElected | DeriveStakingWaiting, favorites: string[], { activeEra, eraLength, lastEra, sessionLength }: LastEra, validatorStakeLimit: ValidatorStakeLimit[], guarantors: Guarantor[], historyDepth?: BN): [ValidatorInfo[], Record<string, BN>] {
+  if (typeof historyDepth === 'number') historyDepth = new BN(historyDepth)
   const nominators: Record<string, BN> = {};
   const emptyExposure = api.createType('Exposure');
   const earliestEra = historyDepth && lastEra.sub(historyDepth).iadd(BN_ONE);
@@ -199,7 +200,8 @@ function extractSingle(api: ApiPromise, allAccounts: string[], derive: DeriveSta
   return [list, nominators];
 }
 
-async function extractInfo(api: ApiPromise, allAccounts: string[], electedDerive: DeriveStakingElected, waitingDerive: DeriveStakingWaiting, favorites: string[], totalIssuance: BN, lastEraInfo: LastEra, validatorStakeLimit: ValidatorStakeLimit[], guarantors: Guarantor[], totalReward: BN, validatorCount: number, historyDepth?: BN): Partial<SortedTargets> {
+// async function extractInfo(api: ApiPromise, allAccounts: string[], electedDerive: DeriveStakingElected, waitingDerive: DeriveStakingWaiting, favorites: string[], totalIssuance: BN, lastEraInfo: LastEra, validatorStakeLimit: ValidatorStakeLimit[], guarantors: Guarantor[], totalReward: BN, validatorCount: number, historyDepth?: BN): Partial<SortedTargets> {
+async function extractInfo(api: ApiPromise, allAccounts: string[], electedDerive: DeriveStakingElected, waitingDerive: DeriveStakingWaiting, favorites: string[], totalIssuance: BN, lastEraInfo: LastEra, validatorStakeLimit: ValidatorStakeLimit[], guarantors: Guarantor[], validatorCount: number, historyDepth?: BN): Partial<SortedTargets> {
   const [elected, nominators] = extractSingle(api, allAccounts, electedDerive, favorites, lastEraInfo, validatorStakeLimit, guarantors, historyDepth);
   const [waiting, waitingNominators] = extractSingle(api, allAccounts, waitingDerive, favorites, lastEraInfo, validatorStakeLimit, guarantors);
   const electedTotals = elected
@@ -311,19 +313,21 @@ const parseObj = (obj: any) => {
 const UNIT = new BN(1_000_000_000_000);
 
 const calculateApy = (totalReward: BN, validatorCount: number, totalEffectiveStake: BN, validatorInfo: ValidatorInfo) => {
-  const stakingReward = Number(totalReward.muln(0.8))
-  const authringRewad = Number(totalReward.muln(0.2)) / validatorCount
+  // const stakingReward = Number(totalReward.muln(0.8))
+  // const authringRewad = Number(totalReward.muln(0.2)) / validatorCount
+  const stakingReward = totalReward
   const guarantorStaked = UNIT;
   const rewardRate = Number(guarantorStaked) / (Number(validatorInfo.totalStaked) * 1.0)
   const ownEffective = Math.min(Number(validatorInfo.stakeLimit), Number(validatorInfo.totalStaked))
   const guarantee_fee = validatorInfo.commissionPer / 100.0;
   const validatorRate = (ownEffective / (Number(totalEffectiveStake) * 1.0));
-  let apy = 0
-  if (validatorInfo.isElected) {
-    apy = ownEffective ? rewardRate * ((stakingReward) * validatorRate + authringRewad) * 4 * guarantee_fee / 1000000000000 : 0
-  } else {
-    apy = ownEffective ? rewardRate * (stakingReward) * (validatorRate) * 4 * guarantee_fee / 1000000000000 : 0
-  }
+  // let apy = 0
+  // if (validatorInfo.isElected) {
+  //   apy = ownEffective ? rewardRate * ((stakingReward) * validatorRate + authringRewad) * 4 * guarantee_fee / 1000000000000 : 0
+  // } else {
+  //   apy = ownEffective ? rewardRate * (stakingReward) * (validatorRate) * 4 * guarantee_fee / 1000000000000 : 0
+  // }
+  const apy = ownEffective ? rewardRate * (stakingReward) * (validatorRate) * 4 * guarantee_fee / 1000000000000 : 0
   validatorInfo.apy = apy
   validatorApy[validatorInfo.accountId.toString()] = apy
   return validatorInfo;
@@ -386,11 +390,17 @@ export default function useSortedTargets(favorites: string[], withLedger: boolea
     }
   }, [lastEraInfo])
 
+  // const partial = useAsyncMemo(
+  //   async () => electedInfo && lastEraInfo && totalIssuance && waitingInfo && validatorStakeLimit && guarantors && totalReward && validatorCount
+  //     ? await extractInfo(api, allAccounts, electedInfo, waitingInfo, favorites, totalIssuance, lastEraInfo, validatorStakeLimit, guarantors, totalReward, validatorCount, historyDepth)
+  //     : EMPTY_PARTIAL,
+  //   [api, allAccounts, electedInfo, favorites, historyDepth, lastEraInfo, totalIssuance, waitingInfo, validatorStakeLimit, totalReward, validatorCount]
+  // );
   const partial = useAsyncMemo(
-    async () => electedInfo && lastEraInfo && totalIssuance && waitingInfo && validatorStakeLimit && guarantors && totalReward && validatorCount
-      ? await extractInfo(api, allAccounts, electedInfo, waitingInfo, favorites, totalIssuance, lastEraInfo, validatorStakeLimit, guarantors, totalReward, validatorCount, historyDepth)
+    async () => electedInfo && lastEraInfo && totalIssuance && waitingInfo && validatorStakeLimit && guarantors && validatorCount
+      ? await extractInfo(api, allAccounts, electedInfo, waitingInfo, favorites, totalIssuance, lastEraInfo, validatorStakeLimit, guarantors, validatorCount, historyDepth)
       : EMPTY_PARTIAL,
-    [api, allAccounts, electedInfo, favorites, historyDepth, lastEraInfo, totalIssuance, waitingInfo, validatorStakeLimit, totalReward, validatorCount]
+    [api, allAccounts, electedInfo, favorites, historyDepth, lastEraInfo, totalIssuance, waitingInfo, validatorStakeLimit, validatorCount]
   );
 
   return { inflation: { inflation: 0, stakedReturn: 0 }, medianComm: 0, minNominated: BN_ZERO, ...partial };
