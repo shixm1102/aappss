@@ -314,7 +314,7 @@ const UNIT = new BN(1_000_000_000_000);
 const calculateApy = (totalReward: BN, validatorCount: number, totalEffectiveStake: BN, validatorInfo: ValidatorInfo) => {
   // const stakingReward = Number(totalReward.muln(0.8))
   // const authringRewad = Number(totalReward.muln(0.2)) / validatorCount
-  const stakingReward = totalReward
+  const stakingReward = Number(totalReward)
   const guarantorStaked = UNIT;
   const rewardRate = Number(guarantorStaked) / (Number(validatorInfo.totalStaked) * 1.0)
   const ownEffective = Math.min(Number(validatorInfo.stakeLimit), Number(validatorInfo.totalStaked))
