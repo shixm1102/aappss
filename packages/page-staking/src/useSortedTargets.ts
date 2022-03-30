@@ -100,7 +100,6 @@ function sortValidators(list: ValidatorInfo[]): ValidatorInfo[] {
 }
 
 function extractSingle(api: ApiPromise, allAccounts: string[], derive: DeriveStakingElected | DeriveStakingWaiting, favorites: string[], { activeEra, eraLength, lastEra, sessionLength }: LastEra, validatorStakeLimit: ValidatorStakeLimit[], guarantors: Guarantor[], historyDepth?: BN): [ValidatorInfo[], Record<string, BN>] {
-  if (typeof historyDepth === 'number') historyDepth = new BN(historyDepth)
   const nominators: Record<string, BN> = {};
   const emptyExposure = api.createType('Exposure');
   const earliestEra = historyDepth && lastEra.sub(historyDepth).iadd(BN_ONE);
@@ -396,9 +395,10 @@ export default function useSortedTargets(favorites: string[], withLedger: boolea
   //     : EMPTY_PARTIAL,
   //   [api, allAccounts, electedInfo, favorites, historyDepth, lastEraInfo, totalIssuance, waitingInfo, validatorStakeLimit, totalReward, validatorCount]
   // );
+
   const partial = useAsyncMemo(
     async () => electedInfo && lastEraInfo && totalIssuance && waitingInfo && validatorStakeLimit && guarantors && validatorCount
-      ? await extractInfo(api, allAccounts, electedInfo, waitingInfo, favorites, totalIssuance, lastEraInfo, validatorStakeLimit, guarantors, validatorCount, historyDepth)
+      ? await extractInfo(api, allAccounts, electedInfo, waitingInfo, favorites, totalIssuance, lastEraInfo, validatorStakeLimit, guarantors, validatorCount, typeof historyDepth === 'number' ? new BN(historyDepth) : historyDepth)
       : EMPTY_PARTIAL,
     [api, allAccounts, electedInfo, favorites, historyDepth, lastEraInfo, totalIssuance, waitingInfo, validatorStakeLimit, validatorCount]
   );
