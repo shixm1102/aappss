@@ -344,7 +344,7 @@ export default function useSortedTargets(favorites: string[], withLedger: boolea
   const [validatorStakeLimit, setValidatorStakeLimit] = useState<ValidatorStakeLimit[]>([]);
   const [guarantors, setGuarantors] = useState<Guarantor[]>([]);
   const [validatorCount, setValidatorCount] = useState<number>(0);
-  const [totalReward, setTotalReward] = useState<BN>(BN_ZERO);
+  // const [totalReward, setTotalReward] = useState<BN>(BN_ZERO);
 
   useEffect(() => {
     if (electedInfo && waitingInfo) {
