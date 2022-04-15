@@ -14,11 +14,12 @@ interface PasswordProps {
 
 export function usePassword (): PasswordProps {
   const [password, setPassword] = useState('');
+  const [pattern] = useState(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/);
   const [isPasswordValid, setIsPasswordValid] = useState(false);
 
   useEffect((): void => {
-    setIsPasswordValid(keyring.isPassValid(password));
-  }, [password]);
+    setIsPasswordValid(pattern.test(password) && keyring.isPassValid(password));
+  }, [pattern, password]);
 
   return {
     isPasswordValid,

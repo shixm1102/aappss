@@ -14,19 +14,20 @@ interface Props {
   address: string;
 }
 
-function Backup ({ address, onClose }: Props): React.ReactElement<Props> {
+function Backup({ address, onClose }: Props): React.ReactElement<Props> {
   const { t } = useTranslation();
   const [isBusy, setIsBusy] = useState(false);
+  const [pattern] = useState(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/);
   const [{ isPassTouched, password }, setPassword] = useState({ isPassTouched: false, password: '' });
   const [backupFailed, setBackupFailed] = useState(false);
-  const isPassValid = !backupFailed && keyring.isPassValid(password);
+  const isPassValid = pattern.test(password) && !backupFailed && keyring.isPassValid(password);
 
   const _onChangePass = useCallback(
     (password: string): void => {
       setBackupFailed(false);
-      setPassword({ isPassTouched: true, password });
+      setPassword({ isPassTouched: pattern.test(password) && true, password });
     },
-    []
+    [pattern]
   );
 
   const _doBackup = useCallback(

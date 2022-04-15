@@ -15,6 +15,7 @@ type Props = {
 
 export default function PasswordInput ({ onChange, onEnter }: Props): React.ReactElement {
   const { t } = useTranslation();
+  const [pattern] = useState(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/);
   const [{ isPass1Valid, password1 }, setPassword1] = useState({ isPass1Valid: false, password1: '' });
   const [{ isPass2Valid, password2 }, setPassword2] = useState({ isPass2Valid: false, password2: '' });
 
@@ -26,7 +27,7 @@ export default function PasswordInput ({ onChange, onEnter }: Props): React.Reac
   const _onPassword1Change = useCallback(
     (password1: string) => {
       setPassword1({
-        isPass1Valid: keyring.isPassValid(password1),
+        isPass1Valid: pattern.test(password1) && keyring.isPassValid(password1),
         password1
       });
       setPassword2({
@@ -34,7 +35,7 @@ export default function PasswordInput ({ onChange, onEnter }: Props): React.Reac
         password2
       });
     },
-    [password2]
+    [password2, pattern]
   );
 
   const onPassword2Change = useCallback(

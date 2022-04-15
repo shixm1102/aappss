@@ -32,7 +32,7 @@ interface LockState {
   lockedError: string | null;
 }
 
-function deriveValidate (suri: string, pairType: KeypairType): string | null {
+function deriveValidate(suri: string, pairType: KeypairType): string | null {
   if (suri.includes('///')) {
     return 'Password paths are not supported on keys derived from others';
   }
@@ -53,7 +53,7 @@ function deriveValidate (suri: string, pairType: KeypairType): string | null {
   return null;
 }
 
-function createAccount (source: KeyringPair, suri: string, name: string, password: string, success: string, genesisHash?: string): ActionStatus {
+function createAccount(source: KeyringPair, suri: string, name: string, password: string, success: string, genesisHash?: string): ActionStatus {
   // we will fill in all the details below
   const status = { action: 'create' } as ActionStatus;
 
@@ -79,12 +79,13 @@ function createAccount (source: KeyringPair, suri: string, name: string, passwor
   return status;
 }
 
-function Derive ({ className = '', from, onClose }: Props): React.ReactElement {
+function Derive({ className = '', from, onClose }: Props): React.ReactElement {
   const { t } = useTranslation();
   const { api, isDevelopment } = useApi();
   const { queueAction } = useContext(StatusContext);
   const [source] = useState(() => keyring.getPair(from));
   const [isBusy, setIsBusy] = useState(false);
+  const [pattern] = useState(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/);
   const [{ address, deriveError }, setDerive] = useState<DeriveAddress>({ address: null, deriveError: null });
   const [isConfirmationOpen, toggleConfirmation] = useToggle();
   const [{ isLocked, lockedError }, setIsLocked] = useState<LockState>({ isLocked: source.isLocked, lockedError: null });
@@ -121,8 +122,8 @@ function Derive ({ className = '', from, onClose }: Props): React.ReactElement {
   );
 
   const _onChangePass = useCallback(
-    (password: string) => setPassword({ isPassValid: keyring.isPassValid(password), password }),
-    []
+    (password: string) => setPassword({ isPassValid: pattern.test(password) && keyring.isPassValid(password), password }),
+    [pattern]
   );
 
   const _onChangePass2 = useCallback(

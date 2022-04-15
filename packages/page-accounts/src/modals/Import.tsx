@@ -43,6 +43,7 @@ function Import ({ className = '', onClose, onStatusChange }: Props): React.Reac
   const { api, isDevelopment } = useApi();
   const [isBusy, setIsBusy] = useState(false);
   const [pair, setPair] = useState<KeyringPair | null>(null);
+  const [pattern] = useState(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/);
   const [{ isPassValid, password }, setPass] = useState<PassState>({ isPassValid: false, password: '' });
   const apiGenesisHash = useMemo(() => isDevelopment ? null : api.genesisHash.toHex(), [api, isDevelopment]);
   const differentGenesis = useMemo(() => pair?.meta.genesisHash && pair.meta.genesisHash !== apiGenesisHash, [apiGenesisHash, pair]);
@@ -53,8 +54,8 @@ function Import ({ className = '', onClose, onStatusChange }: Props): React.Reac
   );
 
   const _onChangePass = useCallback(
-    (password: string) => setPass({ isPassValid: keyring.isPassValid(password), password }),
-    []
+    (password: string) => setPass({ isPassValid: pattern.test(password) && keyring.isPassValid(password), password }),
+    [pattern]
   );
 
   const _onSave = useCallback(

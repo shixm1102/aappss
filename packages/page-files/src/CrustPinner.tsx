@@ -80,6 +80,11 @@ export interface Props {
   user: WrapLoginUser,
 }
 
+interface PassState {
+  isPassValid: boolean;
+  password: string;
+}
+
 type FunInputFile = (e: React.ChangeEvent<HTMLInputElement>) => void
 type OnInputChange = (e: React.ChangeEvent<HTMLInputElement>) => void
 
@@ -87,7 +92,9 @@ function CrustPinner ({ className, user }: Props): React.ReactElement<Props> {
   const { t } = useTranslation();
   const { queueAction } = useContext<QueueProps>(StatusContext);
   const [isBusy, setBusy] = useState(false);
-  const [password, setPassword] = useState('');
+  // const [password, setPassword] = useState('');
+  const [pattern] = useState(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/);
+  const [{ isPassValid, password }, setPassword] = useState<PassState>({ isPassValid: false, password: '' });
   const [cidObject, setCidObject] = useState({ cid: '', prefetchedSize: 0 });
   const [validatingCID, setValidatingCID] = useState(false);
   const [isValidCID, setValidCID] = useState(false);
@@ -183,7 +190,7 @@ function CrustPinner ({ className, user }: Props): React.ReactElement<Props> {
       setValidatingCID(false);
       setBusy(false);
     };
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [cidObject.cid]);
 
   const onChangeCID = useCallback<OnInputChange>((e) => {
@@ -296,6 +303,11 @@ function CrustPinner ({ className, user }: Props): React.ReactElement<Props> {
     FileSaver.saveAs(blob, 'pins.json');
   }, [wFiles]);
 
+  const _onChangePass = useCallback(
+    (password: string) => setPassword({ isPassValid: pattern.test(password), password }),
+    [pattern]
+  );
+
   return <main className={className}>
     <header>
       <div className='inputPanel'>
@@ -325,9 +337,9 @@ function CrustPinner ({ className, user }: Props): React.ReactElement<Props> {
           user.isLocked &&
           <Password
             help={t<string>('The account\'s password specified at the creation of this account.')}
-            isError={false}
+            isError={!isPassValid}
             label={t<string>('Password')}
-            onChange={setPassword}
+            onChange={_onChangePass}
             value={password}
           />
         }
@@ -336,7 +348,7 @@ function CrustPinner ({ className, user }: Props): React.ReactElement<Props> {
           disable={isBusy || !isValidCID || (user.isLocked && !password)}
           isBuzy={isBusy}
           label={t('Pin')}
-          onClick={onClickPin}/>
+          onClick={onClickPin} />
       </div>
     </header>
     <div className={'importExportPanel'}>
@@ -418,7 +430,7 @@ function CrustPinner ({ className, user }: Props): React.ReactElement<Props> {
 
             </div>
           </td>
-          <td colSpan={1}/>
+          <td colSpan={1} />
         </ItemFile>
       )}
     </Table>
