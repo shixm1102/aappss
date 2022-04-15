@@ -15,7 +15,7 @@ type Props = {
 
 export default function PasswordInput ({ onChange, onEnter }: Props): React.ReactElement {
   const { t } = useTranslation();
-  const [pattern] = useState(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/);
+  const [pattern] = useState(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[\S]{8,}$/);
   const [{ isPass1Valid, password1 }, setPassword1] = useState({ isPass1Valid: false, password1: '' });
   const [{ isPass2Valid, password2 }, setPassword2] = useState({ isPass2Valid: false, password2: '' });
 

@@ -27,7 +27,7 @@ interface OldPass {
 function ChangePass ({ address, className = '', onClose }: Props): React.ReactElement<Props> {
   const { t } = useTranslation();
   const [isBusy, setIsBusy] = useState(false);
-  const [pattern] = useState(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/);
+  const [pattern] = useState(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[\S]{8,}$/);
   const [newPass1, setNewPass1] = useState<NewPass>({ isValid: false, password: '' });
   const [newPass2, setNewPass2] = useState<NewPass>({ isValid: false, password: '' });
   const [{ isOldValid, oldPass }, setOldPass] = useState<OldPass>({ isOldValid: false, oldPass: '' });

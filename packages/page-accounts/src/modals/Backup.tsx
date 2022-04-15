@@ -17,7 +17,7 @@ interface Props {
 function Backup({ address, onClose }: Props): React.ReactElement<Props> {
   const { t } = useTranslation();
   const [isBusy, setIsBusy] = useState(false);
-  const [pattern] = useState(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/);
+  const [pattern] = useState(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[\S]{8,}$/);
   const [{ isPassTouched, password }, setPassword] = useState({ isPassTouched: false, password: '' });
   const [backupFailed, setBackupFailed] = useState(false);
   const isPassValid = pattern.test(password) && !backupFailed && keyring.isPassValid(password);

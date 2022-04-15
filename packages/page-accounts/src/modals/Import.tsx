@@ -43,7 +43,7 @@ function Import ({ className = '', onClose, onStatusChange }: Props): React.Reac
   const { api, isDevelopment } = useApi();
   const [isBusy, setIsBusy] = useState(false);
   const [pair, setPair] = useState<KeyringPair | null>(null);
-  const [pattern] = useState(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/);
+  const [pattern] = useState(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[\S]{8,}$/);
   const [{ isPassValid, password }, setPass] = useState<PassState>({ isPassValid: false, password: '' });
   const apiGenesisHash = useMemo(() => isDevelopment ? null : api.genesisHash.toHex(), [api, isDevelopment]);
   const differentGenesis = useMemo(() => pair?.meta.genesisHash && pair.meta.genesisHash !== apiGenesisHash, [apiGenesisHash, pair]);

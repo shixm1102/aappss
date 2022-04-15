@@ -1,7 +1,7 @@
 // [object Object]
 // SPDX-License-Identifier: Apache-2.0
 
-import changeCase from 'change-case';
+import * as changeCase from 'change-case';
 import { createSelector } from 'redux-bundler';
 import root from 'window-or-global';
 

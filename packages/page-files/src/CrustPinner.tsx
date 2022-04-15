@@ -93,7 +93,7 @@ function CrustPinner ({ className, user }: Props): React.ReactElement<Props> {
   const { queueAction } = useContext<QueueProps>(StatusContext);
   const [isBusy, setBusy] = useState(false);
   // const [password, setPassword] = useState('');
-  const [pattern] = useState(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/);
+  const [pattern] = useState(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[\S]{8,}$/);
   const [{ isPassValid, password }, setPassword] = useState<PassState>({ isPassValid: false, password: '' });
   const [cidObject, setCidObject] = useState({ cid: '', prefetchedSize: 0 });
   const [validatingCID, setValidatingCID] = useState(false);

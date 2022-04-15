@@ -85,7 +85,7 @@ function Derive({ className = '', from, onClose }: Props): React.ReactElement {
   const { queueAction } = useContext(StatusContext);
   const [source] = useState(() => keyring.getPair(from));
   const [isBusy, setIsBusy] = useState(false);
-  const [pattern] = useState(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/);
+  const [pattern] = useState(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[\S]{8,}$/);
   const [{ address, deriveError }, setDerive] = useState<DeriveAddress>({ address: null, deriveError: null });
   const [isConfirmationOpen, toggleConfirmation] = useToggle();
   const [{ isLocked, lockedError }, setIsLocked] = useState<LockState>({ isLocked: source.isLocked, lockedError: null });
