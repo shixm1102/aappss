@@ -29,9 +29,9 @@ function extractRewards (erasRewards: DeriveEraRewards[] = [], ownSlashes: Deriv
 
     const slashed = ownSlashes.find((slash) => slash.era.eq(era));
 
-    const reward = points?.eraPoints.gtn(0)
-      ? balanceToNumber(points.points.mul(eraReward.total_reward).div(points.eraPoints), divisor)
-      : 0;
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
+    const reward = points?.eraPoints.gtn(0) ? balanceToNumber(points.points.mul(eraReward.total_reward).div(points.eraPoints), divisor) : 0;
     const slash = slashed
       ? balanceToNumber(slashed.total, divisor)
       : 0;
