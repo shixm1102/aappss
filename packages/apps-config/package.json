@@ -16,9 +16,9 @@
     "@polkadot/networks": "^6.0.5",
     "@snowfork/snowbridge-types": "^0.2.3",
     "@sora-substrate/type-definitions": "^0.6.11",
-    "@spacexio/type-definitions": "1.2.0",
     "@subsocial/types": "^0.4.35-beta.2",
-    "moonbeam-types-bundle": "1.1.10"
+    "moonbeam-types-bundle": "1.1.10",
+    "rubik-type-definitions": "1.1.8"
   },
   "devDependencies": {
     "i18next": "^19.9.2"

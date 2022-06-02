@@ -3,6 +3,6 @@
 
 import type { OverrideBundleDefinition } from '@polkadot/types/types';
 
-import { typesBundleForPolkadot } from '@spacexio/type-definitions';
+import { typesBundleForPolkadot } from 'rubik-type-definitions';
 
 export default typesBundleForPolkadot.spec.spacex as unknown as OverrideBundleDefinition;

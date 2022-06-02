@@ -16,19 +16,20 @@ function mapRewards (eras, optRewards) {
 }
 
 export function _erasRewards (instanceId, api) {
-  return memo(instanceId, (eras, withActive) => {
+  return memo(instanceId, (accountId, eras, withActive) => {
     if (!eras.length) {
       return of([]);
     }
 
     const cached = withActive ? [] : eras.map((era) => deriveCache.get(`${CACHE_KEY}-${era.toString()}`)).filter((value) => !!value);
     const remaining = filterEras(eras, cached);
+    const remainingAccountId = remaining.map((era) => [era, accountId]);
 
     if (!remaining.length) {
       return of(cached);
     }
 
-    return api.query.staking.erasStakingPayout.multi(remaining).pipe(map((optRewards) => {
+    return api.query.staking.erasStakingPayout.multi(remainingAccountId).pipe(map((optRewards) => {
       const query = mapRewards(remaining, optRewards);
 
       !withActive && query.forEach((q) => deriveCache.set(`${CACHE_KEY}-${q.era.toString()}`, q));
@@ -39,5 +40,5 @@ export function _erasRewards (instanceId, api) {
 }
 
 export function erasRewards (instanceId, api) {
-  return memo(instanceId, (withActive = false) => api.derive.staking.erasHistoric(withActive).pipe(switchMap((eras) => api.derive.staking._erasRewards(eras, withActive))));
+  return memo(instanceId, (accountId, withActive = false) => api.derive.staking.erasHistoric(withActive).pipe(switchMap((eras) => api.derive.staking._erasRewards(accountId, eras, withActive))));
 }

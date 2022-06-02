@@ -26,9 +26,11 @@ function extractRewards (erasRewards: DeriveEraRewards[] = [], ownSlashes: Deriv
 
   erasRewards.forEach(({ era, eraReward }): void => {
     const points = allPoints.find((points) => points.era.eq(era));
+
     const slashed = ownSlashes.find((slash) => slash.era.eq(era));
+
     const reward = points?.eraPoints.gtn(0)
-      ? balanceToNumber(points.points.mul(eraReward).div(points.eraPoints), divisor)
+      ? balanceToNumber(points.points.mul(eraReward.total_reward).div(points.eraPoints), divisor)
       : 0;
     const slash = slashed
       ? balanceToNumber(slashed.total, divisor)
@@ -57,7 +59,7 @@ function ChartRewards ({ validatorId }: Props): React.ReactElement<Props> {
   const { api } = useApi();
   const params = useMemo(() => [validatorId, false], [validatorId]);
   const ownSlashes = useCall<DeriveOwnSlashes[]>(api.derive.staking.ownSlashes, params);
-  const erasRewards = useCall<DeriveEraRewards[]>(api.derive.staking.erasRewards);
+  const erasRewards = useCall<DeriveEraRewards[]>(api.derive.staking.erasRewards, params);
   const stakerPoints = useCall<DeriveStakerPoints[]>(api.derive.staking.stakerPoints, params);
 
   const { currency, divisor } = useMemo(() => ({
