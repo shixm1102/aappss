@@ -3,7 +3,7 @@
 
 /* eslint-disable */
 import type { ApiPromise } from '@polkadot/api';
-import type { BalanceOf, EraIndex, Exposure } from '@polkadot/types/interfaces';
+import type { EraIndex, Exposure } from '@polkadot/types/interfaces';
 import type { StakerState } from './types';
 
 import { useEffect, useState } from 'react';
@@ -39,7 +39,7 @@ interface EraStashExposure {
 }
 
 // function getRewards ([[stashIds], available]: [[string[]], DeriveStakerReward[][]], stakingAccounts: DeriveStakingAccount[], eraStakingPayouts: EraStakingPayout[]): State {
-async function getRewards (api: ApiPromise, [[stashIds], available]: [[string[]], DeriveStakerReward[][]], stakingAccounts: DeriveStakingAccount[]): State {
+async function getRewards (api: ApiPromise, [[stashIds], available]: [[string[]], DeriveStakerReward[][]], stakingAccounts: DeriveStakingAccount[]): Promise<State> {
   const allRewards: Record<string, DeriveStakerReward[]> = {};
   const electedIds = stakingAccounts.map((e) => e.accountId.toString());
 
@@ -82,11 +82,14 @@ async function getRewards (api: ApiPromise, [[stashIds], available]: [[string[]]
 
   for (let index = 0; index < stashIds.length; index++) {
     const stashId = stashIds[index];
+    // @ts-ignore
     const asyncFilter = async (arr, predicate) => {
       const results = await Promise.all(arr.map(predicate));
+      // @ts-ignore
       return arr.filter((_v, i) => results[i]);
     }
     
+    // @ts-ignore
     allRewards[stashId] = await asyncFilter(available[index], async ({ eraReward, era }) => {
       const currentRewardStatus =  await api.query.staking.erasStakingPayout(era, stashId)
       return !eraReward.isZero() && !!currentRewardStatus
@@ -102,7 +105,7 @@ async function getRewards (api: ApiPromise, [[stashIds], available]: [[string[]]
 }
 
 // function getValRewards (api: ApiPromise, validatorEras: ValidatorWithEras[], erasPoints: DeriveEraPoints[], erasRewards: DeriveEraRewards[], eraStashExposure: EraStashExposure[], eraStakingPayouts: EraStakingPayout[]): State {
-async function getValRewards (api: ApiPromise, validatorEras: ValidatorWithEras[], erasPoints: DeriveEraPoints[], erasRewards: DeriveEraRewards[], eraStashExposure: EraStashExposure[]): State {
+async function getValRewards (api: ApiPromise, validatorEras: ValidatorWithEras[], erasPoints: DeriveEraPoints[], erasRewards: DeriveEraRewards[], eraStashExposure: EraStashExposure[]): Promise<State> {
   const allRewards: Record<string, DeriveStakerReward[]> = {};
 
   for (const { eras, stashId } of validatorEras) {
@@ -164,10 +167,10 @@ async function getValRewards (api: ApiPromise, validatorEras: ValidatorWithEras[
   };
 }
 
-interface EraStakingPayout {
-  era: number;
-  hasReward: boolean;
-}
+// interface EraStakingPayout {
+//   era: number;
+//   hasReward: boolean;
+// }
 
 export function useOwnEraRewards (maxEras?: number, ownValidators?: StakerState[]): State {
   const { api } = useApi();
