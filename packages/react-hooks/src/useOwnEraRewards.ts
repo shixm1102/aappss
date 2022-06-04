@@ -38,7 +38,8 @@ interface EraStashExposure {
   exposure: Exposure;
 }
 
-function getRewards ([[stashIds], available]: [[string[]], DeriveStakerReward[][]], stakingAccounts: DeriveStakingAccount[], eraStakingPayouts: EraStakingPayout[]): State {
+// function getRewards ([[stashIds], available]: [[string[]], DeriveStakerReward[][]], stakingAccounts: DeriveStakingAccount[], eraStakingPayouts: EraStakingPayout[]): State {
+async function getRewards (api: ApiPromise, [[stashIds], available]: [[string[]], DeriveStakerReward[][]], stakingAccounts: DeriveStakingAccount[]): State {
   const allRewards: Record<string, DeriveStakerReward[]> = {};
   const electedIds = stakingAccounts.map((e) => e.accountId.toString());
 
@@ -79,12 +80,19 @@ function getRewards ([[stashIds], available]: [[string[]], DeriveStakerReward[][
     available[index] = a.filter((e) => !tmpEra.includes(e.era.toString()));
   }
 
-  stashIds.forEach((stashId, index): void => {
-    allRewards[stashId] = available[index].filter(({ eraReward, era }) => {
-      const currentRewardStatus = eraStakingPayouts.find(eraStakingPayout => eraStakingPayout.era == era.toNumber())
-      return !eraReward.isZero() && currentRewardStatus?.hasReward
+  for (let index = 0; index < stashIds.length; index++) {
+    const stashId = stashIds[index];
+    const asyncFilter = async (arr, predicate) => {
+      const results = await Promise.all(arr.map(predicate));
+      return arr.filter((_v, i) => results[i]);
+    }
+    
+    allRewards[stashId] = await asyncFilter(available[index], async ({ eraReward, era }) => {
+      const currentRewardStatus =  await api.query.staking.erasStakingPayout(era, stashId)
+      return !eraReward.isZero() && !!currentRewardStatus
     });
-  });
+            
+  }
 
   return {
     allRewards,
@@ -93,61 +101,61 @@ function getRewards ([[stashIds], available]: [[string[]], DeriveStakerReward[][
   };
 }
 
-function getValRewards (api: ApiPromise, validatorEras: ValidatorWithEras[], erasPoints: DeriveEraPoints[], erasRewards: DeriveEraRewards[], eraStashExposure: EraStashExposure[], eraStakingPayouts: EraStakingPayout[]): State {
+// function getValRewards (api: ApiPromise, validatorEras: ValidatorWithEras[], erasPoints: DeriveEraPoints[], erasRewards: DeriveEraRewards[], eraStashExposure: EraStashExposure[], eraStakingPayouts: EraStakingPayout[]): State {
+async function getValRewards (api: ApiPromise, validatorEras: ValidatorWithEras[], erasPoints: DeriveEraPoints[], erasRewards: DeriveEraRewards[], eraStashExposure: EraStashExposure[]): State {
   const allRewards: Record<string, DeriveStakerReward[]> = {};
 
-  validatorEras.forEach(({ eras, stashId }): void => {
-    eras.forEach((era): void => {
-      const eraPoints = erasPoints.find((p) => p.era.eq(era));
-      const eraRewards = erasRewards.find((r) => r.era.eq(era));
-      const eraExposure = eraStashExposure.find((e) => e.era.eq(era) && e.stashId === stashId.toString());
-      const eraStakingPayout = eraStakingPayouts.find((e) => e.era == era.toNumber());
-
-      if (eraStakingPayout && eraStakingPayout.hasReward && eraPoints?.eraPoints.gt(BN_ZERO) && eraPoints?.validators[stashId] && eraRewards) {
-        const reward = eraPoints.validators[stashId].mul(eraRewards.eraReward).div(eraPoints.eraPoints);
-
-        if (!reward.isZero()) {
-          const total = api.createType('Balance', reward);
-
+  for (const { eras, stashId } of validatorEras) {
+    for (const era of eras) {
+        const eraPoints = erasPoints.find((p) => p.era.eq(era));
+        const eraRewards = erasRewards.find((r) => r.era.eq(era));
+        const eraExposure = eraStashExposure.find((e) => e.era.eq(era) && e.stashId === stashId.toString());
+        const eraStakingPayout =  await api.query.staking.erasStakingPayout(era, stashId)
+        if (eraStakingPayout && eraPoints?.eraPoints.gt(BN_ZERO) && eraPoints?.validators[stashId] && eraRewards) {
+          const reward = eraPoints.validators[stashId].mul(eraRewards.eraReward).div(eraPoints.eraPoints);
+        
+          if (!reward.isZero()) {
+            const total = api.createType('Balance', reward);
+  
+            if (!allRewards[stashId]) {
+              allRewards[stashId] = [];
+            }
+  
+            allRewards[stashId].push({
+              era,
+              eraReward: eraRewards.eraReward,
+              isEmpty: false,
+              isValidator: true,
+              nominating: [],
+              validators: {
+                [stashId]: {
+                  total,
+                  value: total
+                }
+              }
+            });
+          }
+        } else if (eraStakingPayout && eraExposure?.exposure.total.unwrap().gtn(0)) {
           if (!allRewards[stashId]) {
             allRewards[stashId] = [];
           }
-
+  
           allRewards[stashId].push({
             era,
-            eraReward: eraRewards.eraReward,
+            eraReward: api.createType('Balance', 1),
             isEmpty: false,
             isValidator: true,
             nominating: [],
             validators: {
               [stashId]: {
-                total,
-                value: total
+                total: api.createType('Balance', 1),
+                value: api.createType('Balance', 1)
               }
             }
           });
         }
-      } else if (eraStakingPayout && eraStakingPayout.hasReward && eraExposure?.exposure.total.unwrap().gtn(0)) {
-        if (!allRewards[stashId]) {
-          allRewards[stashId] = [];
-        }
-
-        allRewards[stashId].push({
-          era,
-          eraReward: api.createType('Balance', 1),
-          isEmpty: false,
-          isValidator: true,
-          nominating: [],
-          validators: {
-            [stashId]: {
-              total: api.createType('Balance', 1),
-              value: api.createType('Balance', 1)
-            }
-          }
-        });
-      }
-    });
-  });
+    }
+  }
 
   return {
     allRewards,
@@ -176,7 +184,7 @@ export function useOwnEraRewards (maxEras?: number, ownValidators?: StakerState[
   const allValidators = stakingOverview && waitingInfo && [...waitingInfo.waiting, ...stakingOverview.nextElected];
   const stakingAccounts = useCall<DeriveStakingAccount[]>(allValidators && api.derive.staking.accounts, [allValidators]);
   const [eraStashExposure, setEraStashExposure] = useState<EraStashExposure[]>([]);
-  const [eraStakingPayouts, setEraStakingPayouts] = useState<EraStakingPayout[]>();
+  // const [eraStakingPayouts, setEraStakingPayouts] = useState<EraStakingPayout[]>();
 
   useEffect(() => {
     let unsub: (() => void) | undefined;
@@ -216,40 +224,40 @@ export function useOwnEraRewards (maxEras?: number, ownValidators?: StakerState[
     };
   }, [filteredEras, allValidators]);
 
-  useEffect(() => {
-    let unsub: (() => void) | undefined;
+  // useEffect(() => {
+  //   let unsub: (() => void) | undefined;
 
-    if (filteredEras && mountedRef.current) {
-      const query: number[] = [];
-      filteredEras.forEach((era) => query.push(era.toNumber()));
+  //   if (filteredEras && mountedRef.current) {
+  //     const query: number[] = [];
+  //     filteredEras.forEach((era) => query.push(era.toNumber()));
 
-      const fns: any[] = [
-        [api.query.staking.erasStakingPayout.multi as any, query]
-      ];
+  //     const fns: any[] = [
+  //       [api.query.staking.erasStakingPayout.multi as any, query]
+  //     ];
 
-      api.combineLatest<BalanceOf[]>(fns, ([balanceOfs]): void => {
-        const tmp: EraStakingPayout[] = [];
-        const result = JSON.parse(JSON.stringify(balanceOfs))
+  //     api.combineLatest<BalanceOf[]>(fns, ([balanceOfs]): void => {
+  //       const tmp: EraStakingPayout[] = [];
+  //       const result = JSON.parse(JSON.stringify(balanceOfs))
 
-        if (Array.isArray(result) && mountedRef.current && result.length && result.length === query.length) {
-          for (const [index, a] of query.entries()) {
-            tmp.push({
-              era: a,
-              hasReward: !!result[index]
-            });
-          }
+  //       if (Array.isArray(result) && mountedRef.current && result.length && result.length === query.length) {
+  //         for (const [index, a] of query.entries()) {
+  //           tmp.push({
+  //             era: a,
+  //             hasReward: !!result[index]
+  //           });
+  //         }
 
-          setEraStakingPayouts(tmp);
-        }
-      }).then((_unsub): void => {
-        unsub = _unsub;
-      }).catch(console.error);
-    }
+  //         setEraStakingPayouts(tmp);
+  //       }
+  //     }).then((_unsub): void => {
+  //       unsub = _unsub;
+  //     }).catch(console.error);
+  //   }
 
-    return (): void => {
-      unsub && unsub();
-    };
-  }, [filteredEras]);
+  //   return (): void => {
+  //     unsub && unsub();
+  //   };
+  // }, [filteredEras]);
 
   useEffect((): void => {
     setState({ allRewards: null, isLoadingRewards: true, rewardCount: 0 });
@@ -292,17 +300,33 @@ export function useOwnEraRewards (maxEras?: number, ownValidators?: StakerState[
     }
   }, [allEras, maxEras, ownValidators]);
 
-  useEffect((): void => {
-    mountedRef.current && stakerRewards && !ownValidators && stakingAccounts && eraStakingPayouts && setState(
-      getRewards(stakerRewards, stakingAccounts, eraStakingPayouts)
-    );
-  }, [mountedRef, ownValidators, stakerRewards, stakingAccounts, eraStakingPayouts]);
+  // useEffect((): void => {
+  //   mountedRef.current && stakerRewards && !ownValidators && stakingAccounts && eraStakingPayouts && setState(
+  //     getRewards(stakerRewards, stakingAccounts, eraStakingPayouts)
+  //   );
+  // }, [mountedRef, ownValidators, stakerRewards, stakingAccounts, eraStakingPayouts]);
+
+  // useEffect((): void => {
+  //   mountedRef && erasPoints && erasRewards && ownValidators && eraStashExposure && eraStakingPayouts && setState(
+  //     getValRewards(api, validatorEras, erasPoints, erasRewards, eraStashExposure, eraStakingPayouts)
+  //   );
+  // }, [api, erasPoints, erasRewards, mountedRef, ownValidators, validatorEras, eraStashExposure, eraStakingPayouts]);
 
   useEffect((): void => {
-    mountedRef && erasPoints && erasRewards && ownValidators && eraStashExposure && eraStakingPayouts && setState(
-      getValRewards(api, validatorEras, erasPoints, erasRewards, eraStashExposure, eraStakingPayouts)
-    );
-  }, [api, erasPoints, erasRewards, mountedRef, ownValidators, validatorEras, eraStashExposure, eraStakingPayouts]);
+    (async function fn(){
+      mountedRef.current && stakerRewards && !ownValidators && stakingAccounts && setState(
+        await getRewards(api, stakerRewards, stakingAccounts)
+      );
+    })()
+  }, [mountedRef, ownValidators, stakerRewards, stakingAccounts]);
+
+  useEffect((): void => {
+    (async function fn(){
+      mountedRef && erasPoints && erasRewards && ownValidators && eraStashExposure && setState(
+        await  getValRewards(api, validatorEras, erasPoints, erasRewards, eraStashExposure)
+      );
+    })()
+  }, [api, erasPoints, erasRewards, mountedRef, ownValidators, validatorEras, eraStashExposure]);
 
   return state;
 }
